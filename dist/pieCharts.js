@@ -68,7 +68,11 @@ function drawCharts() {
       .attr("transform", `translate(${xPosition}, ${yPosition})`)
       .style("opacity", fighter.name === "Alex Pereira" ? 1 : 0.5); // Set opacity conditionally
 
-    const pie = d3.pie().value(d => d.value);
+    const pie = d3.pie()
+    .value(d => d.value)
+    .sort(null)            // Disable default sorting
+    .startAngle(0)         // Start slice at angle 0
+    .endAngle(2 * Math.PI) // End slice at angle 2π (full circle)
     const arc = d3.arc().innerRadius(0).outerRadius(radius);
 
     const pieSlices = chartGroup.selectAll("path")
