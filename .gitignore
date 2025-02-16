@@ -1,7 +1,6 @@
 .DS_Store
 /node_modules/
 my-repo.bundle
-package-lock.json
 
 # React Router
 /.react-router/
