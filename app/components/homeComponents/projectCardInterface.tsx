@@ -34,7 +34,7 @@ export default function ProjectCard({ title, description, image, tags, link, bgC
               href={link}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block bg-[#BB3BAE] hover:bg-blue-600 transition-colors text-white px-4 py-2 rounded-lg text-sm md:text-base"
+              className="inline-block bg-[#9000FF] hover:bg-[#EC8DFF] transition-colors text-white px-4 py-2 rounded-lg text-sm md:text-base"
             >
               View Project
             </a>

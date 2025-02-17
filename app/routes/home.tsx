@@ -15,7 +15,7 @@ export default function Home() {
   return (
     <div>
       <Header />
-      <main className="min-h-screen bg-black px-4">
+      <main className="min-h-screen mb-4 bg-black px-4">
         <HomeCards />
       </main>
     </div>
