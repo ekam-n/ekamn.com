@@ -4,7 +4,10 @@ export default function Education() {
       <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold mb-4">
         Education
       </h2>
-      <h3 className="text-lg md:text-xl lg:text-2xl mb-2">Simon Fraser University</h3>
+      <h3 className="text-lg md:text-xl lg:text-2xl mb-1">Simon Fraser University</h3>
+      <p className="text-sm md:text-base lg:text-lg mb-4">
+          I'm majoring in Interactive Arts & Technology, minoring in Computer Science, and completing multiple concentrations.
+        </p>
       <div className="flex flex-wrap gap-3">
           {[
             "BSc", "Interactive Arts & Technology", "Computer Science", "Game Design", "Extended Reality", "AI", "Data Science"

@@ -36,8 +36,7 @@ export default function Skills() {
         <div className="flex flex-wrap gap-3">
           {[
             "Unity", "Unreal Engine", "Figma", "InDesign", "Photoshop",
-            "Illustrator", "After Effects", "Java", "C++", "C#", "React",
-            "Tailwind", "TypeScript"
+            "Illustrator", "After Effects", "React", "Tailwind", "Java", "C++", "C#", "TypeScript"
           ].map(skill => (
             <span key={skill} className="bg-white/20 px-3 md:px-4 py-1 md:py-2 rounded-full text-xs md:text-sm lg:text-base">
               {skill}
