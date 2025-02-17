@@ -1,11 +1,14 @@
-import Snuggle from "./homeProjectComponents/snuggleSculptors"
+import Snuggle from "./homeProjectComponents/snuggleSculptors";
+import Volt from "./homeProjectComponents/voltLegacy";
+import Yellow from "./homeProjectComponents/yellowJacket";
 
 export default function ProjectCards() {
   return (
-    <section className="space-y-4">
-      <div>
-        <Snuggle />
-      </div>
+    <section className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <Yellow />
+      <Volt />
+      <Snuggle />
+      <Volt />
     </section>
   );
 }

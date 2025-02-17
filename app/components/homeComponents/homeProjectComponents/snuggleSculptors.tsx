@@ -9,6 +9,7 @@ export default function Snuggle() {
         image="./images/projectImages/snuggleSculptors/snuggle1.png"
         tags={["Game Development", "Java", "Simulation"]}
         link="https://github.com/ekam-n/snuggle-sculptors"
+        bgColor="#629D04"
       />
     </div>
   );

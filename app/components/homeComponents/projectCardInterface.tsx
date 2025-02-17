@@ -4,11 +4,12 @@ interface ProjectCardProps {
   image: string;
   tags: string[]; // Technologies or categories
   link?: string; // Optional project link
+  bgColor?: string; // New optional prop for background color
 }
 
-export default function ProjectCard({ title, description, image, tags, link }: ProjectCardProps) {
+export default function ProjectCard({ title, description, image, tags, link, bgColor = "#5301B7" }: ProjectCardProps) {
   return (
-    <div className="flex flex-col lg:flex-row gap-4 bg-[#5301B7] rounded-3xl shadow-lg p-6 md:p-8 text-white">
+    <div className="flex flex-col lg:flex-row gap-4 h-full rounded-3xl shadow-lg p-6 md:p-8 text-white" style={{ backgroundColor: bgColor }}>
       <div>
         <h3 className="text-md md:text-lg">Project</h3>
 
@@ -33,7 +34,7 @@ export default function ProjectCard({ title, description, image, tags, link }: P
               href={link}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block bg-[#DF62F8] hover:bg-blue-600 transition-colors text-white px-4 py-2 rounded-lg text-sm md:text-base"
+              className="inline-block bg-[#BB3BAE] hover:bg-blue-600 transition-colors text-white px-4 py-2 rounded-lg text-sm md:text-base"
             >
               View Project
             </a>
@@ -41,8 +42,8 @@ export default function ProjectCard({ title, description, image, tags, link }: P
         )}
       </div>
       {/* Project Image */}
-      <div className="w-full h-48 md:h-56 bg-gray-800 rounded-xl overflow-hidden">
-        <img src={image} alt={title} className="w-full h-full object-cover" />
+      <div className="bg-gray-800 rounded-xl overflow-hidden">
+        <img src={image} alt={title} className="h-full object-cover" />
       </div>
       
     </div>

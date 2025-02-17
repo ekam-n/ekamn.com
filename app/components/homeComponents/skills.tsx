@@ -14,7 +14,7 @@ export default function Skills() {
         <div className="flex flex-wrap gap-3">
           {[
             "Game Design", "Level Design", "Mechanic Design", "Combat Design",
-            "UI Design", "UX Design", "Project Management", "User Research", "Playtesting"
+            "UI Design", "UX Design", "Project Management", "User Research", "Playtesting", "Software Design"
           ].map(skill => (
             <span key={skill} className="bg-white/20 px-3 md:px-4 py-1 md:py-2 rounded-full text-xs md:text-sm lg:text-base">
               {skill}
@@ -26,7 +26,7 @@ export default function Skills() {
       {/* Development Skills Card */}
       <div className="bg-[#5301B7] rounded-3xl shadow-lg p-6 md:p-8 text-white flex-1">
         <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold mb-4">
-          Development Skills
+          Technical Skills
         </h2>
         {/* Skills Description */}
         <p className="text-sm md:text-base lg:text-lg mb-4">
