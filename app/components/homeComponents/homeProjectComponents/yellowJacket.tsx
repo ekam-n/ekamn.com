@@ -9,7 +9,7 @@ export default function Yellow() {
         image="./images/projectImages/yellowJacketEscape/yellow1.png"
         tags={["Game Development", "Java", "Simulation"]}
         link="https://github.com/ekam-n/snuggle-sculptors"
-        bgColor="#B19D00"
+        // bgColor="#FFF5A9"
       />
     </div>
   );

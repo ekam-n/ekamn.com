@@ -7,7 +7,7 @@ interface ProjectCardProps {
   bgColor?: string; // New optional prop for background color
 }
 
-export default function ProjectCard({ title, description, image, tags, link, bgColor = "#5301B7" }: ProjectCardProps) {
+export default function ProjectCard({ title, description, image, tags, link, bgColor = "#00085C" }: ProjectCardProps) {
   return (
     <div className="flex flex-col lg:flex-row items-center gap-4 h-full rounded-3xl shadow-lg p-6 md:p-8 text-white" style={{ backgroundColor: bgColor }}>
       <div className="flex-1">
@@ -42,7 +42,7 @@ export default function ProjectCard({ title, description, image, tags, link, bgC
         )}
       </div>
       {/* Project Image */}
-      <div className="flex-1">
+      <div className="flex-1 flex justify-center">
         <img src={image} alt={title} className="w-full rounded-2xl object-cover" />
       </div>
       

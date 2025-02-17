@@ -10,13 +10,13 @@ export default function HomeCards() {
         <Hero />
       </div>
       <div>
+        <Skills />
+      </div>
+      <div>
         <Education />
       </div>
       <div>
-      <Skills />
-      </div>
-      <div>
-      <ProjectCards />
+        <ProjectCards />
       </div>
     </section>
   );

@@ -9,7 +9,7 @@ export default function Volt() {
         image="./images/projectImages/voltLegacy/volt1.png"
         tags={["Game Development", "Java", "Simulation"]}
         link="https://github.com/ekam-n/snuggle-sculptors"
-        bgColor="#061298"
+        // bgColor="#717DFC"
       />
     </div>
   );
