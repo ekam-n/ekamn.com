@@ -1,6 +1,7 @@
 import Hero from "./homeComponents/hero";
 import Education from "./homeComponents/education";
 import Skills from "./homeComponents/skills";
+import ProjectCards from "~/components/homeComponents/projectCards";
 
 export default function HomeCards() {
   return (
@@ -13,6 +14,9 @@ export default function HomeCards() {
       </div>
       <div>
       <Skills />
+      </div>
+      <div>
+      <ProjectCards />
       </div>
     </section>
   );
