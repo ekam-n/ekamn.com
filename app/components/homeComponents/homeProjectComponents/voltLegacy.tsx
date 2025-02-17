@@ -5,9 +5,9 @@ export default function Volt() {
     <div>
       <ProjectCard
         title="Volt Legacy"
-        description="Multi-level challenging platformer where each level focuses on introducing game mechanics, building on them, and then combining mechanics for increased difficulty. I manually implemented all physics, game-logic, graphics, sound effects, music, and the menu GUI in Processing (based on Java)."
+        description="Volt Legacy is a challenging platformer where I implemented physics, game logic, graphics, sound, and UI in Processing."
         image="./images/projectImages/voltLegacy/volt1.png"
-        tags={["Game Development", "Java", "Simulation"]}
+        tags={["Mechanic Design", "Combat Design", "Processing"]}
         link="https://github.com/ekam-n/snuggle-sculptors"
         // bgColor="#717DFC"
       />

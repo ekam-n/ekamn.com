@@ -5,9 +5,9 @@ export default function Yellow() {
     <div>
       <ProjectCard
         title="Yellow Jacket Escape"
-        description="A fun and cheery simulation of a build-a-bear workshop. I utilized the decorator and factory programming patterns to update the bear as you progress through the simulation. This is made completely in Java, utilizing graphics and sound libraries."
+        description="YellowJacket Escape is a top-down 2D dungeon crawler focused on strategic movement and survival, where players navigate hazards while avoiding or confronting YellowJacket enemies."
         image="./images/projectImages/yellowJacketEscape/yellow1.png"
-        tags={["Game Development", "Java", "Simulation"]}
+        tags={["Level Design", "Unity", "Playtesting"]}
         link="https://github.com/ekam-n/snuggle-sculptors"
         // bgColor="#FFF5A9"
       />

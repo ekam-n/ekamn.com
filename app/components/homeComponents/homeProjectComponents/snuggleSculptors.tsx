@@ -5,9 +5,9 @@ export default function Snuggle() {
     <div>
       <ProjectCard
         title="Snuggle Sculptors"
-        description="A fun and cheery simulation of a build-a-bear workshop. I utilized the decorator and factory programming patterns to update the bear as you progress through the simulation. This is made completely in Java, utilizing graphics and sound libraries."
+        description="Snuggle Sculptors is a build-a-bear simulation built in Java, where I used decorator and factory patterns to dynamically update the bear with graphics and sound integration."
         image="./images/projectImages/snuggleSculptors/snuggle1.png"
-        tags={["Game Development", "Java", "Simulation"]}
+        tags={["Software Design", "Java", "Illustrator"]}
         link="https://github.com/ekam-n/snuggle-sculptors"
         // bgColor="#D8F9A5"
       />
