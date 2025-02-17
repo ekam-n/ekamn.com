@@ -9,8 +9,8 @@ interface ProjectCardProps {
 
 export default function ProjectCard({ title, description, image, tags, link, bgColor = "#5301B7" }: ProjectCardProps) {
   return (
-    <div className="flex flex-col lg:flex-row gap-4 h-full rounded-3xl shadow-lg p-6 md:p-8 text-white" style={{ backgroundColor: bgColor }}>
-      <div>
+    <div className="flex flex-col lg:flex-row items-center gap-4 h-full rounded-3xl shadow-lg p-6 md:p-8 text-white" style={{ backgroundColor: bgColor }}>
+      <div className="flex-1">
         <h3 className="text-md md:text-lg">Project</h3>
 
         <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold mb-4">{title}</h2>
@@ -42,8 +42,8 @@ export default function ProjectCard({ title, description, image, tags, link, bgC
         )}
       </div>
       {/* Project Image */}
-      <div className="bg-gray-800 rounded-xl overflow-hidden">
-        <img src={image} alt={title} className="h-full object-cover" />
+      <div className="flex-1">
+        <img src={image} alt={title} className="w-full rounded-2xl object-cover" />
       </div>
       
     </div>
