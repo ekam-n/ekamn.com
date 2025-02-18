@@ -1,50 +1,33 @@
-# React + TypeScript + Vite
+# 🚀 Ekam Nijjar's Portfolio  
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to my personal portfolio website! This site showcases my **game development, interactive design, and programming projects**, as well as my skills and experience in the field.  
 
-Currently, two official plugins are available:
+## 🌐 Live Site  
+[🔗 View My Portfolio](ekamn.com)  
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 📌 Features  
+- **Interactive Design:** A visually engaging and dynamic user experience.  
+- **Project Showcase:** Detailed descriptions and media for my **game development and software projects**.  
+- **Animations & Effects:** Smooth scroll-based animations using **Framer Motion**.  
+- **Responsive Layout:** Fully optimized for **desktop, tablet, and mobile devices**.  
 
-## Expanding the ESLint configuration
+## 🛠 Technologies Used  
+- **Frontend:** React, Tailwind CSS, Framer Motion  
+- **Backend (if applicable):** Node.js, Firebase  
+- **Version Control:** Git & GitHub  
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## 🎮 Featured Projects  
+### **🎲 Demon's Gate**  
+A **roll-and-move tabletop game** where I led the design of mechanics, player types, events, and items while organizing ideation, playtests, and asset creation.  
 
-- Configure the top-level `parserOptions` property like this:
+### **🧸 Snuggle Sculptors**  
+A **build-a-bear simulation** built in Java, where I used **decorator and factory patterns** to dynamically update the bear with graphics and sound integration.  
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+### **🐝 YellowJacket Escape**  
+A **top-down 2D dungeon crawler** focused on **strategic movement and survival**, where players navigate hazards while avoiding or confronting YellowJacket enemies.  
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+### 📬 Contact
+Feel free to reach out!
+📧 Email: ekamnijjar@gmail.com
+🐦 GitHub: github.com/ekam-n
+💼 LinkedIn: linkedin.com/in/ekam-n
