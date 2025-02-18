@@ -1,0 +1,20 @@
+@font-face {
+  font-family: Clash Display;
+  src: url(./assets/fonts/ClashDisplay-Variable.ttf);
+}
+@import "tailwindcss";
+
+@theme{
+
+  --font-clash: Clash Display, "sans-serif";
+}
+
+html, 
+body{
+
+  @apply font-clash bg-white dark:bg-gray-950;
+
+  @media (prefers-color-scheme: dark) {
+    color-scheme: dark;
+  }
+}
