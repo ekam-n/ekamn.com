@@ -1,1 +1,1 @@
-ekamn.com
+echo "ekamn.com" > public/CNAME
