@@ -6,4 +6,8 @@ import tailwindcss from '@tailwindcss/vite'
 export default defineConfig({
   plugins: [react(),
             tailwindcss()],
+  base: "/ekamn.com/", // 👈 IMPORTANT: Change this to match your GitHub repo name
+  build: {
+    outDir: "dist",
+  },
 })
