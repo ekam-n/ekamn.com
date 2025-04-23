@@ -6,11 +6,18 @@ import ProjectCards from "../components/homeComponents/projectCards";
 
 // Animation Variants
 const fadeInVariant = {
-  hidden: { opacity: 0, y: 50 },
-  visible: (delay: number) => ({
+  hidden: (i: number) => ({
+    opacity: 0,
+    y: i === 0 ? 0 : 50,    // hero (i=0) only fades, others slide up
+  }),
+  visible: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, ease: "easeOut", delay: delay * 0.1 }, // Delay based on index
+    transition: {
+      duration: 0.6,
+      ease: "easeOut",
+      delay: i * 0.1,
+    },
   }),
 };
 
@@ -29,9 +36,8 @@ export default function HomeCards() {
           key={section.key}
           variants={fadeInVariant}
           initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.05 }}
-          custom={index} // Pass index as delay factor
+          animate="visible"
+          custom={index}
         >
           {section.component}
         </motion.div>
