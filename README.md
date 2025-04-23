@@ -13,7 +13,6 @@ Welcome to my personal portfolio website! This site showcases my **game developm
 
 ## 🛠 Technologies Used  
 - **Frontend:** React, Tailwind CSS, Framer Motion  
-- **Backend (if applicable):** Node.js, Firebase  
 - **Version Control:** Git & GitHub  
 
 ## 🎮 Featured Projects  
