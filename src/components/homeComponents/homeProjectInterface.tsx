@@ -1,4 +1,5 @@
 interface ProjectCardProps {
+  label?: string;        // New optional label prop
   title: string;
   description: string;
   image: string;
@@ -8,6 +9,7 @@ interface ProjectCardProps {
 }
 
 export default function ProjectCard({
+  label = "Project",      // Default to "Project"
   title,
   description,
   image,
@@ -22,7 +24,7 @@ export default function ProjectCard({
     >
       {/* Left Column */}
       <div className="flex-1">
-        <h3 className="text-md md:text-lg">Project</h3>
+        <h3 className="text-md md:text-lg">{label}</h3>
         <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold mb-4">
           {title}
         </h2>
@@ -37,7 +39,9 @@ export default function ProjectCard({
         </div>
 
         {/* Project Description */}
-        <p className="text-sm md:text-base lg:text-lg mt-2">{description}</p>
+        <p className="text-sm md:text-base lg:text-lg mt-2">
+          {description}
+        </p>
 
         {/* Tags */}
         <div className="flex flex-wrap gap-2 mt-4">

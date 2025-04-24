@@ -4,6 +4,7 @@ export default function Yellow() {
   return (
     <div>
       <ProjectCard
+        label="Videogame"
         title="YellowJacket Escape"
         description="YellowJacket Escape is a top-down 2D dungeon crawler focused on strategic movement and survival, where players navigate hazards while avoiding or confronting YellowJacket enemies."
         image="./images/projectImages/yellowJacketEscape/yellow1.png"

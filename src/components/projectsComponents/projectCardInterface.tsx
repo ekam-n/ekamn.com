@@ -1,4 +1,5 @@
 interface ProjectCardProps {
+  label?: string;        // New optional label prop
   title: string;
   description: string;
   image: string;
@@ -8,6 +9,7 @@ interface ProjectCardProps {
 }
 
 export default function ProjectCard({
+  label = "Project",      // Default to "Project"
   title,
   description,
   image,
@@ -21,14 +23,14 @@ export default function ProjectCard({
       style={{ backgroundColor: bgColor }}
     >
       {/* Label */}
-      <h3 className="w-full text-md md:text-lg">Project</h3>
+      <h3 className="text-md md:text-lg">{label}</h3>
 
       {/* Title */}
-      <h2 className="w-full text-2xl md:text-3xl lg:text-4xl font-semibold mb-2">
+      <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold">
         {title}
       </h2>
 
-      {/* Image (always full-width, below title) */}
+      {/* Image (always vertical) */}
       <div className="w-full flex justify-center">
         <img
           src={image}
@@ -38,12 +40,12 @@ export default function ProjectCard({
       </div>
 
       {/* Description */}
-      <p className="w-full text-sm md:text-base lg:text-lg mt-2">
+      <p className="text-sm md:text-base lg:text-lg mt-2">
         {description}
       </p>
 
       {/* Tags */}
-      <div className="w-full flex flex-wrap gap-2 mt-4">
+      <div className="flex flex-wrap gap-2 mt-4">
         {tags.map((tag) => (
           <span
             key={tag}
@@ -54,7 +56,7 @@ export default function ProjectCard({
         ))}
       </div>
 
-      {/* View Project Button (not centered) */}
+      {/* View Project Button */}
       {link && (
         <a
           href={link}

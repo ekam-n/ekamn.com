@@ -4,6 +4,7 @@ export default function Demon() {
   return (
     <div>
       <ProjectCard
+        label="Boardgame"
         title="Demon's Gate"
         description="Demon's Gate is a roll-and-move tabletop game where I led the design of mechanics, player types, events, and items while organizing ideation, playtests, and asset creation."
         image="./images/projectImages/demonsGate/demon1.png"

@@ -4,6 +4,7 @@ export default function Snuggle() {
   return (
     <div>
       <ProjectCard
+        label="Simulation"
         title="Snuggle Sculptors"
         description="Snuggle Sculptors is a build-a-bear simulation built in Java, where I used decorator and factory patterns to dynamically update the bear with graphics and sound integration."
         image="./images/projectImages/snuggleSculptors/snuggle1.png"
