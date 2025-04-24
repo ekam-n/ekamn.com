@@ -1,4 +1,4 @@
-import ProjectCard from "../homeProjectInterface";
+import ProjectCard from "../projectCardInterface";
 
 export default function Demon() {
   return (

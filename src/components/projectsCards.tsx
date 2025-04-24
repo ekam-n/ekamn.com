@@ -1,8 +1,5 @@
 import { motion } from "framer-motion";
-import Hero from "./homeComponents/hero";
-import Education from "./homeComponents/education";
-import Skills from "./homeComponents/skills";
-import ProjectCards from "../components/homeComponents/projectCards";
+import ProjectCards from "../components/projectsComponents/projectsCards";
 
 // Animation Variants
 const fadeInVariant = {
@@ -21,11 +18,8 @@ const fadeInVariant = {
   }),
 };
 
-export default function HomeCards() {
+export default function ProjectsCards() {
   const sections = [
-    { component: <Hero />, key: "hero" },
-    { component: <Skills />, key: "skills" },
-    { component: <Education />, key: "education" },
     { component: <ProjectCards />, key: "projects" },
   ];
 
