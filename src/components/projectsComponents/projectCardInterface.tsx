@@ -31,7 +31,7 @@ export default function ProjectCard({
       </h2>
 
       {/* Image (always vertical) */}
-      <div className="w-full flex justify-center">
+      <div className="w-[75%] self-center">
         <img
           src={image}
           alt={title}
