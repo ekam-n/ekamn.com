@@ -3,9 +3,9 @@ import { motion } from "framer-motion";
 import Yellow from "./projectCards/yellowJacket";
 import Volt from "./projectCards/voltLegacy";
 import Snuggle from "./projectCards/snuggleSculptors";
-import Chaos from "./projectCards/demonsGate"; 
+import Chaos from "./projectCards/demonsGate";
 
-// Animation Variants (same as home)
+// Animation Variants (from home)
 const fadeInVariant = {
   hidden: (i: number) => ({
     opacity: 0,
@@ -31,16 +31,17 @@ export default function ProjectsPage() {
   ];
 
   return (
-    <section className="pt-14 grid grid-cols-1 md:grid-cols-2 gap-4">
+    <section className="pt-14 grid grid-cols-1 md:grid-cols-2 gap-4 items-stretch">
       {sections.map((section, index) => (
         <motion.div
           key={section.key}
+          className="h-full"             // ← ensure wrapper is full height
           variants={fadeInVariant}
           initial="hidden"
           animate="visible"
           custom={index}
         >
-          {section.component}
+          {section.component}           {/* each card must itself fill h-full */}
         </motion.div>
       ))}
     </section>

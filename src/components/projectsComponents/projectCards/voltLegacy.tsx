@@ -2,7 +2,7 @@ import ProjectCard from "../projectCardInterface";
 
 export default function Volt() {
   return (
-    <div>
+    <div className="h-full">
       <ProjectCard
         label="Videogame"
         title="Volt Legacy"

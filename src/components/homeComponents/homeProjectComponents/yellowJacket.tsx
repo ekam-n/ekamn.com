@@ -2,7 +2,7 @@ import ProjectCard from "../homeProjectInterface";
 
 export default function Yellow() {
   return (
-    <div>
+    <div className="h-full">
       <ProjectCard
         label="Videogame"
         title="YellowJacket Escape"

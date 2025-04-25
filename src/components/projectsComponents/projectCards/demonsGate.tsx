@@ -2,7 +2,7 @@ import ProjectCard from "../projectCardInterface";
 
 export default function Demon() {
   return (
-    <div>
+    <div className="h-full">
       <ProjectCard
         label="Boardgame"
         title="Demon's Gate"

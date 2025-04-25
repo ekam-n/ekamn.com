@@ -2,7 +2,7 @@ import ProjectCard from "../homeProjectInterface";
 
 export default function Snuggle() {
   return (
-    <div>
+    <div className="h-full">
       <ProjectCard
         label="Simulation"
         title="Snuggle Sculptors"
