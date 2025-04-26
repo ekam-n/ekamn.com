@@ -9,7 +9,7 @@ import Chaos from "./projectCards/demonsGate";
 const fadeInVariant = {
   hidden: (i: number) => ({
     opacity: 0,
-    y: i === 0 ? 0 : 50,
+    y: i < 2 ? 0 : 50,
   }),
   visible: (i: number) => ({
     opacity: 1,

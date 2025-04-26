@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import Hero from "./homeComponents/hero";
 import Education from "./homeComponents/education";
 import Skills from "./homeComponents/skills";
-import ProjectCards from "../components/homeComponents/projectCards";
+import ProjectCards from "./homeComponents/projectCards";
 
 // Animation Variants
 const fadeInVariant = {

@@ -1,22 +1,55 @@
-// App.tsx
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+// src/App.tsx
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { AnimatePresence, motion } from "framer-motion";
 import Header from "./components/header";
-import HomeCards from "./components/homeCards";
-import ProjectsCards from "./components/projectsComponents/projectsCards";
-import "./App.css";
+import HomeCards from "./components/homePage";
+import ProjectsPage from "./components/projectsPage";
+import { pageVariants } from "./lib/variants";
+import './App.css'
+
+function AnimatedRoutes() {
+  const location = useLocation();
+  return (
+    <AnimatePresence mode="wait">
+      <Routes location={location} key={location.pathname}>
+        <Route
+          path="/"
+          element={
+            <motion.div
+              variants={pageVariants}
+              initial="initial"
+              animate="animate"
+              exit="exit"
+            >
+              <HomeCards />
+            </motion.div>
+          }
+        />
+        <Route
+          path="/projects"
+          element={
+            <motion.div
+              variants={pageVariants}
+              initial="initial"
+              animate="animate"
+              exit="exit"
+            >
+              <ProjectsPage />
+            </motion.div>
+          }
+        />
+      </Routes>
+    </AnimatePresence>
+  );
+}
 
 export default function App() {
   return (
-    <Router>
+    <BrowserRouter>
       <Header />
-      <main className="min-h-screen mb-4 bg-black px-4">
-        <Routes>
-          {/* when path is exactly "/" render home */}
-          <Route path="/" element={<HomeCards />} />
-          {/* when path is "/projects" render your projects page */}
-          <Route path="/projects" element={<ProjectsCards />} />
-        </Routes>
+      <main className="min-h-screen bg-black px-4">
+        <AnimatedRoutes />
       </main>
-    </Router>
+    </BrowserRouter>
   );
 }
