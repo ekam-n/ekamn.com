@@ -11,7 +11,12 @@ const categories = [
 
 export default function ProjectsSidebar() {
   return (
-    <aside className="fixed top-0 left-0 h-full w-52 bg-black/70 text-white backdrop-blur-md p-6">
+    <aside className="hidden md:block
+        fixed left-0 top-14
+        h-[calc(100vh-3.5rem)] w-52
+        bg-black/70 text-white backdrop-blur-md p-6
+        border-r border-white/10
+        z-30">
       <nav className="flex flex-col space-y-4">
         {categories.map(({ to, label }) => (
           <NavLink
