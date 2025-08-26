@@ -29,10 +29,10 @@ function AnimatedRoutes() {
           path="/projects"
           element={
             <motion.div
-              variants={pageVariants}
-              initial="initial"
-              animate="animate"
-              exit="exit"
+              initial={{ opacity: 0 }}     // no y/x transforms
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              style={{ willChange: "opacity" }} // optional hint
             >
               <ProjectsPage />
             </motion.div>

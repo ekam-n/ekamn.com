@@ -1,49 +1,61 @@
-// src/components/projectsComponents/ProjectsPage.tsx
-import { motion } from "framer-motion";
+// projectsCards.tsx
+import React from "react";
+import { motion, AnimatePresence } from "framer-motion"; // ⬅️ add AnimatePresence
 import Yellow from "./projectCards/yellowJacket";
 import Volt from "./projectCards/voltLegacy";
 import Snuggle from "./projectCards/snuggleSculptors";
 import Chaos from "./projectCards/demonsGate";
+import { CORE_LABELS, type CoreLabel, type Label } from "../projectsComponents";
 
-// Animation Variants (from home)
-const fadeInVariant = {
-  hidden: (i: number) => ({
-    opacity: 0,
-    y: i < 2 ? 0 : 50,
-  }),
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.6,
-      ease: "easeOut",
-      delay: i * 0.1,
-    },
-  }),
+type Props = {
+  selected: Label[]; // empty => show all
 };
 
-export default function ProjectsPage() {
-  const sections = [
-    { component: <Yellow />, key: "yellow" },
-    { component: <Volt />,   key: "volt"   },
-    { component: <Snuggle />,key: "snuggle"},
-    { component: <Chaos />,  key: "chaos"  },
-  ];
+const isCoreLabel = (v: string): v is CoreLabel =>
+  (CORE_LABELS as readonly string[]).includes(v);
+
+const PROJECTS: { key: string; label: CoreLabel | "Unlabeled"; node: React.JSX.Element }[] = [
+  { key: "yellow",  label: "Video Games", node: <Yellow /> },
+  { key: "volt",    label: "Video Games", node: <Volt /> },
+  { key: "snuggle", label: "Web Apps",    node: <Snuggle /> },
+  { key: "chaos",   label: "Board Games", node: <Chaos /> },
+];
+
+export default function ProjectsCards({ selected }: Props) {
+  const showAll = selected.length === 0;
+  const selectedCore = selected.filter(isCoreLabel);
+  const wantsMisc = selected.includes("Miscellaneous");
+  const coreSet = new Set<CoreLabel>(selectedCore);
+
+  const visible = PROJECTS.filter(({ label }) => {
+    if (showAll) return true;
+    const normalHit = isCoreLabel(label) && coreSet.has(label);
+    const miscHit = wantsMisc && !isCoreLabel(label);
+    return normalHit || miscHit;
+  });
+
+  const transition = { duration: 0.5, ease: "easeOut" };
 
   return (
-    <section className="pt-14 grid grid-cols-1 md:grid-cols-2 gap-4 items-stretch">
-      {sections.map((section, index) => (
-        <motion.div
-          key={section.key}
-          className="h-full"             // ← ensure wrapper is full height
-          variants={fadeInVariant}
-          initial="hidden"
-          animate="visible"
-          custom={index}
-        >
-          {section.component}           {/* each card must itself fill h-full */}
-        </motion.div>
-      ))}
-    </section>
+    <motion.section
+      layout
+      className="pt-14 grid grid-cols-1 md:grid-cols-2 gap-4 items-stretch"
+    >
+      <AnimatePresence mode="popLayout" initial={false}>
+        {visible.map((p, index) => (
+          <motion.div
+            key={p.key}
+            layout
+            className="h-full"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={transition}
+          >
+            {p.node}
+          </motion.div>
+        ))}
+      </AnimatePresence>
+    </motion.section>
   );
 }
