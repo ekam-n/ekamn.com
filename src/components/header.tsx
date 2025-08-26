@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const socialLinks = [
   { href: "https://www.linkedin.com/in/ekam-n/", text: "LinkedIn" },
@@ -8,6 +8,9 @@ const socialLinks = [
 ];
 
 export default function Header() {
+  const location = useLocation();
+  const onProjects = location.pathname.startsWith("/projects");
+
   const [contactOpen, setContactOpen] = useState(false); // desktop contact dropdown
   const [mobileOpen, setMobileOpen]   = useState(false); // mobile combined dropdown
 
@@ -33,10 +36,28 @@ export default function Header() {
 
   return (
     <header className="fixed top-0 left-0 w-full flex justify-between items-center px-8 py-3 md:py-4 bg-black/50 text-white z-50 backdrop-blur-md">
-      {/* Name links home */}
+      {/* Animated title overlay (mobile only; doesn't affect layout) */}
       <Link
         to="/"
-        className="inline-block px-2 py-1 md:py-2 text-base text-lg md:text-lg lg:text-xl cursor-pointer hover:underline"
+        className={[
+          "absolute top-1/2 left-8 md:hidden",
+          "inline-block px-2 py-1 md:py-2 text-base text-lg md:text-lg lg:text-xl cursor-pointer hover:underline",
+          "transition-transform duration-800 ease-out transform-gpu will-change-transform whitespace-nowrap"
+        ].join(" ")}
+        style={{
+          // 2rem = Tailwind spacing.8 (matching header padding)
+          transform: onProjects
+            ? "translateY(-50%) translateX(calc(50vw - 2rem - 50%))"
+            : "translateY(-50%) translateX(0)"
+        }}
+      >
+        Ekam Nijjar
+      </Link>
+
+      {/* Spacer on mobile; visible (real) title on md+ */}
+      <Link
+        to="/"
+        className="inline-block px-2 py-1 md:py-2 text-base text-lg md:text-lg lg:text-xl cursor-pointer hover:underline invisible md:visible"
       >
         Ekam Nijjar
       </Link>
