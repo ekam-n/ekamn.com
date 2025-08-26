@@ -1,6 +1,5 @@
-// projectsCards.tsx
 import React from "react";
-import { motion, AnimatePresence } from "framer-motion"; // ⬅️ add AnimatePresence
+import { motion, AnimatePresence, LayoutGroup } from "framer-motion";
 import Yellow from "./projectCards/yellowJacket";
 import Volt from "./projectCards/voltLegacy";
 import Snuggle from "./projectCards/snuggleSculptors";
@@ -23,10 +22,11 @@ const PROJECTS: { key: string; label: CoreLabel | "Unlabeled"; node: React.JSX.E
 
 export default function ProjectsCards({ selected }: Props) {
   const showAll = selected.length === 0;
-  const selectedCore = selected.filter(isCoreLabel);
   const wantsMisc = selected.includes("Miscellaneous");
+  const selectedCore = selected.filter(isCoreLabel);
   const coreSet = new Set<CoreLabel>(selectedCore);
 
+  // Keep original order; filter decides visibility only.
   const visible = PROJECTS.filter(({ label }) => {
     if (showAll) return true;
     const normalHit = isCoreLabel(label) && coreSet.has(label);
@@ -34,28 +34,34 @@ export default function ProjectsCards({ selected }: Props) {
     return normalHit || miscHit;
   });
 
-  const transition = { duration: 0.5, ease: "easeOut" };
+  // Tuned for smoothness on both 1-col and 2-col
+  const layoutSpring = { type: "spring", stiffness: 220, damping: 50, mass: 0.9 };
 
   return (
-    <motion.section
-      layout
-      className="pt-14 grid grid-cols-1 min-[900px]:grid-cols-2 gap-4 items-stretch"
-    >
-      <AnimatePresence mode="popLayout" initial={false}>
-        {visible.map((p, index) => (
-          <motion.div
-            key={p.key}
-            layout
-            className="h-full"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={transition}
-          >
-            {p.node}
-          </motion.div>
-        ))}
-      </AnimatePresence>
-    </motion.section>
+    <LayoutGroup id="projects-grid">
+      <motion.section
+        layout
+        transition={{ layout: layoutSpring }}
+        className="pt-14 grid grid-cols-1 min-[900px]:grid-cols-2 gap-4 items-stretch"
+      >
+        <AnimatePresence mode="wait" initial={false}>
+          {visible.map((p) => (
+            // This wrapper is the grid "slot" — it stays put while the card fades
+            <motion.div
+              key={p.key}
+              layout="position"                       // survivors slide smoothly after exit completes
+              className="h-full"
+              transition={{ layout: { type: "spring", stiffness: 220, damping: 50, mass: 0.9 } }}
+              // Only opacity changes; position doesn't move during exit
+              initial={{ opacity: 0 }}                // new items fade in
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}                   // toggled-off items fade out in place
+            >
+              {p.node}
+            </motion.div>
+          ))}
+        </AnimatePresence>
+      </motion.section>
+    </LayoutGroup>
   );
 }
