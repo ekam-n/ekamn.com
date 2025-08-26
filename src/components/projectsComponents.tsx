@@ -5,7 +5,7 @@ import ProjectsCards from "./projectsComponents/projectsCards";
 
 // Keep this list in ONE place so "Miscellaneous" logic is reliable
 // Keep labels tidy and typed
-export const CORE_LABELS = ["Video Games", "Web Apps", "Board Games"] as const;
+export const CORE_LABELS = ["Board Games", "Video Games", "Web Apps"] as const;
 export type CoreLabel = typeof CORE_LABELS[number];
 
 export type SpecialLabel = "Miscellaneous";

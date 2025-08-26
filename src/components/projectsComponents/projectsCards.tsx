@@ -39,7 +39,7 @@ export default function ProjectsCards({ selected }: Props) {
   return (
     <motion.section
       layout
-      className="pt-14 grid grid-cols-1 md:grid-cols-2 gap-4 items-stretch"
+      className="pt-14 grid grid-cols-1 min-[900px]:grid-cols-2 gap-4 items-stretch"
     >
       <AnimatePresence mode="popLayout" initial={false}>
         {visible.map((p, index) => (
