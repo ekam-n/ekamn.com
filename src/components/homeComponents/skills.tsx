@@ -8,7 +8,7 @@ export default function Skills() {
         </h2>
         {/* Skills Description */}
         <p className="text-sm md:text-base lg:text-lg mb-4">
-          I specialize in game design, level design, and UX/UI development. My skills include crafting engaging mechanics, user-centered design, and research.
+          I'm experienced in game design, level design, and UX/UI development. My skills include crafting engaging mechanics, user-centered design, and research.
         </p>
         {/* Skills List */}
         <div className="flex flex-wrap gap-3">
