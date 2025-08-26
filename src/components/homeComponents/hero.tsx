@@ -3,7 +3,7 @@ export default function Hero() {
     <div className="bg-black flex flex-col items-center pt-16">
       {/* Container with full-width rounded box */}
       <div className="bg-gradient-to-b from-black to-[#5301B7] to-99% rounded-3xl shadow-lg p-6 md:p-8 lg:p-12 text-white w-full mx-4">
-        <h1 className="text-xl md:text-4xl lg:text-6xl font-semibold mb-6 text-left">
+        <h1 className="text-2xl md:text-4xl lg:text-6xl font-semibold mb-6 text-left">
           I love to <span className="text-[#DF62F8]">design & develop</span>
           <br />
           <span className="font-semibold">experiences and applications</span>

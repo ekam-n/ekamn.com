@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 
 const socialLinks = [
@@ -9,13 +9,26 @@ const socialLinks = [
 
 export default function Header() {
   const [contactOpen, setContactOpen] = useState(false);
+  const contactWrapRef = useRef<HTMLDivElement>(null);
+
+  // Close when clicking/tapping anywhere outside the Contact area
+  useEffect(() => {
+    const handlePointerDown = (e: PointerEvent) => {
+      const el = contactWrapRef.current;
+      if (el && !el.contains(e.target as Node)) {
+        setContactOpen(false);
+      }
+    };
+    document.addEventListener("pointerdown", handlePointerDown);
+    return () => document.removeEventListener("pointerdown", handlePointerDown);
+  }, []);
 
   return (
     <header className="fixed top-0 left-0 w-full flex justify-between items-center px-8 py-3 md:py-4 bg-black/50 text-white z-50 backdrop-blur-md">
       {/* Name links home */}
       <Link
         to="/"
-        className="inline-block px-2 py-1 md:py-2 text-base md:text-lg lg:text-xl cursor-pointer hover:underline"
+        className="inline-block px-2 py-1 md:py-2 text-base text-lg md:text-lg lg:text-xl cursor-pointer hover:underline"
       >
         Ekam Nijjar
       </Link>
@@ -31,12 +44,20 @@ export default function Header() {
 
         {/* Contact Dropdown */}
         <div
+          ref={contactWrapRef}
           className="relative"
-          onMouseEnter={() => setContactOpen(true)}
-          onMouseLeave={() => setContactOpen(false)}
+          onPointerEnter={(e) => {
+            if (e.pointerType === "mouse") setContactOpen(true);  // hover: open
+          }}
+          onPointerLeave={(e) => {
+            if (e.pointerType === "mouse") setContactOpen(false); // hover: close
+          }}
         >
           <button
             className="inline-block px-2 py-1 md:py-2 text-sm md:text-base lg:text-lg cursor-pointer hover:underline"
+            onClick={() => setContactOpen((v) => !v)}   // tap/click toggles on touch
+            aria-haspopup="menu"
+            aria-expanded={contactOpen}
           >
             Contact
           </button>
