@@ -36,37 +36,34 @@ export default function Header() {
 
   return (
     <header className="fixed top-0 left-0 w-full flex justify-between items-center px-8 py-3 md:py-4 bg-black/50 text-white z-50 backdrop-blur-md">
+  {/* LEFT: Filters host + Desktop title */}
+  <div className="flex min-w-0 items-center gap-3">
+    {onProjects && <span id="filters-host" className="md:hidden inline-flex" />}
+    {/* ✅ Real title on desktop+ (lives on the LEFT) */}
+    <Link
+      to="/"
+      className="hidden md:inline-block px-2 py-2 text-lg md:text-xl lg:text-2xl hover:underline"
+    >
+      Ekam Nijjar
+    </Link>
+  </div>
 
-      {/* LEFT: Filters host (mobile only, only on /projects) */}
-        <div className="flex min-w-0 items-center gap-2">
-          {onProjects && <span id="filters-host" className="md:hidden inline-flex" />}
-        </div>
-
-      {/* Animated title overlay (mobile only; doesn't affect layout) */}
-      <Link
-        to="/"
-        className={[
-          "absolute top-1/2 left-8 md:hidden",
-          "inline-block px-2 py-1 md:py-2 text-base text-lg md:text-lg lg:text-xl cursor-pointer hover:underline",
-          "transition-transform duration-800 ease-out transform-gpu will-change-transform whitespace-nowrap"
-        ].join(" ")}
-        style={{
-          // 2rem = Tailwind spacing.8 (matching header padding)
-          transform: onProjects
-            ? "translateY(-50%) translateX(calc(50vw - 2rem - 50%))"
-            : "translateY(-50%) translateX(0)"
-        }}
-      >
-        Ekam Nijjar
-      </Link>
-
-      {/* Spacer on mobile; visible (real) title on md+ */}
-      <Link
-        to="/"
-        className="inline-block px-2 py-1 md:py-2 text-base text-lg md:text-lg lg:text-xl cursor-pointer hover:underline invisible md:visible"
-      >
-        Ekam Nijjar
-      </Link>
+  {/* Mobile animated title (stays separate + centered only on mobile) */}
+  <Link
+    to="/"
+    className={[
+      "absolute top-1/2 left-8 md:hidden",
+      "inline-block px-2 py-1 text-base sm:text-lg cursor-pointer hover:underline",
+      "transition-transform duration-800 ease-out transform-gpu will-change-transform whitespace-nowrap",
+    ].join(" ")}
+    style={{
+      transform: onProjects
+        ? "translateY(-50%) translateX(calc(50vw - 2rem - 50%))"
+        : "translateY(-50%) translateX(0)",
+    }}
+  >
+    Ekam Nijjar
+  </Link>
 
       {/* Desktop nav (unchanged behavior): visible md and up */}
       <nav className="hidden md:flex items-center space-x-4 md:space-x-6">
