@@ -36,6 +36,12 @@ export default function Header() {
 
   return (
     <header className="fixed top-0 left-0 w-full flex justify-between items-center px-8 py-3 md:py-4 bg-black/50 text-white z-50 backdrop-blur-md">
+
+      {/* LEFT: Filters host (mobile only, only on /projects) */}
+        <div className="flex min-w-0 items-center gap-2">
+          {onProjects && <span id="filters-host" className="md:hidden inline-flex" />}
+        </div>
+
       {/* Animated title overlay (mobile only; doesn't affect layout) */}
       <Link
         to="/"
@@ -111,7 +117,8 @@ export default function Header() {
       </nav>
 
       {/* Mobile combined dropdown: visible below md */}
-      <div ref={mobileWrapRef} className="relative md:hidden">
+      <div ref={mobileWrapRef} className="relative md:hidden flex items-center">
+
         <button
           className="inline-block px-3 py-2 text-sm cursor-pointer hover:underline"
           onClick={() => setMobileOpen((v) => !v)}
