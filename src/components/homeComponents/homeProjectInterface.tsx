@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 interface ProjectCardProps {
   label?: string;        // New optional label prop
   title: string;
@@ -8,6 +10,7 @@ interface ProjectCardProps {
   bgColor?: string;     // Optional background color
   buttonText?: string;         // text for the button
   buttonColor?: string;    // classes controlling color/hover (e.g., bg/hover)
+  ctaTo?: string; // internal route target
 }
 
 export default function ProjectCard({
@@ -20,6 +23,7 @@ export default function ProjectCard({
   bgColor = "#00085C",
   buttonText = "View Project",
   buttonColor = "bg-[#9000FF] hover:bg-[#EC8DFF]",
+  ctaTo
 
 }: ProjectCardProps) {
   return (
@@ -61,18 +65,27 @@ export default function ProjectCard({
         </div>
 
         {/* View Project Button */}
-        {link && (
-          <div className="mt-4">
-            <a
-              href={link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`inline-block transition-colors px-4 py-2 rounded-lg text-sm md:text-base ${buttonColor}`}
-            >
-              {buttonText}
-            </a>
-          </div>
-        )}
+        {(link || ctaTo) && (
+  <div className="mt-4">
+    {ctaTo ? (
+      <Link
+        to={ctaTo}
+        className={`inline-block transition-colors px-4 py-2 rounded-lg text-sm md:text-base ${buttonColor}`}
+      >
+        {buttonText}
+      </Link>
+    ) : (
+      <a
+        href={link}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={`inline-block transition-colors px-4 py-2 rounded-lg text-sm md:text-base ${buttonColor}`}
+      >
+        {buttonText}
+      </a>
+    )}
+  </div>
+)}
       </div>
 
       {/* LARGE-SCREEN IMAGE: shows only on ≥lg */}

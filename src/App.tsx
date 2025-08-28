@@ -6,6 +6,7 @@ import HomeCards from "./components/homePage";
 import ProjectsPage from "./components/projectsComponents";
 import { pageVariants } from "./lib/variants";
 import './App.css'
+import AnalysisRouter from "./routes/AnalysisRouter";
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -38,7 +39,10 @@ function AnimatedRoutes() {
             </motion.div>
           }
         />
+<Route path="/analysis/:slug" element={<AnalysisRouter />} />
+
       </Routes>
+      {/* // src/App.tsx — add a Route (keep the rest as-is) */}
     </AnimatePresence>
   );
 }
