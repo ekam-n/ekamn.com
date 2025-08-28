@@ -96,20 +96,25 @@ export default function Header() {
           </button>
 
           {contactOpen && (
-            <div className="absolute left-1/2 top-full transform -translate-x-1/2 w-28 bg-black/70 backdrop-blur-md rounded-lg shadow-lg">
-              {socialLinks.map(({ href, text }) => (
-                <a
-                  key={href}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block px-4 py-2 text-sm text-center cursor-pointer hover:bg-black/60"
-                >
-                  {text}
-                </a>
-              ))}
-            </div>
-          )}
+  <div
+    className="absolute right-0 top-full w-48
+               bg-black/90 text-white backdrop-blur-md
+               border border-white/10 rounded-xl shadow-lg p-2 z-[60]"
+  >
+    {socialLinks.map(({ href, text }) => (
+      <a
+        key={href}
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="block rounded-lg px-3 py-2 text-left cursor-pointer hover:bg-white/10"
+      >
+        {text}
+      </a>
+    ))}
+  </div>
+)}
+
         </div>
       </nav>
 
