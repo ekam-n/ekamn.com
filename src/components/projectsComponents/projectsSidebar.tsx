@@ -38,7 +38,7 @@ export default function ProjectsSidebar({ labels, selected, toggleLabel }: Props
               aria-haspopup="menu"
               aria-expanded={open}
               onClick={() => setOpen((v) => !v)}
-              className="rounded-xl px-3 py-2 bg-black/70 text-white backdrop-blur-md border border-white/10 hover:bg-black/60 transition text-[0.9rem]"
+              className="px-3 py-2 text-white text-sm"
             >
               Filters
             </button>
@@ -46,7 +46,7 @@ export default function ProjectsSidebar({ labels, selected, toggleLabel }: Props
             {open && (
               <div
                 role="menu"
-                className="absolute left-0 top-full mt-2 w-48 bg-black text-white backdrop-blur-md border border-white/10 rounded-xl shadow-lg p-2 z-[60]"
+                className="absolute left-0 top-full mt-2 w-48 bg-black/90 text-white backdrop-blur-md border border-white/10 rounded-xl shadow-lg p-2 z-[60]"
               >
                 <nav className="flex flex-col gap-2">
                   {labels.map((label) => {
@@ -56,20 +56,18 @@ export default function ProjectsSidebar({ labels, selected, toggleLabel }: Props
                         key={label}
                         type="button"
                         onClick={() => {
-                          toggleLabel(label);
-                          setOpen(false);
+                          toggleLabel(label); // keep dropdown open after toggling
                         }}
                         aria-pressed={isActive}
                         className={[
                           "w-full text-left rounded-lg px-3 py-2 transition",
                           "hover:bg-white/10",
-                          isActive
-                            ? "outline outline-2 outline-white"
-                            : "outline outline-2 outline-transparent",
+                          isActive ? "outline outline-2 outline-white" : "outline outline-2 outline-transparent",
                         ].join(" ")}
                       >
                         {label}
                       </button>
+
                     );
                   })}
                 </nav>

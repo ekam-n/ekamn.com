@@ -126,10 +126,14 @@ export default function Header() {
         </button>
 
         {mobileOpen && (
-          <div className="absolute right-0 top-full mt-1 w-40 bg-black/70 backdrop-blur-md rounded-lg shadow-lg">
+          <div
+            className="absolute right-0 top-full mt-2 w-48
+                      bg-black/90 text-white backdrop-blur-md
+                      border border-white/10 rounded-xl shadow-lg p-2 z-[60]"
+          >
             <Link
               to="/projects"
-              className="block px-4 py-2 text-sm text-left cursor-pointer hover:bg-black/60"
+              className="block rounded-lg px-3 py-2 text-left cursor-pointer hover:bg-white/10"
               onClick={() => setMobileOpen(false)}
             >
               Projects
@@ -141,7 +145,7 @@ export default function Header() {
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block px-4 py-2 text-sm text-left cursor-pointer hover:bg-black/60"
+                className="block rounded-lg px-3 py-2 text-left cursor-pointer hover:bg-white/10"
                 onClick={() => setMobileOpen(false)}
               >
                 {text}
