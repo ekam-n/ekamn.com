@@ -23,6 +23,17 @@ export default function ProjectsSidebar({ labels, selected, toggleLabel }: Props
     return () => cancelAnimationFrame(raf);
   }, []);
 
+  useEffect(() => {
+  const onPointerDown = (e: PointerEvent) => {
+    const target = e.target as Node;
+    if (open && mobileRef.current && !mobileRef.current.contains(target)) {
+      setOpen(false);
+    }
+  };
+  document.addEventListener("pointerdown", onPointerDown);
+  return () => document.removeEventListener("pointerdown", onPointerDown);
+}, [open]);
+
   // Where to render the mobile Filters: header slot if present, else fall back below header (right)
   {host &&
   createPortal(
@@ -86,7 +97,7 @@ export default function ProjectsSidebar({ labels, selected, toggleLabel }: Props
       {/* ---------- Desktop: original sidebar (unchanged) ---------- */}
       <aside
         className="
-          hidden md:block fixed left-0 top-14
+          hidden md:block fixed left-0 top-15
           h-[calc(100vh-3.5rem)]
           md:w-52 lg:w-56 xl:w-52
           bg-black/70 text-white backdrop-blur-md p-6 border-r border-white/10
