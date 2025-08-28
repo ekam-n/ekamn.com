@@ -6,6 +6,8 @@ interface ProjectCardProps {
   tags: string[];       // Technologies or categories
   link?: string;        // Optional project link
   bgColor?: string;     // Optional background color
+  buttonText?: string;         // text for the button
+  buttonColor?: string;    // classes controlling color/hover (e.g., bg/hover)
 }
 
 export default function ProjectCard({
@@ -16,10 +18,13 @@ export default function ProjectCard({
   tags,
   link,
   bgColor = "#00085C",
+  buttonText = "View Project",
+  buttonColor = "bg-[#9000FF] hover:bg-[#EC8DFF]",
+
 }: ProjectCardProps) {
   return (
     <div
-      className="flex flex-col lg:flex-row items-center gap-4 h-full rounded-3xl shadow-lg p-6 md:p-8 text-white"
+      className="flex flex-col xl:flex-row items-center gap-4 h-full rounded-3xl shadow-lg p-6 md:p-8 text-white"
       style={{ backgroundColor: bgColor }}
     >
       {/* Left Column */}
@@ -30,7 +35,7 @@ export default function ProjectCard({
         </h2>
 
         {/* SMALL-SCREEN IMAGE: shows only on <lg */}
-        <div className="block lg:hidden mb-4">
+        <div className="block xl:hidden mb-4">
           <img
             src={image}
             alt={title}
@@ -62,16 +67,16 @@ export default function ProjectCard({
               href={link}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block bg-[#9000FF] hover:bg-[#EC8DFF] transition-colors px-4 py-2 rounded-lg text-sm md:text-base"
+              className={`inline-block transition-colors px-4 py-2 rounded-lg text-sm md:text-base ${buttonColor}`}
             >
-              View Project
+              {buttonText}
             </a>
           </div>
         )}
       </div>
 
       {/* LARGE-SCREEN IMAGE: shows only on ≥lg */}
-      <div className="hidden lg:flex flex-1 justify-center">
+      <div className="hidden xl:flex flex-1 justify-center">
         <img
           src={image}
           alt={title}

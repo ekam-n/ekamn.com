@@ -10,7 +10,7 @@ export default function Demon() {
         image="./images/projectImages/demonsGate/demon1.png"
         tags={["Game Design", "Mechanic Design", "Level Design"]}
         link="https://ridham225sharma.wixsite.com/iat210"
-        // bgColor="#717DFC"
+        buttonText="Website"
       />
     </div>
   );

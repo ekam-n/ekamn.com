@@ -6,9 +6,9 @@ import Demon from "./homeProjectComponents/demonsGate"
 export default function ProjectCards() {
   return (
     <section className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <Demon />
       <Yellow />
       <Volt />
-      <Demon />
       <Snuggle />
     </section>
   );
