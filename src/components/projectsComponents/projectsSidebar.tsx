@@ -10,22 +10,28 @@ type Props = {
 
 export default function ProjectsSidebar({ labels, selected, toggleLabel }: Props) {
   // --- Mobile dropdown (visible below md) ---
+   // --- Mobile dropdown (visible below md) ---
   const [open, setOpen] = useState(false);
   const mobileRef = useRef<HTMLDivElement>(null);
 
-  // Close when clicking/tapping outside the button+panel
+  // NEW: resolve the portal host after mount
+  const [host, setHost] = useState<HTMLElement | null>(null);
   useEffect(() => {
-    const onDown = (e: PointerEvent) => {
-      const t = e.target as Node;
-      if (!mobileRef.current?.contains(t)) setOpen(false);
-    };
-    document.addEventListener("pointerdown", onDown);
-    return () => document.removeEventListener("pointerdown", onDown);
+    const find = () => setHost(document.getElementById("filters-host"));
+    find(); // try immediately
+    const raf = requestAnimationFrame(find); // and again next frame
+    return () => cancelAnimationFrame(raf);
   }, []);
 
   // Where to render the mobile Filters: header slot if present, else fall back below header (right)
-  const host =
-    typeof document !== "undefined" ? document.getElementById("filters-host") : null;
+  {host &&
+  createPortal(
+    <div ref={mobileRef} className="relative">
+      {/* ...unchanged Filters button + panel... */}
+    </div>,
+    host
+  )
+}
 
   return (
     <>
