@@ -65,6 +65,22 @@ export default function ProjectsSidebar({ labels, selected, toggleLabel }: Props
                 role="menu"
                 className="absolute left-0 top-full mt-2 w-48 bg-black/90 text-white backdrop-blur-md border border-white/10 rounded-xl shadow-lg p-2 z-[60]"
               >
+                {/* NEW: Reset (styled like 'Projects' item in Menu) */}
+                <button
+                  type="button"
+                  onClick={() => {
+                    // Clear all selected labels but keep the dropdown open
+                    for (const l of Array.from(selected)) {
+                      toggleLabel(l);
+                    }
+                  }}
+                  className="block rounded-lg px-3 py-2 text-left cursor-pointer hover:bg-white/10"
+                >
+                  Reset
+                </button>
+                <div className="h-px bg-white/10 my-1" />
+
+                {/* Existing label options */}
                 <nav className="flex flex-col gap-2">
                   {labels.map((label) => {
                     const isActive = selected.has(label);
@@ -73,7 +89,8 @@ export default function ProjectsSidebar({ labels, selected, toggleLabel }: Props
                         key={label}
                         type="button"
                         onClick={() => {
-                          toggleLabel(label); // keep dropdown open after toggling
+                          // Keep dropdown open after toggling
+                          toggleLabel(label);
                         }}
                         aria-pressed={isActive}
                         className={[
@@ -84,12 +101,12 @@ export default function ProjectsSidebar({ labels, selected, toggleLabel }: Props
                       >
                         {label}
                       </button>
-
                     );
                   })}
                 </nav>
               </div>
             )}
+
           </div>,
           host
         )}
