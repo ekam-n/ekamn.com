@@ -4,6 +4,7 @@ import Yellow from "./projectCards/yellowJacket";
 import Volt from "./projectCards/voltLegacy";
 import Snuggle from "./projectCards/snuggleSculptors";
 import Demon from "./projectCards/demonsGate";
+import Solar from "./projectCards/solarConquest";
 import { CORE_LABELS, type CoreLabel, type Label } from "../projectsComponents";
 
 type Props = {
@@ -14,6 +15,7 @@ const isCoreLabel = (v: string): v is CoreLabel =>
   (CORE_LABELS as readonly string[]).includes(v);
 
 const PROJECTS: { key: string; label: CoreLabel | "Unlabeled"; node: React.JSX.Element }[] = [
+  { key: "solar",   label: "Board Games", node: <Solar /> },
   { key: "demon",   label: "Board Games", node: <Demon /> },
   { key: "yellow",  label: "Video Games", node: <Yellow /> },
   { key: "volt",    label: "Video Games", node: <Volt /> },

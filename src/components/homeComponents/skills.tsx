@@ -13,7 +13,7 @@ export default function Skills() {
         {/* Skills List */}
         <div className="flex flex-wrap gap-3">
           {[
-            "Game Design", "Level Design", "Mechanic Design", "Combat Design",
+            "Economy Design", "Systems Design", "Level Design", "Combat Design",
             "UI Design", "UX Design", "Project Management", "User Research", "Playtesting", "Software Design"
           ].map(skill => (
             <span key={skill} className="bg-white/20 px-3 md:px-4 py-1 md:py-2 rounded-full text-xs md:text-sm lg:text-base">
