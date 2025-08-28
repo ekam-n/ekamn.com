@@ -3,7 +3,7 @@ import { motion, AnimatePresence, LayoutGroup } from "framer-motion";
 import Yellow from "./projectCards/yellowJacket";
 import Volt from "./projectCards/voltLegacy";
 import Snuggle from "./projectCards/snuggleSculptors";
-import Chaos from "./projectCards/demonsGate";
+import Demon from "./projectCards/demonsGate";
 import { CORE_LABELS, type CoreLabel, type Label } from "../projectsComponents";
 
 type Props = {
@@ -14,10 +14,10 @@ const isCoreLabel = (v: string): v is CoreLabel =>
   (CORE_LABELS as readonly string[]).includes(v);
 
 const PROJECTS: { key: string; label: CoreLabel | "Unlabeled"; node: React.JSX.Element }[] = [
+  { key: "demon",   label: "Board Games", node: <Demon /> },
   { key: "yellow",  label: "Video Games", node: <Yellow /> },
   { key: "volt",    label: "Video Games", node: <Volt /> },
   { key: "snuggle", label: "Web Apps",    node: <Snuggle /> },
-  { key: "chaos",   label: "Board Games", node: <Chaos /> },
 ];
 
 export default function ProjectsCards({ selected }: Props) {

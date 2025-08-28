@@ -10,7 +10,7 @@ export default function Volt() {
         image="./images/projectImages/voltLegacy/volt1.png"
         tags={["Mechanic Design", "Combat Design", "Processing"]}
         link="https://github.com/ekam-n/volt-legacy"
-        // bgColor="#717DFC"
+        buttonText="GitHub"
       />
     </div>
   );

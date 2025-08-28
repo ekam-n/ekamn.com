@@ -10,7 +10,7 @@ export default function Snuggle() {
         image="./images/projectImages/snuggleSculptors/snuggle1.png"
         tags={["Software Design", "Java", "Illustrator"]}
         link="https://github.com/ekam-n/snuggle-sculptors"
-        // bgColor="#D8F9A5"
+        buttonText="GitHub"
       />
     </div>
   );
