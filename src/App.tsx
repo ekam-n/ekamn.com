@@ -39,7 +39,7 @@ function AnimatedRoutes() {
             </motion.div>
           }
         />
-<Route path="/analysis/:slug" element={<AnalysisRouter />} />
+<Route path="/analyses/:slug" element={<AnalysisRouter />} />
 
       </Routes>
       {/* // src/App.tsx — add a Route (keep the rest as-is) */}
