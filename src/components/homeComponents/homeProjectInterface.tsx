@@ -66,26 +66,26 @@ export default function ProjectCard({
 
         {/* View Project Button */}
         {(link || ctaTo) && (
-  <div className="mt-4">
-    {ctaTo ? (
-      <Link
-        to={ctaTo}
-        className={`inline-block transition-colors px-4 py-2 rounded-lg text-sm md:text-base ${buttonColor}`}
-      >
-        {buttonText}
-      </Link>
-    ) : (
-      <a
-        href={link}
-        target="_blank"
-        rel="noopener noreferrer"
-        className={`inline-block transition-colors px-4 py-2 rounded-lg text-sm md:text-base ${buttonColor}`}
-      >
-        {buttonText}
-      </a>
-    )}
-  </div>
-)}
+          <div className="mt-4">
+            {ctaTo ? (
+              <Link
+                to={ctaTo}
+                className={`inline-block transition-colors px-4 py-2 rounded-lg text-sm md:text-base ${buttonColor}`}
+              >
+                {buttonText}
+              </Link>
+            ) : (
+              <a
+                href={link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`inline-block transition-colors px-4 py-2 rounded-lg text-sm md:text-base ${buttonColor}`}
+              >
+                {buttonText}
+              </a>
+            )}
+          </div>
+        )}
       </div>
 
       {/* LARGE-SCREEN IMAGE: shows only on ≥lg */}
