@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 
 type RowProps = {
@@ -128,6 +128,119 @@ function ImageCard({
   );
 }
 
+function VideoCard({
+  src,
+  caption,
+  poster,
+  className = "",
+  videoClassName = "",
+  height,
+  width,
+  style,
+  controls = true,
+  autoPlay = true,
+  muted = true,                    // still available when audio="allow"
+  loop = false,
+  preload = "metadata",
+  playsInline = true,
+  /** NEW: "off" = absolutely no audio; "allow" = normal behavior */
+  audio = "off",
+}: {
+  src: string;
+  caption?: string;
+  poster?: string;
+  className?: string;
+  videoClassName?: string;
+  height?: number | string;
+  width?: number | string;
+  style?: React.CSSProperties;
+  controls?: boolean;
+  autoPlay?: boolean;
+  muted?: boolean;
+  loop?: boolean;
+  preload?: "none" | "metadata" | "auto";
+  playsInline?: boolean;
+  audio?: "off" | "allow";
+}) {
+  const sizedStyle: React.CSSProperties = {
+    ...(style || {}),
+    ...(height !== undefined ? { height: typeof height === "number" ? `${height}px` : height } : {}),
+    ...(width  !== undefined ? { width:  typeof width  === "number" ? `${width}px`  : width  } : {}),
+  };
+
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  // Enforce hard mute when audio="off" (prevents user from unmuting)
+  useEffect(() => {
+    const v = videoRef.current;
+    if (!v) return;
+
+    const forceMute = () => {
+      if (audio === "off") {
+        v.muted = true;
+        if (v.volume !== 0) v.volume = 0;
+      }
+    };
+
+    forceMute();
+    v.addEventListener("loadedmetadata", forceMute);
+    v.addEventListener("play", forceMute);
+    v.addEventListener("volumechange", forceMute);
+
+    return () => {
+      v.removeEventListener("loadedmetadata", forceMute);
+      v.removeEventListener("play", forceMute);
+      v.removeEventListener("volumechange", forceMute);
+    };
+  }, [audio]);
+
+  const noAudioControls =
+    audio === "off"
+      ? // hide mute/volume in WebKit; other browsers will still be hard-muted by the effect above
+        "[&::-webkit-media-controls-mute-button]:hidden [&::-webkit-media-controls-volume-slider]:hidden"
+      : "";
+
+  return (
+    <motion.figure
+      {...fadeIn}
+      style={sizedStyle}
+      className={[
+        "h-full rounded-2xl border border-white/10 bg-black/60",
+        "backdrop-blur-md shadow-lg overflow-hidden",
+        className,
+      ].join(" ")}
+    >
+      <div className="flex h-full flex-col min-h-0">
+        {/* Video fills remaining height above caption */}
+        <div className="relative flex-1 min-h-[160px] min-w-0">
+          <video
+            ref={videoRef}
+            src={src}
+            poster={poster}
+            className={["absolute inset-0 h-full w-full object-cover", noAudioControls, videoClassName].join(" ")}
+            controls={controls}
+            autoPlay={autoPlay}
+            // If audio is off, we force mute regardless of the `muted` prop
+            muted={audio === "off" ? true : muted}
+            loop={loop}
+            preload={preload}
+            playsInline={playsInline}
+            // optional: limit some controls (browsers vary)
+            controlsList="noplaybackrate nodownload noremoteplayback"
+          />
+        </div>
+
+        {caption && (
+          <figcaption className="px-4 md:px-6 py-3 text-sm text-white/80">
+            {caption}
+          </figcaption>
+        )}
+      </div>
+    </motion.figure>
+  );
+}
+
+
 // PNG arrow row: 3 at lg+, 2 at md, 1 below md
 function ArrowRow({
   src = "/images/Arrow.png",  // update to your asset path if different
@@ -175,15 +288,15 @@ export default function yellowJacketEscapeAnalysis() {
       <div className="space-y-4 md:space-y-6">
         <Row colsClass="grid-cols-1 md:[grid-template-columns:auto_1fr]">
           <ImageCard
-            src="/images/projectImages/solarConquest/Game Setup.png"
+            src="/images/projectImages/yellowJacketEscape/Zone 3 Final.png"
             height="25rem"
-            width="40rem"
-            caption="Game Setup"
-            alt="Game setup for Solar Conquest"
+            width="30rem"
+            caption="Zone 2"
+            alt="Zone 2 of the first level of YellowJacket Escape"
           />
           <Card>
             <p>
-              Solar Conquest is a space-themed board game where players claim planets, produce resources, and plan trade routes to outmaneuver rivals. Build and upgrade ships, troops, and planetary defense. Smart expansion, savvy deals, and well-timed strikes decide the winner.
+              YellowJacket Escape is a top-down 2D dungeon crawler where the player, controlling a small spider, must navigate the multi-path environment while evading YellowJacket enemies. The game emphasizes strategic planning, timing, and precise movement.
             </p>
           </Card>
         </Row>
@@ -198,28 +311,28 @@ export default function yellowJacketEscapeAnalysis() {
                   <li>
                     Class Project, <em>Foundations of Game Design</em>
                   </li>
-                  <li>March 2025 - April 2025</li>
+                  <li>January 2025 - February 2025</li>
                 </ul>
                 {/* Skills tags */}
                 <div className="not-prose mt-3 flex flex-wrap gap-2 md:gap-3">
                   <span className="bg-white/20 px-3 md:px-4 py-1 md:py-2 rounded-full text-xs md:text-sm lg:text-base">
-                    Economy Design
+                    Level Design
                   </span>
                   <span className="bg-white/20 px-3 md:px-4 py-1 md:py-2 rounded-full text-xs md:text-sm lg:text-base">
-                    Systems Design
+                    AI Design
                   </span>
                   <span className="bg-white/20 px-3 md:px-4 py-1 md:py-2 rounded-full text-xs md:text-sm lg:text-base">
-                    Tabletop Simulator
+                    Unity
                   </span>
                   {/* add more tags as needed */}
                 </div>
               </Card>
               <Card title="Team">
                 <ul className="list-disc pl-5 space-y-1">
-                  <li>Ekam: Designer, Developer </li>
+                  <li>Ekam: Designer, Lead Developer </li>
                   <li>Kaleb: Visual Artist, Developer</li>
                   <li>Baseer: Visual Artist</li>
-                  <li>Travis: Visual Artist</li>
+                  <li>Travis: Developer</li>
                 </ul>
               </Card>
             </div>
@@ -227,9 +340,9 @@ export default function yellowJacketEscapeAnalysis() {
           {/* Column A: one tall card (regular or image) */}
           <div className="h-full">
             <ImageCard
-              src="/images/projectImages/solarConquest/Ships.png"
-              caption="Ship Pieces"
-              alt="Ship Pieces for Solar Conquest"
+              src="/images/projectImages/yellowJacketEscape/title-screen.png"
+              caption="Title Screen"
+              alt="Title Screen of YellowJacket Escape"
               className="h-full"
               height="100%"       // optional; Card/ImageCard already use h-full
             />
@@ -238,7 +351,7 @@ export default function yellowJacketEscapeAnalysis() {
 
         <Row cols={1}>
           <Card title="Objective">
-            <p>We wanted to create a board game that emphasizes player agency in both cooperation and competition, is built on a clear, robust economy, and focuses on balancing chance vs strategy so randomness adds tension without deciding outcomes.</p>
+            <p>We wanted to create an engaging game with multiple ways to win that centers around Challenge Fun and appeals to Survivor and Mastermind players by combining tense escapes, thoughtful planning, and skill-based enemy-encounters.</p>
           </Card>
         </Row>
       </div>
@@ -254,139 +367,115 @@ export default function yellowJacketEscapeAnalysis() {
       {/* One row after H2 */}
       <Row cols={2} className="mb-2">
         <ImageCard
-          src="/images/projectImages/solarConquest/Battle Scenario - Long.png"
-              caption="Battle Scenario"
-              alt="A typical battle scenario for Solar Conquest"
+          src="/images/projectImages/yellowJacketEscape/Unity Wasp Animation Frames.png"
+              caption="YellowJacket Animation Frames"
+              alt="Animation frames for the YellowJacket enemy in YellowJacket Escape"
               className="h-full"
-              height="20rem" 
+              height="18rem" 
         />
         <Card title="Methodology">
           <p>
-            To enable player agency, I designed the game around four economic activities: resource accumulation, resource conversion, crafting, and trading. Each activity creates meaningful choices and tradeoffs that open multiple paths to progress, with trading linking cooperation and competition. Chance is present but limited, so strategy remains the primary driver of outcomes.
+            To foreground skill-expressive play, I designed the game around precision movement under pressure. Enemies are larger and faster than the player to feel imposing and to punish sloppy routing. The map provides multiple viable paths to the escape point, each with different risk and timing profiles. With movement as the only tool, success comes from reading enemy patterns, planning routes, and adapting mid-run as threats close in.
           </p>
         </Card>
       </Row>
 
       {/* Iteration block 1 */}
-      <ArrowRow src="/images/projectImages/solarConquest/Arrow.png" size={100} gap={180} />   
+      <ArrowRow src="/images/projectImages/yellowJacketEscape/Arrow.png" size={100} gap={180} />
       <div className="space-y-4 md:space-y-6">
-        <Row cols={1}>
-          <Card title="Initial Economy Design">
+        <Row cols={3}>
+          <Card title="Initial Level Design">
             <ul className="list-disc pl-5 space-y-4">
-                  <li>I allocated resources to shape currency flow: players spawn on a corner planet, which each yield one resource with moons amplifying it, edge dwarf planets supply the two adjacent resources, and the center provides all, encouraging trading/bartering and balancing chance and strategy.</li>
-                  <li>I prototyped transitive mechanics with tiered troop cards and planetary defense lasers, requiring multiple currencies to craft higher tiers.</li>
-                  <li>I introduced production levers and feedback loops: accelerators as investments to grow positive feedback and converters that transform one currency into another.</li>
-                  <li>I drafted the initial map with spawn locations and starting resources to test early pacing, route pressure, and trade opportunities.</li>
+                  <li>I designed zones to have more than one path to the escape point to support route planning and player agency.</li>
+                  <li>I scripted enemy movement patterns and combined them with choke points and sightlines to create readable, challenging patrol puzzles.</li>
+                  <li>I added an optional NPC rescue collectible that the player can carry to the exit to reward Achiever play and encourage exploration.</li>
+                  <li>I built smooth zone transitions with a short rest area between sections to ease pacing and provide easy fun.</li>
                 </ul>
           </Card>
-        </Row>
-        <Row cols={2}>
           <ImageCard
-            src="/images/projectImages/solarConquest/Annotated Initial Board.png"
-                caption="Initial Game Board"
-                alt="The first game board iteration for Solar Conquest, with one of the spawn locations indicated"
+            src="/images/projectImages/yellowJacketEscape/Zone 2 Concept 1.jpg"
+                caption="Zone 2 Concept 1"
+                alt="Initial concept art for Zone 2 of YellowJacket Escape"
                 className="h-full"
-                height="20rem" 
+                height="100%" 
           />
           <ImageCard
-            src="/images/projectImages/solarConquest/Various Initial Game Cards.png"
-                caption="Various Initial Game Cards"
-                alt="Inital game card iterations for troops, a converter item, and a resource for Solar Conquest"
+            src="/images/projectImages/yellowJacketEscape/Zone 2 Concept 2.jpg"
+                caption="Zone 2 Concept 2"
+                alt="Secondary concept art for Zone 2 of YellowJacket Escape"
                 className="h-full"
-                height="20rem" 
+                height="100%" 
           />
         </Row>
       </div>
 
       {/* Iteration block 2 */}
-      <ArrowRow src="/images/projectImages/solarConquest/Arrow.png" size={100} gap={180} />
+      <ArrowRow src="/images/projectImages/yellowJacketEscape/Arrow.png" size={100} gap={180} />
       <div className="space-y-4 md:space-y-6">
-        <Row cols={1}>
-          <Card title="Key Changes to Economy">
+        <Row cols={3}>
+          <Card title="Key Changes To Levels">
             <ul className="list-disc pl-5 space-y-4">
-                  <li>I planned planet placement more carefully to prevent any player from having an easier route to the best resources, keeping the map fair and trading meaningful.</li>
-                  <li>Through playtesting, we found that converters were too powerful, letting players build troops and lasers without visiting other planets, so I made them harder to get to avoid a single dominant strategy.</li>
+                  <li>I added more hiding spots and brief safe alcoves so players could pause, plan, and read patrols, better supporting Mastermind play.</li>
+                  <li>I increased route variety by adding small obstacles and gaps to create additional paths, improving player agency and skill-expressive movement toward the escape.</li>
                 </ul>
           </Card>
-        </Row>
-        <Row colsClass="grid-cols-1 md:grid-cols-2">
-          {/* Column B: stack two cards vertically (equal heights) */}
-          {/* Column A: one tall card (regular or image) */}
-          <div className="h-full">
-            <ImageCard
-              src="/images/projectImages/solarConquest/Improved Game Board.png"
-              caption="Improved Game Board"
-              alt="Improved Game Board for Solar Conquest"
-              className="h-full"
-              height="100%"       // optional; Card/ImageCard already use h-full
-            />
-          </div>
-          <div className="h-full">
-            <div className="grid grid-cols-1 auto-rows-fr gap-4 h-full min-h-0">
-              <ImageCard
-              src="/images/projectImages/solarConquest/Improved Resource Cards.png"
-              caption="Improved Resource Cards"
-              alt="Improved Resource Cards for Solar Conquest"
-              className="h-full"
-              height="15rem"       // optional; Card/ImageCard already use h-full
-            />
-              <ImageCard
-              src="/images/projectImages/solarConquest/Improved Troop Cards.png"
-              caption="Improved Resource Cards"
-              alt="Improved Resource Cards for Solar Conquest"
-              className="h-full"
-              height="100%"       // optional; Card/ImageCard already use h-full
-            />
-            </div>
-          </div>
+          <ImageCard
+            src="/images/projectImages/yellowJacketEscape/Zone 2 v1.png"
+                caption="Zone 2 Intermediate Implementation"
+                alt="Zone 2 Intermediate Implementation"
+                className="h-full"
+                height="40rem" 
+          />
+          <VideoCard
+            src="/images/projectImages/yellowJacketEscape/Zone 2 v1 Gameplay.mp4"
+                caption="Zone 2 Lack of Route Options"
+                className="h-full"
+                height="100%" 
+          />
         </Row>
       </div>
 
       {/* Final iteration */}
-      <ArrowRow src="/images/projectImages/solarConquest/Arrow.png" size={100} gap={180} />
+      <ArrowRow src="/images/projectImages/yellowJacketEscape/Arrow.png" size={100} gap={180} />
       <div className="space-y-4 md:space-y-6">
-        <Row cols={1}>
-          <Card title="Final Economy Design">
+        <Row cols={2}>
+          <Card title="Final Level Design">
             <ul className="list-disc pl-5 space-y-4">
-                  <li>I finalized the board so each planet, moon, and dwarf planet gave all players fair starting access to resources, clear currency flow, and meaningful trading/bartering routes, preserving player agency from turn one.</li>
-                  <li>I balanced the cost/benefit of accelerators and converters to keep strategy ahead of chance, curb runaway positive feedback, and prevent any single dominant strategy so multiple paths to victory stay viable.</li>
+                  <li>I finalized zone maps with multiple viable routes to the escape and added hiding alcoves so players can effectively pause and plan.</li>
+                  <li>Paths were tuned to reward precise timing against patrols, with small enemy speed differences adding light randomness so patterns shift while staying readable.</li>
                 </ul>
           </Card>
+          <ImageCard
+            src="/images/projectImages/yellowJacketEscape/Zone 2 Final.png"
+                caption="Zone 2 Final Implementation"
+                alt="Zone 2 Final Implementation"
+                className="h-full"
+                height="40rem" 
+          />
         </Row>
-        <Row colsClass="grid-cols-1 md:grid-cols-2">
-          {/* Column B: stack two cards vertically (equal heights) */}
-          {/* Column A: one tall card (regular or image) */}
-          <div className="h-full">
-            <ImageCard
-              src="/images/projectImages/solarConquest/Final Game Board.png"
-              caption="Improved Game Board"
-              alt="Improved Game Board for Solar Conquest"
-              className="h-full"
-              height="100%"       // optional; Card/ImageCard already use h-full
-            />
-          </div>
-          <div className="h-full">
-            <div className="grid grid-cols-1 auto-rows-fr gap-4 h-full min-h-0">
-              <ImageCard
-              src="/images/projectImages/solarConquest/Planet With Converter.png"
-              caption="Planet With a Converter"
-              alt="A planet that has crafted a converter, in Solar Conquest"
-              className="h-full"
-              height="15rem"       // optional; Card/ImageCard already use h-full
-            />
-              <ImageCard
-              src="/images/projectImages/solarConquest/Planet With Accelerator.png"
-              caption="Planet With an Accelerator"
-              alt="A planet that has crafted an accelerator, in Solar Conquest"
-              className="h-full"
-              height="100%"       // optional; Card/ImageCard already use h-full
-            />
-            </div>
-          </div>
-        </Row>
+        <Row cols={3}>
+          <VideoCard
+            src="/images/projectImages/yellowJacketEscape/Zone 2 v1 Gameplay.mp4"
+                caption="Zone 2 Lack of Route Options"
+                className="h-full"
+                height="100%" 
+          />
+          <VideoCard
+            src="/images/projectImages/yellowJacketEscape/Zone 2 v1 Gameplay.mp4"
+                caption="Zone 2 Lack of Route Options"
+                className="h-full"
+                height="100%" 
+          />
+          <VideoCard
+            src="/images/projectImages/yellowJacketEscape/Zone 2 v1 Gameplay.mp4"
+                caption="Zone 2 Lack of Route Options"
+                className="h-full"
+                height="100%" 
+          />
+          </Row>
       </div>
 
-      <ArrowRow src="/images/projectImages/solarConquest/Arrow.png" size={100} gap={180} />
+      <ArrowRow src="/images/projectImages/yellowJacketEscape/Arrow.png" size={100} gap={180} />
       <div className="space-y-4 md:space-y-6">
         <Row cols={1}>
           <Card title="Takeaways">
