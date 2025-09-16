@@ -140,7 +140,7 @@ function VideoCard({
   controls = true,
   autoPlay = true,
   muted = true,                    // still available when audio="allow"
-  loop = false,
+  loop = true,
   preload = "metadata",
   playsInline = true,
   /** NEW: "off" = absolutely no audio; "allow" = normal behavior */
@@ -273,7 +273,7 @@ function ArrowRow({
 
 /* ---------- Page ---------- */
 
-export default function yellowJacketEscapeAnalysis() {
+export default function YellowJacketEscapeAnalysis() {
   return (
     <main className="max-w-6xl mx-auto px-4 pt-20 pb-16 text-white">
       {/* H1 */}
@@ -480,7 +480,7 @@ export default function yellowJacketEscapeAnalysis() {
         <Row cols={1}>
           <Card title="Takeaways">
             <ul className="list-disc pl-5 space-y-4">
-                  <li>I learned how hard it is to balance a game economy: it took lots of playtesting and analysis to keep player agency high, chance vs strategy in equilibrium, and multiple viable paths to win.</li>
+                  <li>I learned that multi-path level design is more than adding extra routes; each path needs a clear purpose and balanced risk-reward, with sightlines, cover, and choke points arranged so players can read patrols, pause to plan, and choose routes that fit their skill and goals.</li>
                   <li>I found the early game a bit slow to teach; too many options and rules created onboarding friction. Next time I would tighten the core loop, simplify first-turn choices, and provide a clearer first-play rulebook and quick reference to speed pacing.</li>
                 </ul>
           </Card>
