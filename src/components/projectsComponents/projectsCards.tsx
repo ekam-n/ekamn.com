@@ -1,5 +1,5 @@
 import React from "react";
-import { motion, AnimatePresence, LayoutGroup } from "framer-motion";
+import { motion, AnimatePresence, LayoutGroup, type Transition } from "framer-motion";
 import Yellow from "./projectCards/yellowJacket";
 import Volt from "./projectCards/voltLegacy";
 import Snuggle from "./projectCards/snuggleSculptors";
@@ -36,14 +36,19 @@ export default function ProjectsCards({ selected }: Props) {
     return normalHit || miscHit;
   });
 
-  // Tuned for smoothness on both 1-col and 2-col
-  const layoutSpring = { type: "spring", stiffness: 220, damping: 50, mass: 0.9 };
+ // Tuned for smoothness on both 1-col and 2-col
+  const layoutSpring: Transition = {
+    type: "spring",
+    stiffness: 220,
+    damping: 50,
+    mass: 0.9,
+  };
 
   return (
     <LayoutGroup id="projects-grid">
       <motion.section
         layout
-        transition={{ layout: layoutSpring }}
+        transition={ layoutSpring }
         className="pt-14 grid grid-cols-1 min-[900px]:grid-cols-2 gap-4 items-stretch"
       >
         <AnimatePresence mode="wait" initial={false}>
@@ -53,7 +58,7 @@ export default function ProjectsCards({ selected }: Props) {
               key={p.key}
               layout="position"                       // survivors slide smoothly after exit completes
               className="h-full"
-              transition={{ layout: { type: "spring", stiffness: 220, damping: 50, mass: 0.9 } }}
+              transition={ layoutSpring }
               // Only opacity changes; position doesn't move during exit
               initial={{ opacity: 0 }}                // new items fade in
               animate={{ opacity: 1 }}

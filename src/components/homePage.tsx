@@ -1,22 +1,25 @@
-import { motion } from "framer-motion";
+import { motion, type Variants, cubicBezier } from "framer-motion";
 import Hero from "./homeComponents/hero";
 import Education from "./homeComponents/education";
 import Skills from "./homeComponents/skills";
 import ProjectCards from "./homeComponents/projectCards";
 
-// Animation Variants
-const fadeInVariant = {
+// make a function (ease-out-ish curve)
+const easeOut = cubicBezier(0.22, 1, 0.36, 1);
+
+// annotate as Variants (optional but helpful)
+const fadeInVariant: Variants = {
   hidden: (i: number) => ({
     opacity: 0,
-    y: i === 0 ? 0 : 50,    // hero (i=0) only fades, others slide up
+    y: i === 0 ? 0 : 50,
   }),
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.6,
-      ease: "easeOut",
-      delay: i * 0.1,
+      duration: 2,
+      ease: easeOut,      // <-- function, not an array
+      delay: i * 0.15,
     },
   }),
 };

@@ -1,17 +1,17 @@
-// src/lib/variants.ts
-export const pageVariants = {
-  initial: {
-    opacity: 0,
-    y: 50,                      // start 50px below
-  },
+// lib/variants.ts
+import type { Variants } from "framer-motion";
+
+export const pageVariants: Variants = {
+  initial: { opacity: 0, y: 12 },
   animate: {
     opacity: 1,
-    y: 0,                       // slide into place
-    transition: { duration: 0.6, ease: "easeOut" },
+    y: 0,
+    transition: { duration: 0.45, ease: [0.22, 1, 0.36, 1] }, // easeOut-bezier
   },
   exit: {
     opacity: 0,
-    y: -50,                     // exit by sliding up
-    transition: { duration: 0.4, ease: "easeIn" },
+    y: -12,
+    transition: { duration: 0.35, ease: [0.4, 0, 1, 1] }, // easeIn-bezier
   },
 };
+
