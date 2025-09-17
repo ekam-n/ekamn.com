@@ -141,7 +141,7 @@ function VideoCard({
   autoPlay = true,
   muted = true,                    // still available when audio="allow"
   loop = true,
-  preload = "metadata",
+  preload = "auto",
   playsInline = true,
   /** NEW: "off" = absolutely no audio; "allow" = normal behavior */
   audio = "off",
@@ -170,29 +170,64 @@ function VideoCard({
 
   const videoRef = useRef<HTMLVideoElement>(null);
 
-  // Enforce hard mute when audio="off" (prevents user from unmuting)
-  useEffect(() => {
-    const v = videoRef.current;
-    if (!v) return;
+// Robust autoplay + hard-mute enforcement
+useEffect(() => {
+  const v = videoRef.current;
+  if (!v) return;
 
-    const forceMute = () => {
-      if (audio === "off") {
-        v.muted = true;
-        if (v.volume !== 0) v.volume = 0;
-      }
-    };
+  // Ensure critical attributes exist as actual DOM attrs for iOS
+  v.setAttribute("playsinline", "");
+  v.setAttribute("muted", "");
 
-    forceMute();
-    v.addEventListener("loadedmetadata", forceMute);
-    v.addEventListener("play", forceMute);
-    v.addEventListener("volumechange", forceMute);
+  // Hard mute when audio="off"
+  const forceMute = () => {
+    const mustMute = audio === "off";
+    v.muted = mustMute || muted;          // keep muted if either requires it
+    if (mustMute && v.volume !== 0) v.volume = 0;
+  };
 
-    return () => {
-      v.removeEventListener("loadedmetadata", forceMute);
-      v.removeEventListener("play", forceMute);
-      v.removeEventListener("volumechange", forceMute);
-    };
-  }, [audio]);
+  forceMute();
+
+  // Try to start playback after the first usable frame arrives
+  const tryPlay = async () => {
+    if (!autoPlay) return;
+    try {
+      // Temporarily hide controls to reduce friction on mobile
+      const originalControls = v.controls;
+      if (originalControls) v.controls = false;
+      await v.play();
+      // Restore controls if you had them enabled
+      v.controls = originalControls;
+    } catch {
+      // If autoplay is still blocked, we’ll retry on visibility or first tap
+    }
+  };
+
+  // If enough data is already there, start; else wait until it's ready
+  if (v.readyState >= 2) {
+    tryPlay();
+  } else {
+    const onLoaded = () => { forceMute(); tryPlay(); };
+    v.addEventListener("loadeddata", onLoaded, { once: true });
+    // cleanup for this listener happens below
+  }
+
+  // Retry when the tab becomes visible (helps Safari on reload)
+  const onVis = () => { if (!document.hidden) tryPlay(); };
+
+  // Last-resort: first user interaction anywhere (does nothing if already playing)
+  const onPointer = () => { tryPlay(); window.removeEventListener("pointerdown", onPointer); };
+
+  document.addEventListener("visibilitychange", onVis);
+  window.addEventListener("pointerdown", onPointer, { once: true });
+
+  return () => {
+    v.removeEventListener("loadeddata", tryPlay as any); // safe even if not attached
+    document.removeEventListener("visibilitychange", onVis);
+    window.removeEventListener("pointerdown", onPointer);
+  };
+}, [autoPlay, audio, muted]);
+
 
   const noAudioControls =
     audio === "off"
@@ -288,9 +323,9 @@ export default function YellowJacketEscapeAnalysis() {
       <div className="space-y-4 md:space-y-6">
         <Row colsClass="grid-cols-1 md:[grid-template-columns:auto_1fr]">
           <ImageCard
-            src="/images/projectImages/yellowJacketEscape/Zone 3 Final.png"
+            src="/images/projectImages/yellowJacketEscape/Zone 1 final.png"
             height="25rem"
-            width="30rem"
+            width="40rem"
             caption="Zone 2"
             alt="Zone 2 of the first level of YellowJacket Escape"
           />
@@ -427,9 +462,11 @@ export default function YellowJacketEscapeAnalysis() {
                 height="40rem" 
           />
           <VideoCard
-            src="/images/projectImages/yellowJacketEscape/Zone 2 v1 Gameplay.mp4"
+            src="/images/projectImages/yellowJacketEscape/zone 2 v1 gameplay.mp4"
                 caption="Zone 2 Lack of Route Options"
                 className="h-full"
+                autoPlay={true}
+                loop={true}
                 height="100%" 
           />
         </Row>
@@ -455,21 +492,27 @@ export default function YellowJacketEscapeAnalysis() {
         </Row>
         <Row cols={3}>
           <VideoCard
-            src="/images/projectImages/yellowJacketEscape/Zone 2 v1 Gameplay.mp4"
-                caption="Zone 2 Lack of Route Options"
+            src="/images/projectImages/yellowJacketEscape/zone 2 final gameplay 1.mp4"
+                caption="Zone 2 Route 1"
                 className="h-full"
+                autoPlay={true}
+                loop={true}
+                height="30rem" 
+          />
+          <VideoCard
+            src="/images/projectImages/yellowJacketEscape/zone 2 final gameplay 2.mp4"
+                caption="Zone 2 Route 2"
+                className="h-full"
+                autoPlay={true}
+                loop={true}
                 height="100%" 
           />
           <VideoCard
-            src="/images/projectImages/yellowJacketEscape/Zone 2 v1 Gameplay.mp4"
-                caption="Zone 2 Lack of Route Options"
+            src="/images/projectImages/yellowJacketEscape/zone 2 final gameplay 3.mp4"
+                caption="Zone 2 Route 3"
                 className="h-full"
-                height="100%" 
-          />
-          <VideoCard
-            src="/images/projectImages/yellowJacketEscape/Zone 2 v1 Gameplay.mp4"
-                caption="Zone 2 Lack of Route Options"
-                className="h-full"
+                autoPlay={true}
+                loop={true}
                 height="100%" 
           />
           </Row>
@@ -481,7 +524,7 @@ export default function YellowJacketEscapeAnalysis() {
           <Card title="Takeaways">
             <ul className="list-disc pl-5 space-y-4">
                   <li>I learned that multi-path level design is more than adding extra routes; each path needs a clear purpose and balanced risk-reward, with sightlines, cover, and choke points arranged so players can read patrols, pause to plan, and choose routes that fit their skill and goals.</li>
-                  <li>I found the early game a bit slow to teach; too many options and rules created onboarding friction. Next time I would tighten the core loop, simplify first-turn choices, and provide a clearer first-play rulebook and quick reference to speed pacing.</li>
+                  <li>I would have liked to have leaned further into the optional “spider-friends” rescue, since playtests showed it adds easy fun and makes a challenge-heavy, skill-expressive game feel more rounded and enjoyable, and I would consider similar easy-fun sidequests in my next challenge-heavy design.</li>
                 </ul>
           </Card>
         </Row>
