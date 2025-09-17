@@ -463,7 +463,7 @@ export default function YellowJacketEscapeAnalysis() {
           />
           <VideoCard
             src="/images/projectImages/yellowJacketEscape/zone 2 v1 gameplay.mp4"
-                caption="Zone 2 Lack of Route Options"
+                caption="Zone 2 Lack of Route Options (2x Speed)"
                 className="h-full"
                 autoPlay={true}
                 loop={true}
@@ -493,7 +493,7 @@ export default function YellowJacketEscapeAnalysis() {
         <Row cols={3}>
           <VideoCard
             src="/images/projectImages/yellowJacketEscape/zone 2 final gameplay 1.mp4"
-                caption="Zone 2 Route 1"
+                caption="Zone 2 Route 1 (2x Speed)"
                 className="h-full"
                 autoPlay={true}
                 loop={true}
@@ -501,7 +501,7 @@ export default function YellowJacketEscapeAnalysis() {
           />
           <VideoCard
             src="/images/projectImages/yellowJacketEscape/zone 2 final gameplay 2.mp4"
-                caption="Zone 2 Route 2"
+                caption="Zone 2 Route 2 (2x Speed)"
                 className="h-full"
                 autoPlay={true}
                 loop={true}
@@ -509,7 +509,7 @@ export default function YellowJacketEscapeAnalysis() {
           />
           <VideoCard
             src="/images/projectImages/yellowJacketEscape/zone 2 final gameplay 3.mp4"
-                caption="Zone 2 Route 3"
+                caption="Zone 2 Route 3 (2x Speed)"
                 className="h-full"
                 autoPlay={true}
                 loop={true}
