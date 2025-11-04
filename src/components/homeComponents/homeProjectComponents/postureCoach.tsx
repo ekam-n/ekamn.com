@@ -6,8 +6,8 @@ export default function Posture() {
       <ProjectCard
         label="AI Model"
         title="Posture Coach"
-        description="Demon’s Gate is a 1-vs-many survival board game where survivors complete tasks to escape via pentagram while a d8 Demon hunts with traps and a wall-phase cooldown. I ran playtests and wrote rules to tune fairness and pacing."
-        image="./images/projectImages/demonsGate/demon1.png"
+        description="Posture Coach is a lightweight computer-vision project that fine-tunes a small YOLO classifier to recognize three webcam posture states—“looks good,” “sit up straight,” and “straighten head”—and provide fast, practical feedback for students and desk workers using typical laptop setups."
+        image="./images/projectImages/postureCoach/cover image.png"
         tags={["Classification", "Python", "Git"]}
         link="https://ridham225sharma.wixsite.com/iat210"
         buttonText="Analysis"

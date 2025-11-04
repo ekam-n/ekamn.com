@@ -4,10 +4,10 @@ export default function Sail() {
   return (
     <div className="h-full">
       <ProjectCard
-        label="Desktop App"
+        label="CLI App"
         title="SetSail"
-        description="Demon’s Gate is a 1-vs-many survival board game where survivors complete tasks to escape via pentagram while a d8 Demon hunts with traps and a wall-phase cooldown. I ran playtests and wrote rules to tune fairness and pacing."
-        image="./images/projectImages/demonsGate/demon1.png"
+        description="SetSail is a terminal-based C++ reservation system for Coastal Ferry Corp that lets a single ferry clerk create sailings and vessels, manage vehicle reservations with capacity limits, and view sailing reports, with all data persisted via custom binary file I/O."
+        image="./images/projectImages/setSail/empty OCD.png"
         tags={["OOP", "SDLC", "C++", "Git"]}
         link="https://ridham225sharma.wixsite.com/iat210"
         buttonText="Analysis"
