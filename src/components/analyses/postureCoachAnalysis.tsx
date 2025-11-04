@@ -107,10 +107,54 @@ export default function PostureCoachAnalysis() {
         </Row>
 
         <Row cols={1}>
+          <Card title="Links and Resources">
+            <ul className="list-disc pl-5 space-y-1">
+              <li>
+                We used a GitHub{" "}
+                <a
+                  href="https://github.com/ekam-n/IAT360-Computer-Vision-Project"
+                  className="underline underline-offset-2"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  repository
+                </a>{" "}
+                to manage our code and track changes.
+              </li>
+              <li>
+                We used a pre-trained YOLO{" "}
+                <a
+                  href="https://docs.ultralytics.com/tasks/classify/"
+                  className="underline underline-offset-2"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  model
+                </a>{" "}
+                as the base for our classifier.
+              </li>
+              <li>
+                We used an online{" "}
+                <a
+                  href="https://universe.roboflow.com/posturecorrection/posture_correction_v4/dataset/2"
+                  className="underline underline-offset-2"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  dataset
+                </a>{" "}
+                from Roboflow for training and validating our model.
+              </li>
+            </ul>
+          </Card>
+        </Row>
+
+        <Row cols={1}>
           <Card title="Objective">
             <p>We wanted to build a lightweight computer-vision “posture coach” that uses a standard webcam to detect common slouching patterns in real time and gently nudge students and desk workers toward healthier, more upright sitting habits.</p>
           </Card>
         </Row>
+
       </div>
 
       {/* H2 */}
@@ -141,12 +185,12 @@ export default function PostureCoachAnalysis() {
       <ArrowRow size={100} gap={180} />   
       <div className="space-y-4 md:space-y-6">
         <Row cols={1}>
-          <Card title="Initial Economy Design">
+          <Card title="First Training Iteration">
             <ul className="list-disc pl-5 space-y-4">
-                  <li>I allocated resources to shape currency flow: players spawn on a corner planet, which each yield one resource with moons amplifying it, edge dwarf planets supply the two adjacent resources, and the center provides all, encouraging trading/bartering and balancing chance and strategy.</li>
-                  <li>I prototyped transitive mechanics with tiered troop cards and planetary defense lasers, requiring multiple currencies to craft higher tiers.</li>
-                  <li>I introduced production levers and feedback loops: accelerators as investments to grow positive feedback and converters that transform one currency into another.</li>
-                  <li>I drafted the initial map with spawn locations and starting resources to test early pacing, route pressure, and trade opportunities.</li>
+                  <li>I started by fine-tuning a YOLO-based classifier in a supervised setup with mostly default hyperparameters, using 5 epochs with patience 5, batch 64, and 224×224 inputs to balance overfitting, VRAM use, and head–neck detail.</li>
+                  <li>I evaluated this first model on the validation split and multiple test splits (original online test set, my own test images, and a combined split), tracking accuracy and per-class precision/recall/F1.</li>
+                  <li>I noticed the model performed much better on my curated test data (~0.88 accuracy) than on the online test split (~0.73), and that some classes behaved inconsistently, which prompted a manual inspection of the dataset.</li>
+                  <li>I discovered substantial label noise and “contamination” in the online test split (mislabelled frames from video clips), so I adapted by excluding that split from final evaluation and relying on cleaner, self-curated test data going forward.</li>
                 </ul>
           </Card>
         </Row>
@@ -172,10 +216,10 @@ export default function PostureCoachAnalysis() {
       <ArrowRow size={100} gap={180} />
       <div className="space-y-4 md:space-y-6">
         <Row cols={1}>
-          <Card title="Key Changes to Economy">
+          <Card title="Training Improvement 1">
             <ul className="list-disc pl-5 space-y-4">
-                  <li>I planned planet placement more carefully to prevent any player from having an easier route to the best resources, keeping the map fair and trading meaningful.</li>
-                  <li>Through playtesting, we found that converters were too powerful, letting players build troops and lasers without visiting other planets, so I made them harder to get to avoid a single dominant strategy.</li>
+                  <li>I switched to an explicit AdamW optimizer so the model would respect my chosen learning rate instead of the auto-optimizer’s default, keeping all other hyperparameters the same.</li>
+                  <li>We accepted slightly lower validation performance in exchange for higher test accuracy (~0.88) and stronger F1 on key classes, and treated this setup as my new baseline.</li>
                 </ul>
           </Card>
         </Row>
@@ -216,10 +260,10 @@ export default function PostureCoachAnalysis() {
       <ArrowRow size={100} gap={180} />
       <div className="space-y-4 md:space-y-6">
         <Row cols={1}>
-          <Card title="Final Economy Design">
+          <Card title="Training Improvement 2">
             <ul className="list-disc pl-5 space-y-4">
-                  <li>I finalized the board so each planet, moon, and dwarf planet gave all players fair starting access to resources, clear currency flow, and meaningful trading/bartering routes, preserving player agency from turn one.</li>
-                  <li>I balanced the cost/benefit of accelerators and converters to keep strategy ahead of chance, curb runaway positive feedback, and prevent any single dominant strategy so multiple paths to victory stay viable.</li>
+                  <li>I enabled cosine learning-rate decay with a 1-epoch warmup on top of the AdamW baseline, based on research that this schedule helps models converge better in short training runs.</li>
+                  <li>We achieved my best test performance with this setup (~93% accuracy with strong precision, recall, and F1 across all classes), and was satisfied enough with these results to stop further tuning.</li>
                 </ul>
           </Card>
         </Row>
@@ -258,11 +302,25 @@ export default function PostureCoachAnalysis() {
 
       <ArrowRow size={100} gap={180} />
       <div className="space-y-4 md:space-y-6">
+        <Row cols={2}>
+          <Card title="Model Analysis">
+            <ul className="list-disc pl-5 space-y-4">
+                  <li>The final model reaches ~70% validation accuracy and ~93% test accuracy, indicating strong performance on our curated test set.</li>
+                  <li>“Looks good” and “straighten head” are classified most reliably, while “sit up straight” is comparatively harder..</li>
+                </ul>
+          </Card>
+          <Card title="Shortcomings and Biases">
+            <ul className="list-disc pl-5 space-y-4">
+                  <li>The ~20% gap between validation (~70%) and test (~93%) suggests possible overfitting or instability in how our splits were constructed.</li>
+                  <li>Label noise in the original video-derived dataset (awkward transitions and mislabels) can distort learning and inflate or deflate class metrics</li>
+                </ul>
+          </Card>
+        </Row>
         <Row cols={1}>
           <Card title="Takeaways">
             <ul className="list-disc pl-5 space-y-4">
-                  <li>I learned how hard it is to balance a game economy: it took lots of playtesting and analysis to keep player agency high, chance vs strategy in equilibrium, and multiple viable paths to win.</li>
-                  <li>I found the early game a bit slow to teach; too many options and rules created onboarding friction. Next time I would tighten the core loop, simplify first-turn choices, and provide a clearer first-play rulebook and quick reference to speed pacing.</li>
+                  <li>I learned how to take a small YOLO-based classifier from idea to a tuned, evaluated model, including dataset curation, train/val/test split design, and metric-driven iteration.</li>
+                  <li>A challenge we faced was that we had to pivot from keypoint-based pose estimation to image classification after struggling to find a suitable dataset, and then deal with heavy label noise by manually cleaning mislabelled frames. From this, we learned that data quality is crucial, and investing time in cleaning and curating the dataset pays off in model performance.</li>
                 </ul>
           </Card>
         </Row>
