@@ -2,11 +2,26 @@ import { motion } from "framer-motion";
 
 import {
   Row,
-  Card as Card,
+  Card as BaseCard,
   ImageCard,
-  ArrowRow,
+  ArrowRow as BaseArrowRow,
   fadeIn,
-} from "./analysisCommon";
+  VideoCard,
+} from "../analyses/analysisCommon";
+
+// local wrapper that sets the border color for this page
+const Card: React.FC<
+  Omit<React.ComponentProps<typeof BaseCard>, "borderColorClass">
+> = (props) => (
+  <BaseCard borderColorClass="!border-[#646665]" {...props} />
+);
+
+// local wrapper that sets the src img for the arrow row
+const ArrowRow: React.FC<
+  Omit<React.ComponentProps<typeof BaseArrowRow>, "src">
+> = (props) => (
+  <BaseArrowRow src="/images/projectImages/setSail/Arrow.png" {...props} />
+);
 
 /* ---------- Page ---------- */
 
@@ -18,14 +33,14 @@ export default function SetSailAnalysis() {
         className="text-3xl md:text-5xl lg:text-6xl font-medium tracking-tight mb-8 md:mb-10"
         {...fadeIn}
       >
-        Solar Conquest
+        SetSail
       </motion.h1>
 
       {/* --- First 4 rows --- */}
       <div className="space-y-4 md:space-y-6">
         <Row colsClass="grid-cols-1 md:[grid-template-columns:auto_1fr]">
           <ImageCard
-            src="/images/projectImages/solarConquest/Game Setup.png"
+            src="/images/projectImages/setSail/empty OCD.png"
             height="25rem"
             width="40rem"
             caption="Game Setup"
@@ -46,30 +61,34 @@ export default function SetSailAnalysis() {
               <Card title="Context">
                 <ul className="list-disc pl-5 space-y-1">
                   <li>
-                    Class Project, <em>Foundations of Game Design</em>
+                    Class Project, <em>Introduction to Software Engineering</em>
                   </li>
-                  <li>March 2025 - April 2025</li>
+                  <li>May 2025 - August 2025</li>
                 </ul>
                 {/* Skills tags */}
                 <div className="not-prose mt-3 flex flex-wrap gap-2 md:gap-3">
                   <span className="bg-white/20 px-3 md:px-4 py-1 md:py-2 rounded-full text-xs md:text-sm lg:text-base">
-                    Economy Design
+                    OOP
                   </span>
                   <span className="bg-white/20 px-3 md:px-4 py-1 md:py-2 rounded-full text-xs md:text-sm lg:text-base">
-                    Systems Design
+                    SDLC
                   </span>
                   <span className="bg-white/20 px-3 md:px-4 py-1 md:py-2 rounded-full text-xs md:text-sm lg:text-base">
-                    Tabletop Simulator
+                    C++
+                  </span>
+                  <span className="bg-white/20 px-3 md:px-4 py-1 md:py-2 rounded-full text-xs md:text-sm lg:text-base">
+                    Git
                   </span>
                   {/* add more tags as needed */}
                 </div>
               </Card>
               <Card title="Team">
                 <ul className="list-disc pl-5 space-y-1">
-                  <li>Ekam: Designer, Developer </li>
-                  <li>Kaleb: Visual Artist, Developer</li>
-                  <li>Baseer: Visual Artist</li>
-                  <li>Travis: Visual Artist</li>
+                  <li>Ekam: </li>
+                  <li>Ravdeep: </li>
+                  <li>Yasna: </li>
+                  <li>Enya: </li>
+                  <li>Marco: </li>
                 </ul>
               </Card>
             </div>
@@ -118,7 +137,7 @@ export default function SetSailAnalysis() {
       </Row>
 
       {/* Iteration block 1 */}
-      <ArrowRow src="/images/projectImages/solarConquest/Arrow.png" size={100} gap={180} />   
+      <ArrowRow size={100} gap={180} />   
       <div className="space-y-4 md:space-y-6">
         <Row cols={1}>
           <Card title="Initial Economy Design">
@@ -149,7 +168,7 @@ export default function SetSailAnalysis() {
       </div>
 
       {/* Iteration block 2 */}
-      <ArrowRow src="/images/projectImages/solarConquest/Arrow.png" size={100} gap={180} />
+      <ArrowRow size={100} gap={180} />
       <div className="space-y-4 md:space-y-6">
         <Row cols={1}>
           <Card title="Key Changes to Economy">
@@ -193,7 +212,7 @@ export default function SetSailAnalysis() {
       </div>
 
       {/* Final iteration */}
-      <ArrowRow src="/images/projectImages/solarConquest/Arrow.png" size={100} gap={180} />
+      <ArrowRow size={100} gap={180} />
       <div className="space-y-4 md:space-y-6">
         <Row cols={1}>
           <Card title="Final Economy Design">
@@ -236,7 +255,7 @@ export default function SetSailAnalysis() {
         </Row>
       </div>
 
-      <ArrowRow src="/images/projectImages/solarConquest/Arrow.png" size={100} gap={180} />
+      <ArrowRow size={100} gap={180} />
       <div className="space-y-4 md:space-y-6">
         <Row cols={1}>
           <Card title="Takeaways">

@@ -8,7 +8,7 @@ export default function Dished() {
         title="dishedUp"
         description="dishedUp is a gamified cooking app concept for novice cooks that turns recipes into points, levels, and challenges to make learning to cook fun. I also built a responsive showcase website for it using Vite and Tailwind CSS."
         image="./images/projectImages/dishedUp/cover image.png"
-        tags={["React", "Tailwind", "Figma", "ProtoPie"]}
+        tags={["Vite", "Tailwind", "Figma", "ProtoPie"]}
         ctaTo="/analyses/dished-up"
         buttonText="Analysis"
         buttonColor="bg-[#db0096] hover:bg-[#EC8DFF]"

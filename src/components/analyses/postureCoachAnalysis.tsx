@@ -2,11 +2,26 @@ import { motion } from "framer-motion";
 
 import {
   Row,
-  Card as Card,
+  Card as BaseCard,
   ImageCard,
-  ArrowRow,
+  ArrowRow as BaseArrowRow,
   fadeIn,
-} from "./analysisCommon";
+  VideoCard,
+} from "../analyses/analysisCommon";
+
+// local wrapper that sets the border color for this page
+const Card: React.FC<
+  Omit<React.ComponentProps<typeof BaseCard>, "borderColorClass">
+> = (props) => (
+  <BaseCard borderColorClass="!border-[]" {...props} />
+);
+
+// local wrapper that sets the src img for the arrow row
+const ArrowRow: React.FC<
+  Omit<React.ComponentProps<typeof BaseArrowRow>, "src">
+> = (props) => (
+  <BaseArrowRow src="/images/projectImages/postureCoach/Arrow.png" {...props} />
+);
 
 /* ---------- Page ---------- */
 
@@ -18,22 +33,26 @@ export default function PostureCoachAnalysis() {
         className="text-3xl md:text-5xl lg:text-6xl font-medium tracking-tight mb-8 md:mb-10"
         {...fadeIn}
       >
-        Solar Conquest
+        Posture Coach
       </motion.h1>
 
       {/* --- First 4 rows --- */}
       <div className="space-y-4 md:space-y-6">
         <Row colsClass="grid-cols-1 md:[grid-template-columns:auto_1fr]">
           <ImageCard
-            src="/images/projectImages/solarConquest/Game Setup.png"
-            height="25rem"
+            src="/images/projectImages/postureCoach/cover image.png"
+            height="30rem"
             width="40rem"
-            caption="Game Setup"
-            alt="Game setup for Solar Conquest"
+            caption="Training Data Examples"
+            alt="Examples of posture classifications used to train Posture Coach"
           />
           <Card>
             <p>
-              Solar Conquest is a space-themed board game where players claim planets, produce resources, and plan trade routes to outmaneuver rivals. Build and upgrade ships, troops, and planetary defense. Smart expansion, savvy deals, and well-timed strikes decide the winner.
+              Posture Coach is a lightweight computer-vision project that fine-tunes a
+              small YOLO classifier to recognize three webcam posture states—
+              “looks good,” “sit up straight,” and “straighten head”—and provide
+              fast, practical feedback for students and desk workers using typical
+              laptop setups.
             </p>
           </Card>
         </Row>
@@ -46,30 +65,31 @@ export default function PostureCoachAnalysis() {
               <Card title="Context">
                 <ul className="list-disc pl-5 space-y-1">
                   <li>
-                    Class Project, <em>Foundations of Game Design</em>
+                    Class Project, <em>Exploring Artificial Intelligence</em>
                   </li>
-                  <li>March 2025 - April 2025</li>
+                  <li>October 2025 - November 2025</li>
                 </ul>
                 {/* Skills tags */}
                 <div className="not-prose mt-3 flex flex-wrap gap-2 md:gap-3">
                   <span className="bg-white/20 px-3 md:px-4 py-1 md:py-2 rounded-full text-xs md:text-sm lg:text-base">
-                    Economy Design
+                    Computer Vision
                   </span>
                   <span className="bg-white/20 px-3 md:px-4 py-1 md:py-2 rounded-full text-xs md:text-sm lg:text-base">
-                    Systems Design
+                    Classification
                   </span>
                   <span className="bg-white/20 px-3 md:px-4 py-1 md:py-2 rounded-full text-xs md:text-sm lg:text-base">
-                    Tabletop Simulator
+                    Python
+                  </span>
+                  <span className="bg-white/20 px-3 md:px-4 py-1 md:py-2 rounded-full text-xs md:text-sm lg:text-base">
+                    Git
                   </span>
                   {/* add more tags as needed */}
                 </div>
               </Card>
               <Card title="Team">
                 <ul className="list-disc pl-5 space-y-1">
-                  <li>Ekam: Designer, Developer </li>
-                  <li>Kaleb: Visual Artist, Developer</li>
-                  <li>Baseer: Visual Artist</li>
-                  <li>Travis: Visual Artist</li>
+                  <li>Ekam: Computer Vision Engineer, Evaluation & Analytics</li>
+                  <li>Kaleb: Data Engineer, Evaluation & Analytics</li>
                 </ul>
               </Card>
             </div>
@@ -77,9 +97,9 @@ export default function PostureCoachAnalysis() {
           {/* Column A: one tall card (regular or image) */}
           <div className="h-full">
             <ImageCard
-              src="/images/projectImages/solarConquest/Ships.png"
-              caption="Ship Pieces"
-              alt="Ship Pieces for Solar Conquest"
+              src="/images/projectImages/postureCoach/Test Data.png"
+              caption="Test Data We Collected"
+              alt="Test Data for Posture Coach"
               className="h-full"
               height="100%"       // optional; Card/ImageCard already use h-full
             />
@@ -88,7 +108,7 @@ export default function PostureCoachAnalysis() {
 
         <Row cols={1}>
           <Card title="Objective">
-            <p>We wanted to create a board game that emphasizes player agency in both cooperation and competition, is built on a clear, robust economy, and focuses on balancing chance vs strategy so randomness adds tension without deciding outcomes.</p>
+            <p>We wanted to build a lightweight computer-vision “posture coach” that uses a standard webcam to detect common slouching patterns in real time and gently nudge students and desk workers toward healthier, more upright sitting habits.</p>
           </Card>
         </Row>
       </div>
@@ -98,7 +118,7 @@ export default function PostureCoachAnalysis() {
         className="mt-10 md:mt-14 mb-4 md:mb-6 text-2xl md:text-4xl font-medium tracking-tight"
         {...fadeIn}
       >
-        The Design
+        Training Process
       </motion.h2>
 
       {/* One row after H2 */}
@@ -112,13 +132,13 @@ export default function PostureCoachAnalysis() {
         />
         <Card title="Methodology">
           <p>
-            To enable player agency, I designed the game around four economic activities: resource accumulation, resource conversion, crafting, and trading. Each activity creates meaningful choices and tradeoffs that open multiple paths to progress, with trading linking cooperation and competition. Chance is present but limited, so strategy remains the primary driver of outcomes.
+            To achieve this, we built a computer vision pipeline in Python using a YOLO-based classifier in a supervised learning setup, fine-tuning it on three labeled posture classes. We curated and split our dataset into train/validation/test sets, tracked experiments and checkpoints, and iterated on hyperparameters to improve accuracy, precision/recall, and F1. Finally, we validated the model on a held-out test set in different environments, using Git to coordinate development.
           </p>
         </Card>
       </Row>
 
       {/* Iteration block 1 */}
-      <ArrowRow src="/images/projectImages/solarConquest/Arrow.png" size={100} gap={180} />   
+      <ArrowRow size={100} gap={180} />   
       <div className="space-y-4 md:space-y-6">
         <Row cols={1}>
           <Card title="Initial Economy Design">
@@ -149,7 +169,7 @@ export default function PostureCoachAnalysis() {
       </div>
 
       {/* Iteration block 2 */}
-      <ArrowRow src="/images/projectImages/solarConquest/Arrow.png" size={100} gap={180} />
+      <ArrowRow size={100} gap={180} />
       <div className="space-y-4 md:space-y-6">
         <Row cols={1}>
           <Card title="Key Changes to Economy">
@@ -193,7 +213,7 @@ export default function PostureCoachAnalysis() {
       </div>
 
       {/* Final iteration */}
-      <ArrowRow src="/images/projectImages/solarConquest/Arrow.png" size={100} gap={180} />
+      <ArrowRow size={100} gap={180} />
       <div className="space-y-4 md:space-y-6">
         <Row cols={1}>
           <Card title="Final Economy Design">
@@ -236,7 +256,7 @@ export default function PostureCoachAnalysis() {
         </Row>
       </div>
 
-      <ArrowRow src="/images/projectImages/solarConquest/Arrow.png" size={100} gap={180} />
+      <ArrowRow size={100} gap={180} />
       <div className="space-y-4 md:space-y-6">
         <Row cols={1}>
           <Card title="Takeaways">

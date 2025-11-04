@@ -2,11 +2,26 @@ import { motion } from "framer-motion";
 
 import {
   Row,
-  Card as Card,
+  Card as BaseCard,
   ImageCard,
-  ArrowRow,
+  ArrowRow as BaseArrowRow,
   fadeIn,
-} from "./analysisCommon";
+  VideoCard,
+} from "../analyses/analysisCommon";
+
+// local wrapper that sets the border color for this page
+const Card: React.FC<
+  Omit<React.ComponentProps<typeof BaseCard>, "borderColorClass">
+> = (props) => (
+  <BaseCard borderColorClass="!border-[#E98800]" {...props} />
+);
+
+// local wrapper that sets the src img for the arrow row
+const ArrowRow: React.FC<
+  Omit<React.ComponentProps<typeof BaseArrowRow>, "src">
+> = (props) => (
+  <BaseArrowRow src="/images/projectImages/dishedUp/Arrow.png" {...props} />
+);
 
 /* ---------- Page ---------- */
 
@@ -18,22 +33,22 @@ export default function DishedUpAnalysis() {
         className="text-3xl md:text-5xl lg:text-6xl font-medium tracking-tight mb-8 md:mb-10"
         {...fadeIn}
       >
-        Solar Conquest
+        dishedUp
       </motion.h1>
 
       {/* --- First 4 rows --- */}
       <div className="space-y-4 md:space-y-6">
         <Row colsClass="grid-cols-1 md:[grid-template-columns:auto_1fr]">
           <ImageCard
-            src="/images/projectImages/solarConquest/Game Setup.png"
+            src="/images/projectImages/dishedUp/cover image.png"
             height="25rem"
             width="40rem"
-            caption="Game Setup"
-            alt="Game setup for Solar Conquest"
+            caption="Various Screens from the dishedUp App"
+            alt="Various Screens from the dishedUp App"
           />
           <Card>
             <p>
-              Solar Conquest is a space-themed board game where players claim planets, produce resources, and plan trade routes to outmaneuver rivals. Build and upgrade ships, troops, and planetary defense. Smart expansion, savvy deals, and well-timed strikes decide the winner.
+              dishedUp is a gamified cooking app concept for novice cooks that turns recipes into points, levels, and challenges to make learning to cook fun. I also built a responsive showcase website for it using Vite and Tailwind CSS.
             </p>
           </Card>
         </Row>
@@ -46,30 +61,32 @@ export default function DishedUpAnalysis() {
               <Card title="Context">
                 <ul className="list-disc pl-5 space-y-1">
                   <li>
-                    Class Project, <em>Foundations of Game Design</em>
+                    Class Project, <em>Interface Design</em>
                   </li>
                   <li>March 2025 - April 2025</li>
                 </ul>
                 {/* Skills tags */}
                 <div className="not-prose mt-3 flex flex-wrap gap-2 md:gap-3">
                   <span className="bg-white/20 px-3 md:px-4 py-1 md:py-2 rounded-full text-xs md:text-sm lg:text-base">
-                    Economy Design
+                    Vite
                   </span>
                   <span className="bg-white/20 px-3 md:px-4 py-1 md:py-2 rounded-full text-xs md:text-sm lg:text-base">
-                    Systems Design
+                    Tailwind
                   </span>
                   <span className="bg-white/20 px-3 md:px-4 py-1 md:py-2 rounded-full text-xs md:text-sm lg:text-base">
-                    Tabletop Simulator
+                    Figma
+                  </span>
+                  <span className="bg-white/20 px-3 md:px-4 py-1 md:py-2 rounded-full text-xs md:text-sm lg:text-base">
+                    ProtoPie
                   </span>
                   {/* add more tags as needed */}
                 </div>
               </Card>
               <Card title="Team">
                 <ul className="list-disc pl-5 space-y-1">
-                  <li>Ekam: Designer, Developer </li>
-                  <li>Kaleb: Visual Artist, Developer</li>
-                  <li>Baseer: Visual Artist</li>
-                  <li>Travis: Visual Artist</li>
+                  <li>Ekam: </li>
+                  <li>Sabrina: </li>
+                  <li>Khushy: </li>
                 </ul>
               </Card>
             </div>
@@ -118,7 +135,7 @@ export default function DishedUpAnalysis() {
       </Row>
 
       {/* Iteration block 1 */}
-      <ArrowRow src="/images/projectImages/solarConquest/Arrow.png" size={100} gap={180} />   
+      <ArrowRow size={100} gap={180} />   
       <div className="space-y-4 md:space-y-6">
         <Row cols={1}>
           <Card title="Initial Economy Design">
@@ -149,7 +166,7 @@ export default function DishedUpAnalysis() {
       </div>
 
       {/* Iteration block 2 */}
-      <ArrowRow src="/images/projectImages/solarConquest/Arrow.png" size={100} gap={180} />
+      <ArrowRow size={100} gap={180} />
       <div className="space-y-4 md:space-y-6">
         <Row cols={1}>
           <Card title="Key Changes to Economy">
@@ -193,7 +210,7 @@ export default function DishedUpAnalysis() {
       </div>
 
       {/* Final iteration */}
-      <ArrowRow src="/images/projectImages/solarConquest/Arrow.png" size={100} gap={180} />
+      <ArrowRow size={100} gap={180} />
       <div className="space-y-4 md:space-y-6">
         <Row cols={1}>
           <Card title="Final Economy Design">
@@ -236,7 +253,7 @@ export default function DishedUpAnalysis() {
         </Row>
       </div>
 
-      <ArrowRow src="/images/projectImages/solarConquest/Arrow.png" size={100} gap={180} />
+      <ArrowRow size={100} gap={180} />
       <div className="space-y-4 md:space-y-6">
         <Row cols={1}>
           <Card title="Takeaways">
