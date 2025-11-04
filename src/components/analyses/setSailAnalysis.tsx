@@ -48,7 +48,7 @@ export default function SetSailAnalysis() {
           />
           <Card>
             <p>
-              Solar Conquest is a space-themed board game where players claim planets, produce resources, and plan trade routes to outmaneuver rivals. Build and upgrade ships, troops, and planetary defense. Smart expansion, savvy deals, and well-timed strikes decide the winner.
+              SetSail is a terminal-based C++ reservation system for Coastal Ferry Corp that lets a single ferry clerk create sailings and vessels, manage vehicle reservations with capacity limits, and view sailing reports, with all data persisted via custom binary file I/O.
             </p>
           </Card>
         </Row>
@@ -84,11 +84,11 @@ export default function SetSailAnalysis() {
               </Card>
               <Card title="Team">
                 <ul className="list-disc pl-5 space-y-1">
-                  <li>Ekam: </li>
-                  <li>Ravdeep: </li>
-                  <li>Yasna: </li>
-                  <li>Enya: </li>
-                  <li>Marco: </li>
+                  <li>Ekam: Systems Designer, C++ Backend Developer</li>
+                  <li>Ravdeep: C++ Backend Developer</li>
+                  <li>Yasna: Data Designer</li>
+                  <li>Enya: Testing & QA</li>
+                  <li>Marco: Project Coordinator</li>
                 </ul>
               </Card>
             </div>
@@ -106,8 +106,27 @@ export default function SetSailAnalysis() {
         </Row>
 
         <Row cols={1}>
+          <Card title="Links and Resources">
+            <ul className="list-disc pl-5 space-y-1">
+              <li>
+                We used a GitHub{" "}
+                <a
+                  href="https://github.com/ekam-n/SetSail"
+                  className="underline underline-offset-2"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  repository
+                </a>{" "}
+                to manage our code and track changes.
+              </li>
+            </ul>
+          </Card>
+        </Row>
+
+        <Row cols={1}>
           <Card title="Objective">
-            <p>We wanted to create a board game that emphasizes player agency in both cooperation and competition, is built on a clear, robust economy, and focuses on balancing chance vs strategy so randomness adds tension without deciding outcomes.</p>
+            <p>We wanted to build a simple, reliable desktop reservation system that lets a single ferry clerk create sailings, manage vehicle bookings with capacity limits, and quickly look up trip information without needing an internet connection.</p>
           </Card>
         </Row>
       </div>
@@ -117,7 +136,7 @@ export default function SetSailAnalysis() {
         className="mt-10 md:mt-14 mb-4 md:mb-6 text-2xl md:text-4xl font-medium tracking-tight"
         {...fadeIn}
       >
-        The Design
+        Development Process
       </motion.h2>
 
       {/* One row after H2 */}
@@ -131,7 +150,8 @@ export default function SetSailAnalysis() {
         />
         <Card title="Methodology">
           <p>
-            To enable player agency, I designed the game around four economic activities: resource accumulation, resource conversion, crafting, and trading. Each activity creates meaningful choices and tradeoffs that open multiple paths to progress, with trading linking cooperation and competition. Chance is present but limited, so strategy remains the primary driver of outcomes.
+            We approached SetSail as a full software development lifecycle project, modeling sailings, vessels, and reservations in C++ with object-oriented design and wrapping them in a CLI application for clerks. I implemented binary file I/O for data persistence and state management, plus input validation and error handling to keep the system robust. As a team, we used Git for version control to coordinate work and integrate features cleanly.
+
           </p>
         </Card>
       </Row>

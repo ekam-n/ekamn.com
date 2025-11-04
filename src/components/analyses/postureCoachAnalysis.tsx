@@ -190,7 +190,7 @@ export default function PostureCoachAnalysis() {
       <ArrowRow size={100} gap={180} />   
       <div className="space-y-4 md:space-y-6">
         <Row cols={1}>
-          <Card title="First Training Iteration">
+          <Card title="Initial Training Iteration">
             <ul className="list-disc pl-5 space-y-4">
                   <li>I started by fine-tuning a YOLO-based classifier in a supervised setup with mostly default hyperparameters, using 5 epochs with patience 5, batch 64, and 224×224 inputs to balance overfitting, VRAM use, and head–neck detail.</li>
                   <li>I evaluated this first model on the validation split and multiple test splits (original online test set, my own test images, and a combined split), tracking accuracy and per-class precision/recall/F1.</li>
@@ -221,7 +221,7 @@ export default function PostureCoachAnalysis() {
       <ArrowRow size={100} gap={180} />
       <div className="space-y-4 md:space-y-6">
         <Row cols={1}>
-          <Card title="Hyperparameter Tuning Iteration 1">
+          <Card title="First Hyperparameter Tuning Iteration">
             <ul className="list-disc pl-5 space-y-4">
                   <li>I switched to an explicit AdamW optimizer so the model would respect my chosen learning rate instead of the auto-optimizer’s default, keeping all other hyperparameters the same.</li>
                   <li>We accepted slightly lower validation performance in exchange for higher test accuracy (~0.88) and stronger F1 on key classes, and treated this setup as my new baseline.</li>
@@ -265,7 +265,7 @@ export default function PostureCoachAnalysis() {
       <ArrowRow size={100} gap={180} />
       <div className="space-y-4 md:space-y-6">
         <Row cols={1}>
-          <Card title="Hyperparameter Tuning Iteration 2">
+          <Card title="Second Hyperparameter Tuning Iteration">
             <ul className="list-disc pl-5 space-y-4">
                   <li>I enabled cosine learning-rate decay with a 1-epoch warmup on top of the AdamW baseline, based on research that this schedule helps models converge better in short training runs.</li>
                   <li>We achieved my best test performance with this setup (~93% accuracy with strong precision, recall, and F1 across all classes), and was satisfied enough with these results to stop further tuning.</li>
