@@ -41,8 +41,13 @@ export default function PostureCoachAnalysis() {
         <Row colsClass="grid-cols-1 md:[grid-template-columns:auto_1fr]">
           <ImageCard
             src="/images/projectImages/postureCoach/cover image.png"
-            height="30rem"
-            width="40rem"
+            // height="30rem"
+            // width="40rem"
+            className="
+              w-full              
+              md:min-w-[20rem] lg:min-w-[40rem]       
+              aspect-[4/3]                  
+            "
             caption="Training Data Examples"
             alt="Examples of posture classifications used to train Posture Coach"
           />
@@ -216,7 +221,7 @@ export default function PostureCoachAnalysis() {
       <ArrowRow size={100} gap={180} />
       <div className="space-y-4 md:space-y-6">
         <Row cols={1}>
-          <Card title="Training Improvement 1">
+          <Card title="Hyperparameter Tuning Iteration 1">
             <ul className="list-disc pl-5 space-y-4">
                   <li>I switched to an explicit AdamW optimizer so the model would respect my chosen learning rate instead of the auto-optimizer’s default, keeping all other hyperparameters the same.</li>
                   <li>We accepted slightly lower validation performance in exchange for higher test accuracy (~0.88) and stronger F1 on key classes, and treated this setup as my new baseline.</li>
@@ -260,7 +265,7 @@ export default function PostureCoachAnalysis() {
       <ArrowRow size={100} gap={180} />
       <div className="space-y-4 md:space-y-6">
         <Row cols={1}>
-          <Card title="Training Improvement 2">
+          <Card title="Hyperparameter Tuning Iteration 2">
             <ul className="list-disc pl-5 space-y-4">
                   <li>I enabled cosine learning-rate decay with a 1-epoch warmup on top of the AdamW baseline, based on research that this schedule helps models converge better in short training runs.</li>
                   <li>We achieved my best test performance with this setup (~93% accuracy with strong precision, recall, and F1 across all classes), and was satisfied enough with these results to stop further tuning.</li>
