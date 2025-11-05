@@ -48,7 +48,7 @@ export default function DishedUpAnalysis() {
           />
           <Card>
             <p>
-              dishedUp is a gamified cooking app concept for novice cooks that turns recipes into points, levels, and challenges to make learning to cook fun. I also built a responsive showcase website for it using Vite and Tailwind CSS.
+              dishedUp is a gamified cooking app concept for novice cooks that turns recipes into points, levels, and challenges to make learning to cook fun. We used Figma for design and ProtoPie to make the app completely accessible for use through voice commands. I also built a responsive showcase website for it using Vite and Tailwind CSS.
             </p>
           </Card>
         </Row>
@@ -68,25 +68,25 @@ export default function DishedUpAnalysis() {
                 {/* Skills tags */}
                 <div className="not-prose mt-3 flex flex-wrap gap-2 md:gap-3">
                   <span className="bg-white/20 px-3 md:px-4 py-1 md:py-2 rounded-full text-xs md:text-sm lg:text-base">
-                    Vite
-                  </span>
-                  <span className="bg-white/20 px-3 md:px-4 py-1 md:py-2 rounded-full text-xs md:text-sm lg:text-base">
-                    Tailwind
-                  </span>
-                  <span className="bg-white/20 px-3 md:px-4 py-1 md:py-2 rounded-full text-xs md:text-sm lg:text-base">
                     Figma
                   </span>
                   <span className="bg-white/20 px-3 md:px-4 py-1 md:py-2 rounded-full text-xs md:text-sm lg:text-base">
                     ProtoPie
+                  </span>
+                  <span className="bg-white/20 px-3 md:px-4 py-1 md:py-2 rounded-full text-xs md:text-sm lg:text-base">
+                    Vite
+                  </span>
+                  <span className="bg-white/20 px-3 md:px-4 py-1 md:py-2 rounded-full text-xs md:text-sm lg:text-base">
+                    Tailwind
                   </span>
                   {/* add more tags as needed */}
                 </div>
               </Card>
               <Card title="Team">
                 <ul className="list-disc pl-5 space-y-1">
-                  <li>Ekam: </li>
-                  <li>Sabrina: </li>
-                  <li>Khushy: </li>
+                  <li>Ekam: UI Designer, Backend Developer, Web Developer</li>
+                  <li>Sabrina: UI Designer, User Researcher</li>
+                  <li>Khushy: UI Designer, UX Designer</li>
                 </ul>
               </Card>
             </div>
@@ -104,8 +104,48 @@ export default function DishedUpAnalysis() {
         </Row>
 
         <Row cols={1}>
+          <Card title="Links and Resources">
+            <ul className="list-disc pl-5 space-y-1">
+              <li>We created the {" "}
+                <a
+                  href="https://cloud.protopie.io/p/29618e4fe3b5a6107042e269"
+                  className="underline underline-offset-2"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  prototype
+                </a>{" "}
+                and made it available to try using ProtoPie's cloud sharing feature.</li>
+              <li>I developed and deployed the dishedUp showcase {" "}
+                <a
+                  href="https://dishedup.netlify.app/"
+                  className="underline underline-offset-2"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  website
+                </a>{" "}
+                using Vite and Tailwind CSS, hosted by Netlify.</li>
+              <li>
+                I used a GitHub{" "}
+                <a
+                  href="https://github.com/ekam-n/dishedUp-website"
+                  className="underline underline-offset-2"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  repository
+                </a>{" "}
+                to manage the website code and track changes.
+              </li>
+            </ul>
+          </Card>
+        </Row>
+
+        <Row cols={1}>
           <Card title="Objective">
-            <p>We wanted to create a board game that emphasizes player agency in both cooperation and competition, is built on a clear, robust economy, and focuses on balancing chance vs strategy so randomness adds tension without deciding outcomes.</p>
+            <p>We wanted to design a gamified, voice-controlled cooking app that helps novice and health-focused home cooks build confidence and consistency by turning everyday recipes into hands-free challenges, points, and long-term goals, and to showcase the concept on a custom Vite + Tailwind website.
+            </p>
           </Card>
         </Row>
       </div>
@@ -115,7 +155,7 @@ export default function DishedUpAnalysis() {
         className="mt-10 md:mt-14 mb-4 md:mb-6 text-2xl md:text-4xl font-medium tracking-tight"
         {...fadeIn}
       >
-        The Design
+        Design Process
       </motion.h2>
 
       {/* One row after H2 */}
@@ -129,7 +169,7 @@ export default function DishedUpAnalysis() {
         />
         <Card title="Methodology">
           <p>
-            To enable player agency, I designed the game around four economic activities: resource accumulation, resource conversion, crafting, and trading. Each activity creates meaningful choices and tradeoffs that open multiple paths to progress, with trading linking cooperation and competition. Chance is present but limited, so strategy remains the primary driver of outcomes.
+            To achieve this, we used a UX-driven, iterative design process: we built personas and user flows for novice and fitness-focused cooks, then designed both a gamification system (points, levels, badges, challenges) and a voice-first interaction model so recipes can be followed hands-free. I created wireframes and high-fidelity UI mockups for key voice-accessible screens, then implemented a responsive multi-page website with Vite and Tailwind CSS, hosting it on Netlify to showcase the concept and core interactions.
           </p>
         </Card>
       </Row>
