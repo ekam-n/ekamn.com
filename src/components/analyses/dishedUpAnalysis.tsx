@@ -138,6 +138,15 @@ export default function DishedUpAnalysis() {
                 </a>{" "}
                 to manage the website code and track changes.
               </li>
+              <li>Our project is featured in SFU SIAT's Spring 2025 {" "}<a
+                  href="https://www.sfu.ca/siat/showcase/spring-2025-project-showcase/iat-334-dishedup.html"
+                  className="underline underline-offset-2"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Showcase.
+                </a>{" "}
+              </li>
             </ul>
           </Card>
         </Row>
@@ -155,7 +164,7 @@ export default function DishedUpAnalysis() {
         className="mt-10 md:mt-14 mb-4 md:mb-6 text-2xl md:text-4xl font-medium tracking-tight"
         {...fadeIn}
       >
-        Design Process
+        Design & Development Process
       </motion.h2>
 
       {/* One row after H2 */}
@@ -178,12 +187,12 @@ export default function DishedUpAnalysis() {
       <ArrowRow size={100} gap={180} />   
       <div className="space-y-4 md:space-y-6">
         <Row cols={1}>
-          <Card title="Initial Economy Design">
+          <Card title="Initial Interface Design">
             <ul className="list-disc pl-5 space-y-4">
-                  <li>I allocated resources to shape currency flow: players spawn on a corner planet, which each yield one resource with moons amplifying it, edge dwarf planets supply the two adjacent resources, and the center provides all, encouraging trading/bartering and balancing chance and strategy.</li>
-                  <li>I prototyped transitive mechanics with tiered troop cards and planetary defense lasers, requiring multiple currencies to craft higher tiers.</li>
-                  <li>I introduced production levers and feedback loops: accelerators as investments to grow positive feedback and converters that transform one currency into another.</li>
-                  <li>I drafted the initial map with spawn locations and starting resources to test early pacing, route pressure, and trade opportunities.</li>
+                  <li>I helped define the core information architecture and user flows (sign up, home, quests, profile, leaderboard, lessons) around our three main systems: interactive cooking quests, personalized learning paths, and social/competitive features.</li>
+                  <li>We designed an onboarding flow that collects goals, skill level, allergies, and diet preferences to drive personalized lesson plans and progress tracking.</li>
+                  <li>The initial lesson interface used step-by-step, image-supported instructions with voice control (“Next”, “Go back”, “Hey Dish…”) to support hands-free cooking and reduce cognitive load for novice cooks.</li>
+                  <li>We introduced gamification patterns—levels, stars, points, quests, and leaderboards—to turn recipes into missions and provide clear progression and positive reinforcement.</li>
                 </ul>
           </Card>
         </Row>
@@ -209,10 +218,12 @@ export default function DishedUpAnalysis() {
       <ArrowRow size={100} gap={180} />
       <div className="space-y-4 md:space-y-6">
         <Row cols={1}>
-          <Card title="Key Changes to Economy">
+          <Card title="User Testing & Insights">
             <ul className="list-disc pl-5 space-y-4">
-                  <li>I planned planet placement more carefully to prevent any player from having an easier route to the best resources, keeping the map fair and trading meaningful.</li>
-                  <li>Through playtesting, we found that converters were too powerful, letting players build troops and lasers without visiting other planets, so I made them harder to get to avoid a single dominant strategy.</li>
+                  <li>Through think-aloud usability testing, we learned that users didn’t always understand when and where voice commands were available, so we needed clearer affordances and in-context guidance.</li>
+                  <li>Participants struggled to start the tutorial and read some icons (especially leaderboard and quests), revealing gaps in signifiers, labelling, and iconography.</li>
+                  <li>Users found blocks of recipe text overwhelming and wanted more structured steps and the ability to return home mid-lesson, pushing us to streamline content hierarchy and navigation controls.</li>
+                  <li>From this, our next-step recommendations focused on UX refinements: adding pop-up labels for available voice commands, making tutorial instructions more explicit, and improving “Hey Dish” responsiveness and navigation options.</li>
                 </ul>
           </Card>
         </Row>
@@ -253,10 +264,57 @@ export default function DishedUpAnalysis() {
       <ArrowRow size={100} gap={180} />
       <div className="space-y-4 md:space-y-6">
         <Row cols={1}>
-          <Card title="Final Economy Design">
+          <Card title="Final Interface & Prototype">
             <ul className="list-disc pl-5 space-y-4">
-                  <li>I finalized the board so each planet, moon, and dwarf planet gave all players fair starting access to resources, clear currency flow, and meaningful trading/bartering routes, preserving player agency from turn one.</li>
-                  <li>I balanced the cost/benefit of accelerators and converters to keep strategy ahead of chance, curb runaway positive feedback, and prevent any single dominant strategy so multiple paths to victory stay viable.</li>
+                  <li>I contributed to a high-fidelity prototype where lessons are structured as levels with growing difficulty, combining voice-first interaction, visual step cards, and fallback touch controls for robust accessibility.</li>
+                  <li>The onboarding, profile, quests, and leaderboard views were refined to align with our personas’ goals, supporting personalized learning paths and social/competitive engagement in a coherent visual language.</li>
+                  <li>We clarified global navigation: users can move between home, lessons, quests, profile, and leaderboard via both touch and voice, reinforcing a consistent mental model for app flow.</li>
+                  <li>Overall, the final prototype embodies a voice-enabled, gamified cooking experience that blends conversational guidance, progress tracking, and social features to keep novice cooks engaged over time.</li>
+                </ul>
+          </Card>
+        </Row>
+        <Row colsClass="grid-cols-1 md:grid-cols-2">
+          {/* Column B: stack two cards vertically (equal heights) */}
+          {/* Column A: one tall card (regular or image) */}
+          <div className="h-full">
+            <ImageCard
+              src="/images/projectImages/solarConquest/Final Game Board.png"
+              caption="Improved Game Board"
+              alt="Improved Game Board for Solar Conquest"
+              className="h-full"
+              height="100%"       // optional; Card/ImageCard already use h-full
+            />
+          </div>
+          <div className="h-full">
+            <div className="grid grid-cols-1 auto-rows-fr gap-4 h-full min-h-0">
+              <ImageCard
+              src="/images/projectImages/solarConquest/Planet With Converter.png"
+              caption="Planet With a Converter"
+              alt="A planet that has crafted a converter, in Solar Conquest"
+              className="h-full"
+              height="15rem"       // optional; Card/ImageCard already use h-full
+            />
+              <ImageCard
+              src="/images/projectImages/solarConquest/Planet With Accelerator.png"
+              caption="Planet With an Accelerator"
+              alt="A planet that has crafted an accelerator, in Solar Conquest"
+              className="h-full"
+              height="100%"       // optional; Card/ImageCard already use h-full
+            />
+            </div>
+          </div>
+        </Row>
+      </div>
+
+      {/* Final iteration */}
+      <ArrowRow size={100} gap={180} />
+      <div className="space-y-4 md:space-y-6">
+        <Row cols={1}>
+          <Card title="Custom Showcase Website">
+            <ul className="list-disc pl-5 space-y-4">
+                  <li>I implemented a responsive multi-page showcase site using Vite and Tailwind CSS to present the brand, core flows, and key screens of DishedUp in a portfolio-ready format.</li>
+                  <li>The site highlights UX artifacts (personas, user flows, wireframes, and final UI) and explains the interaction model and gamification strategy for recruiters and stakeholders.</li>
+                  <li>I deployed the site on Netlify under my custom domain, demonstrating practical frontend development, deployment, and product storytelling skills.</li>
                 </ul>
           </Card>
         </Row>
@@ -298,8 +356,8 @@ export default function DishedUpAnalysis() {
         <Row cols={1}>
           <Card title="Takeaways">
             <ul className="list-disc pl-5 space-y-4">
-                  <li>I learned how hard it is to balance a game economy: it took lots of playtesting and analysis to keep player agency high, chance vs strategy in equilibrium, and multiple viable paths to win.</li>
-                  <li>I found the early game a bit slow to teach; too many options and rules created onboarding friction. Next time I would tighten the core loop, simplify first-turn choices, and provide a clearer first-play rulebook and quick reference to speed pacing.</li>
+                  <li>I learned how to run a full UX cycle end-to-end—research, personas, flows, UI design, prototyping, and usability testing—and use feedback to refine a voice-first, gamified experience.</li>
+                  <li>I strengthened both my interaction design and frontend skills by designing for hands-free, voice-controlled workflows and then implementing a responsive multi-page showcase with Vite and Tailwind on my own domain.</li>
                 </ul>
           </Card>
         </Row>
