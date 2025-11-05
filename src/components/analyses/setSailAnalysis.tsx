@@ -160,12 +160,10 @@ export default function SetSailAnalysis() {
       <ArrowRow size={100} gap={180} />   
       <div className="space-y-4 md:space-y-6">
         <Row cols={1}>
-          <Card title="Initial Economy Design">
+          <Card title="Requirements Specifications">
             <ul className="list-disc pl-5 space-y-4">
-                  <li>I allocated resources to shape currency flow: players spawn on a corner planet, which each yield one resource with moons amplifying it, edge dwarf planets supply the two adjacent resources, and the center provides all, encouraging trading/bartering and balancing chance and strategy.</li>
-                  <li>I prototyped transitive mechanics with tiered troop cards and planetary defense lasers, requiring multiple currencies to craft higher tiers.</li>
-                  <li>I introduced production levers and feedback loops: accelerators as investments to grow positive feedback and converters that transform one currency into another.</li>
-                  <li>I drafted the initial map with spawn locations and starting resources to test early pacing, route pressure, and trade opportunities.</li>
+                  <li>I helped turn the client's needs into a formal requirements spec, defining the system overview, business objectives, macOS terminal environment, and constraints for a single-clerk ferry reservation system.</li>
+                  <li>We wrote and refined use case scenarios and UI/operations sections that walk through how clerks create vessels, schedule sailings, manage reservations, and run reports in the CLI.</li>
                 </ul>
           </Card>
         </Row>
@@ -188,13 +186,90 @@ export default function SetSailAnalysis() {
       </div>
 
       {/* Iteration block 2 */}
+      <ArrowRow size={100} gap={180} />   
+      <div className="space-y-4 md:space-y-6">
+        <Row cols={1}>
+          <Card title="User Manual">
+            <ul className="list-disc pl-5 space-y-4">
+                  <li>I contributed to the retained data model, state diagrams, and performance/acceptance criteria so the data structures and workflows matched real capacity limits and success metrics like reduced wait times.</li>
+                  <li>I co-authored the user manual, translating the spec into step-by-step installation, startup, and menu navigation instructions plus concrete scenarios that non-technical ferry clerks can follow.</li>
+                </ul>
+          </Card>
+        </Row>
+        <Row cols={2}>
+          <ImageCard
+            src="/images/projectImages/solarConquest/Annotated Initial Board.png"
+                caption="Initial Game Board"
+                alt="The first game board iteration for Solar Conquest, with one of the spawn locations indicated"
+                className="h-full"
+                height="20rem" 
+          />
+          <ImageCard
+            src="/images/projectImages/solarConquest/Various Initial Game Cards.png"
+                caption="Various Initial Game Cards"
+                alt="Inital game card iterations for troops, a converter item, and a resource for Solar Conquest"
+                className="h-full"
+                height="20rem" 
+          />
+        </Row>
+      </div>
+
+      {/* Iteration block 3 */}
       <ArrowRow size={100} gap={180} />
       <div className="space-y-4 md:space-y-6">
         <Row cols={1}>
-          <Card title="Key Changes to Economy">
+          <Card title="Architectural Design">
             <ul className="list-disc pl-5 space-y-4">
-                  <li>I planned planet placement more carefully to prevent any player from having an easier route to the best resources, keeping the map fair and trading meaningful.</li>
-                  <li>Through playtesting, we found that converters were too powerful, letting players build troops and lasers without visiting other planets, so I made them harder to get to avoid a single dominant strategy.</li>
+                  <li>I designed the core OOP model for SetSail, defining Vessel, Sailing, Vehicle, and Reservation classes plus their responsibilities and relationships so each principal object owned its own data and scenario logic.</li>
+                  <li>I chose a roll-up design for vehicles (one unified Vehicle class instead of a SpecialVehicle subclass), trading a small storage cost for simpler class hierarchies, cleaner validation, and uniform binary file I/O.</li>
+                  <li>I specified the public interfaces and exported functions for each module (e.g., Vehicle, Vessel, Sailing, Reservation and their *_io counterparts), separating domain logic from raw data access to support encapsulation and black-box testing.</li>
+                  <li>I helped define the startup/shutdown sequence and raw binary file access strategy so each class initializes, opens, and closes its own data store, while main and the UI stay focused on orchestration and CLI interaction.</li>
+                </ul>
+          </Card>
+        </Row>
+        <Row colsClass="grid-cols-1 md:grid-cols-2">
+          {/* Column B: stack two cards vertically (equal heights) */}
+          {/* Column A: one tall card (regular or image) */}
+          <div className="h-full">
+            <ImageCard
+              src="/images/projectImages/solarConquest/Improved Game Board.png"
+              caption="Improved Game Board"
+              alt="Improved Game Board for Solar Conquest"
+              className="h-full"
+              height="100%"       // optional; Card/ImageCard already use h-full
+            />
+          </div>
+          <div className="h-full">
+            <div className="grid grid-cols-1 auto-rows-fr gap-4 h-full min-h-0">
+              <ImageCard
+              src="/images/projectImages/solarConquest/Improved Resource Cards.png"
+              caption="Improved Resource Cards"
+              alt="Improved Resource Cards for Solar Conquest"
+              className="h-full"
+              height="15rem"       // optional; Card/ImageCard already use h-full
+            />
+              <ImageCard
+              src="/images/projectImages/solarConquest/Improved Troop Cards.png"
+              caption="Improved Resource Cards"
+              alt="Improved Resource Cards for Solar Conquest"
+              className="h-full"
+              height="100%"       // optional; Card/ImageCard already use h-full
+            />
+            </div>
+          </div>
+        </Row>
+      </div>
+
+      {/* Iteration block 4 */}
+      <ArrowRow size={100} gap={180} />
+      <div className="space-y-4 md:space-y-6">
+        <Row cols={1}>
+          <Card title="Detailed Design">
+            <ul className="list-disc pl-5 space-y-4">
+                  <li>We translated the architectural design into concrete modules and source files, breaking SetSail into separate C++ units for vessels, sailings, reservations, vehicles, and their corresponding *_io modules, with the UI module handling all user interaction.</li>
+                  <li>We documented the detailed file layout (headers, implementations, and IO layers) so that each class’s responsibilities, preconditions, and function contracts are clear in the .h files and supported by implementation comments in the .cpp files.</li>
+                  <li>I designed and implemented unit tests for the Vehicle module to verify initialization, vehicle creation, and license validation logic using assert-based checks.</li>
+                  <li>I built integration-style tests for the VehicleIO module to confirm that special vehicles can be written to and read from binary files correctly, including negative checks for non-existent records, and verified all tests passed via console output.</li>
                 </ul>
           </Card>
         </Row>
@@ -235,10 +310,11 @@ export default function SetSailAnalysis() {
       <ArrowRow size={100} gap={180} />
       <div className="space-y-4 md:space-y-6">
         <Row cols={1}>
-          <Card title="Final Economy Design">
+          <Card title="Integration Report">
             <ul className="list-disc pl-5 space-y-4">
-                  <li>I finalized the board so each planet, moon, and dwarf planet gave all players fair starting access to resources, clear currency flow, and meaningful trading/bartering routes, preserving player agency from turn one.</li>
-                  <li>I balanced the cost/benefit of accelerators and converters to keep strategy ahead of chance, curb runaway positive feedback, and prevent any single dominant strategy so multiple paths to victory stay viable.</li>
+                  <li>We discussed how we approached integration: with a bottom-up / sandwich approach, wiring up VesselIO, SailingIO, and ReservationIO first, then business logic and the UI. </li>
+                  <li>I debugged integration bugs in capacity checks and file I/O, strengthening preconditions, error handling, and file state management.</li>
+                  <li>We ran end-to-end functional, stress, and performance tests using Google Test, system drivers, and manual UI walkthroughs</li>
                 </ul>
           </Card>
         </Row>
@@ -280,8 +356,10 @@ export default function SetSailAnalysis() {
         <Row cols={1}>
           <Card title="Takeaways">
             <ul className="list-disc pl-5 space-y-4">
-                  <li>I learned how hard it is to balance a game economy: it took lots of playtesting and analysis to keep player agency high, chance vs strategy in equilibrium, and multiple viable paths to win.</li>
-                  <li>I found the early game a bit slow to teach; too many options and rules created onboarding friction. Next time I would tighten the core loop, simplify first-turn choices, and provide a clearer first-play rulebook and quick reference to speed pacing.</li>
+                  <li>I learned how to take a project through a full software development lifecycle—from requirements and use cases, to OOP design, detailed modules, implementation, testing, and integration—rather than just “writing code.”</li>
+                  <li>I deepened my C++ and OOP skills by designing classes, relationships, and interfaces that had to stay consistent across multiple documents, modules, and team members.</li>
+                  <li>I gained practical experience with data persistence and state management, using binary file I/O in a real project where saving, reloading, and recovering from errors actually mattered to the user.</li>
+                  <li>I saw how important incremental testing, integration planning, and clear documentation (req spec, detailed design, user manual) are for keeping a team aligned and shipping a working system on time.</li>
                 </ul>
           </Card>
         </Row>
