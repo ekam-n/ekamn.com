@@ -148,7 +148,7 @@ export default function PostureCoachAnalysis() {
                 >
                   dataset
                 </a>{" "}
-                from Roboflow for training and validating our model.
+                from Roboflow for training and validating our model (CC BY 4.0).
               </li>
             </ul>
           </Card>
@@ -173,10 +173,14 @@ export default function PostureCoachAnalysis() {
       {/* One row after H2 */}
       <Row cols={2} className="mb-2">
         <ImageCard
-          src="/images/projectImages/solarConquest/Battle Scenario - Long.png"
-              caption="Battle Scenario"
-              alt="A typical battle scenario for Solar Conquest"
-              className="h-full"
+          src="/images/projectImages/postureCoach/training on augmented data.jpg"
+              caption="Training on Augmented Data (Done by YOLO)"
+              alt="Training on Augmented Data"
+              className="
+              w-full              
+              md:min-w-[20rem]       
+              md:min-h-[20rem]                
+              "
               height="20rem" 
         />
         <Card title="Methodology">
