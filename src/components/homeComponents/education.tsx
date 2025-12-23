@@ -10,7 +10,7 @@ export default function Education() {
         </p>
       <div className="flex flex-wrap gap-3">
           {[
-            "BSc", "Interactive Arts & Technology", "Computer Science", "Game Design", "Extended Reality", "AI", "Data Science"
+            "BSc", "Interactive Arts & Technology", "Computer Science", "AI", "Game Design", "XR", "Data Science"
           ].map(skill => (
             <span key={skill} className="bg-white/20 px-3 md:px-4 py-1 md:py-2 rounded-full text-xs md:text-sm lg:text-base">
               {skill}

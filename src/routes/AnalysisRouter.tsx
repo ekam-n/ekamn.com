@@ -5,12 +5,17 @@ import { motion } from "framer-motion";
 
 // lazy pages (add more as you create them)
 const SolarConquestAnalysis = lazy(() => import("../components/analyses/solarConquestAnalysis"));
-
 const YellowJacketEscapeAnalysis = lazy(() => import("../components/analyses/yellowJacketEscapeAnalysis"));
+const SetSailAnalysis = lazy(() => import("../components/analyses/setSailAnalysis"));
+const DishedUpAnalysis = lazy(() => import("../components/analyses/dishedUpAnalysis"));
+const PostureCoachAnalysis = lazy(() => import("../components/analyses/postureCoachAnalysis"));
 
 const registry: Record<string, React.LazyExoticComponent<() => React.ReactElement>> = {
   "solar-conquest": SolarConquestAnalysis,
   "yellowjacket-escape": YellowJacketEscapeAnalysis,
+  "set-sail": SetSailAnalysis,
+  "dished-up": DishedUpAnalysis,
+  "posture-coach": PostureCoachAnalysis,
 };
 
 export default function AnalysisRouter() {

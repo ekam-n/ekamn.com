@@ -8,9 +8,9 @@ export default function Hero() {
           <br />
           <span className="font-semibold">experiences and applications</span>
         </h1>
-        <p className="text-base md:text-lg lg:text-xl text-left">
+        {/* <p className="text-base md:text-lg lg:text-xl text-left">
           Especially videogames!
-        </p>
+        </p> */}
         <div className="flex items-center justify-start mt-6">
           <div className="flex items-center gap-2">
             <div className="w-3 md:w-4 h-3 md:h-4 bg-green-500 rounded-full"></div>
