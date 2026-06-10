@@ -27,9 +27,9 @@ const fadeInVariant: Variants = {
 export default function HomeCards() {
   const sections = [
     { component: <Hero />, key: "hero" },
-    { component: <Skills />, key: "skills" },
-    { component: <Education />, key: "education" },
     { component: <ProjectCards />, key: "projects" },
+    { component: <Education />, key: "education" },
+    { component: <Skills />, key: "skills" },
   ];
 
   return (
