@@ -3,6 +3,7 @@ import Hero from "./homeComponents/hero";
 import Education from "./homeComponents/education";
 import Skills from "./homeComponents/skills";
 import ProjectCards from "./homeComponents/projectCards";
+import WorkExperience from "./homeComponents/workExperience";
 
 // make a function (ease-out-ish curve)
 const easeOut = cubicBezier(0.22, 1, 0.36, 1);
@@ -28,6 +29,7 @@ export default function HomeCards() {
   const sections = [
     { component: <Hero />, key: "hero" },
     { component: <ProjectCards />, key: "projects" },
+    { component: <WorkExperience />, key: "workExperience" },
     { component: <Education />, key: "education" },
     { component: <Skills />, key: "skills" },
   ];
