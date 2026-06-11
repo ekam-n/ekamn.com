@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 interface CardVideoProps {
   src: string;
@@ -22,16 +22,21 @@ export default function CardVideo({
   fullscreen = false,
 }: CardVideoProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
   const [muted, setMuted] = useState(true);
   const [vol, setVol] = useState(0.5);
   const [playing, setPlaying] = useState(true);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
+  const [isFullscreen, setIsFullscreen] = useState(false);
 
   const showOverlay = controls || volume || fullscreen;
 
+  // Fullscreen the container (not the <video>) so the browser's native control bar
+  // — which always includes a volume slider that can't be selectively hidden — never
+  // appears. Our own overlay scales up instead, so volume only shows when `volume` is set.
   function toggleFullscreen() {
-    const el = videoRef.current;
+    const el = containerRef.current;
     if (!el) return;
     if (document.fullscreenElement) {
       document.exitFullscreen();
@@ -39,6 +44,12 @@ export default function CardVideo({
       el.requestFullscreen?.();
     }
   }
+
+  useEffect(() => {
+    const onChange = () => setIsFullscreen(document.fullscreenElement === containerRef.current);
+    document.addEventListener("fullscreenchange", onChange);
+    return () => document.removeEventListener("fullscreenchange", onChange);
+  }, []);
 
   function togglePlay() {
     if (!videoRef.current) return;
@@ -77,11 +88,22 @@ export default function CardVideo({
   }
 
   return (
-    <div className="relative w-full overflow-hidden rounded-2xl">
+    <div
+      ref={containerRef}
+      className={
+        isFullscreen
+          ? "relative w-full h-full flex items-center justify-center bg-black overflow-hidden"
+          : "relative w-full overflow-hidden rounded-2xl"
+      }
+    >
       <video
         ref={videoRef}
         src={src}
-        className={`w-full block ${aspectClass} object-cover ${controls ? "cursor-pointer" : ""}`}
+        className={
+          isFullscreen
+            ? `block max-h-screen max-w-full w-auto object-contain ${controls ? "cursor-pointer" : ""}`
+            : `w-full block ${aspectClass} object-cover ${controls ? "cursor-pointer" : ""}`
+        }
         autoPlay
         loop
         muted
