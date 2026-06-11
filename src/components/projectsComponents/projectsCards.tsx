@@ -1,10 +1,6 @@
-import React from "react";
 import { motion, AnimatePresence, LayoutGroup, type Transition } from "framer-motion";
-import Yellow from "./projectCards/yellowJacket";
-import Volt from "./projectCards/voltLegacy";
-import Snuggle from "./projectCards/snuggleSculptors";
-import Demon from "./projectCards/demonsGate";
-import Solar from "./projectCards/solarConquest";
+import ProjectCard from "../shared/ProjectCard";
+import { PROJECTS } from "../../data/projects";
 import { CORE_LABELS, type CoreLabel, type Label } from "../projectsComponents";
 
 type Props = {
@@ -14,12 +10,16 @@ type Props = {
 const isCoreLabel = (v: string): v is CoreLabel =>
   (CORE_LABELS as readonly string[]).includes(v);
 
-const PROJECTS: { key: string; label: CoreLabel | "Unlabeled"; node: React.JSX.Element }[] = [
-  { key: "solar",   label: "Board Games", node: <Solar /> },
-  { key: "demon",   label: "Board Games", node: <Demon /> },
-  { key: "yellow",  label: "Video Games", node: <Yellow /> },
-  { key: "volt",    label: "Video Games", node: <Volt /> },
-  { key: "snuggle", label: "Web Apps",    node: <Snuggle /> },
+// Display order of the projects-page grid. Each key references a card in the registry.
+const PROJECTS_ORDER = [
+  "solarConquest",
+  "demonsGate",
+  "yellowJacket",
+  "voltLegacy",
+  "snuggleSculptors",
+  "postureCoach",
+  "setSail",
+  "dishedUp",
 ];
 
 export default function ProjectsCards({ selected }: Props) {
@@ -29,10 +29,11 @@ export default function ProjectsCards({ selected }: Props) {
   const coreSet = new Set<CoreLabel>(selectedCore);
 
   // Keep original order; filter decides visibility only.
-  const visible = PROJECTS.filter(({ label }) => {
+  const visible = PROJECTS_ORDER.filter((key) => {
     if (showAll) return true;
-    const normalHit = isCoreLabel(label) && coreSet.has(label);
-    const miscHit = wantsMisc && !isCoreLabel(label);
+    const { category } = PROJECTS[key];
+    const normalHit = isCoreLabel(category) && coreSet.has(category);
+    const miscHit = wantsMisc && !isCoreLabel(category);
     return normalHit || miscHit;
   });
 
@@ -52,10 +53,10 @@ export default function ProjectsCards({ selected }: Props) {
         className="pt-14 grid grid-cols-1 min-[900px]:grid-cols-2 gap-4 items-stretch"
       >
         <AnimatePresence mode="wait" initial={false}>
-          {visible.map((p) => (
+          {visible.map((key) => (
             // This wrapper is the grid "slot" — it stays put while the card fades
             <motion.div
-              key={p.key}
+              key={key}
               layout="position"                       // survivors slide smoothly after exit completes
               className="h-full"
               transition={ layoutSpring }
@@ -64,7 +65,7 @@ export default function ProjectsCards({ selected }: Props) {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}                   // toggled-off items fade out in place
             >
-              {p.node}
+              <ProjectCard variant="projects" {...PROJECTS[key].card} />
             </motion.div>
           ))}
         </AnimatePresence>

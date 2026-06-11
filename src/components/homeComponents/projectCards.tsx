@@ -1,22 +1,19 @@
-// import Snuggle from "./homeProjectComponents/snuggleSculptors";
-// import Volt from "./homeProjectComponents/voltLegacy";
-import Yellow from "./homeProjectComponents/yellowJacket";
-// import Demon from "./homeProjectComponents/demonsGate"
-import Solar from "./homeProjectComponents/solarConquest"
-import Posture from "./homeProjectComponents/postureCoach";
-import Dished from "./homeProjectComponents/dishedUp";
-import Sail from "./homeProjectComponents/setSail";
+import ProjectCard from "../shared/ProjectCard";
+import { PROJECTS } from "../../data/projects";
+
+// Target home set: Export To: Reality, Controlled Chaos, Volt Legacy, Solar Conquest.
+// Only volt + solar exist today; the two new projects get prepended here once their
+// content is authored as entries in src/data/projects.tsx.
+const HOME_KEYS = ["voltLegacy", "solarConquest"];
 
 export default function ProjectCards() {
   return (
     <section className="grid grid-cols-1 md:grid-cols-2 gap-4">
-      <Posture />
-      <Sail />
-      <Dished />
-      {/* <Solar /> */}
-      <Yellow />
-      {/* <Volt />
-      <Snuggle /> */}
+      {HOME_KEYS.map((key) => (
+        <div key={key} className="h-full">
+          <ProjectCard variant="home" {...PROJECTS[key].card} />
+        </div>
+      ))}
     </section>
   );
 }

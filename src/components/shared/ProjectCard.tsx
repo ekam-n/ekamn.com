@@ -11,7 +11,27 @@ interface ProjectCardProps {
   buttonText?: string;         // text for the button
   buttonColor?: string;    // classes controlling color/hover (e.g., bg/hover)
   ctaTo?: string; // internal route target
+  variant?: "home" | "projects"; // controls the breakpoint the card goes side-by-side
 }
+
+// Tailwind needs full class strings present in source, so each variant's classes
+// are written out literally rather than composed dynamically. The only difference
+// is the breakpoint: home goes side-by-side at xl, projects at 2xl (it shares the
+// row with a sidebar, so it needs more width before going horizontal).
+const LAYOUT = {
+  home: {
+    container:
+      "flex flex-col xl:flex-row items-center gap-4 h-full rounded-3xl shadow-lg p-6 md:p-8 text-white",
+    smallImg: "block xl:hidden mb-4",
+    largeImg: "hidden xl:flex flex-1 justify-center",
+  },
+  projects: {
+    container:
+      "flex flex-col 2xl:flex-row items-center gap-4 h-full rounded-3xl shadow-lg p-6 md:p-8 text-white",
+    smallImg: "block 2xl:hidden mb-4",
+    largeImg: "hidden 2xl:flex flex-1 justify-center",
+  },
+} as const;
 
 export default function ProjectCard({
   label = "Project",      // Default to "Project"
@@ -23,14 +43,13 @@ export default function ProjectCard({
   bgColor = "#00085C",
   buttonText = "View Project",
   buttonColor = "bg-[#9000FF] hover:bg-[#EC8DFF]",
-  ctaTo
-
+  ctaTo,
+  variant = "home",
 }: ProjectCardProps) {
+  const layout = LAYOUT[variant];
+
   return (
-    <div
-      className="flex flex-col xl:flex-row items-center gap-4 h-full rounded-3xl shadow-lg p-6 md:p-8 text-white"
-      style={{ backgroundColor: bgColor }}
-    >
+    <div className={layout.container} style={{ backgroundColor: bgColor }}>
       {/* Left Column */}
       <div className="flex-1">
         <h3 className="text-md md:text-lg">{label}</h3>
@@ -38,8 +57,8 @@ export default function ProjectCard({
           {title}
         </h2>
 
-        {/* SMALL-SCREEN IMAGE: shows only on <lg */}
-        <div className="block xl:hidden mb-4">
+        {/* SMALL-SCREEN IMAGE: shows only below the side-by-side breakpoint */}
+        <div className={layout.smallImg}>
           <img
             src={image}
             alt={title}
@@ -88,8 +107,8 @@ export default function ProjectCard({
         )}
       </div>
 
-      {/* LARGE-SCREEN IMAGE: shows only on ≥lg */}
-      <div className="hidden xl:flex flex-1 justify-center">
+      {/* LARGE-SCREEN IMAGE: shows only at/above the side-by-side breakpoint */}
+      <div className={layout.largeImg}>
         <img
           src={image}
           alt={title}
