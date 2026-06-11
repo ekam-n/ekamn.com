@@ -2,9 +2,9 @@ import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 
 const socialLinks = [
+  { href: "mailto:ekamnijjar@gmail.com",           text: "Email"    },
   { href: "https://www.linkedin.com/in/ekam-n/", text: "LinkedIn" },
   { href: "https://github.com/ekam-n",            text: "GitHub"   },
-  { href: "mailto:ekamnijjar@gmail.com",           text: "Email"    },
 ];
 
 export default function Header() {
