@@ -173,7 +173,7 @@ export default function YellowJacketEscapeAnalysis() {
                 height="40rem" 
           />
           <VideoCard
-            src="/images/projectImages/yellowJacketEscape/zone 2 v1 gameplay.mp4"
+            src="/images/projectImages/yellowJacketEscape/Zone 2 v1 Gameplay.mp4"
                 caption="Zone 2 Lack of Route Options (2x Speed)"
                 className="h-full"
                 autoPlay={true}
