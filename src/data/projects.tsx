@@ -5,7 +5,8 @@ export type ProjectCardData = {
   label?: string;
   title: string;
   description: string;
-  image: string;
+  image?: string;
+  video?: string;
   tags: string[];
   link?: string;
   bgColor?: string;
@@ -81,7 +82,7 @@ export const PROJECTS: Record<string, ProjectEntry> = {
       title: "YellowJacket Escape",
       description:
         "YellowJacket Escape is a top-down 2D dungeon crawler focused on strategic movement and survival, where players navigate hazards while avoiding or confronting YellowJacket enemies.",
-      image: "./images/projectImages/yellowJacketEscape/yellow1.png",
+      video: "/images/projectImages/yellowJacketEscape/zone 2 final gameplay 3.mp4",
       tags: ["Level Design", "Unity", "Playtesting"],
       ctaTo: "/analyses/yellowjacket-escape",
       buttonText: "Analysis",

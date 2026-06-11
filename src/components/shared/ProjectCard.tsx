@@ -4,7 +4,8 @@ interface ProjectCardProps {
   label?: string;        // New optional label prop
   title: string;
   description: string;
-  image: string;
+  image?: string;       // Image source (used when no video is provided)
+  video?: string;       // Optional video source; takes precedence over image
   tags: string[];       // Technologies or categories
   link?: string;        // Optional project link
   bgColor?: string;     // Optional background color
@@ -38,6 +39,7 @@ export default function ProjectCard({
   title,
   description,
   image,
+  video,
   tags,
   link,
   bgColor = "#00085C",
@@ -48,6 +50,26 @@ export default function ProjectCard({
 }: ProjectCardProps) {
   const layout = LAYOUT[variant];
 
+  // Media renders identically (placement, ratio, rounding) whether it's a video or
+  // an image; video takes precedence when both are supplied.
+  const media = video ? (
+    <video
+      src={video}
+      className="w-full aspect-110/100 rounded-2xl object-cover"
+      autoPlay
+      loop
+      muted
+      playsInline
+      aria-label={title}
+    />
+  ) : (
+    <img
+      src={image}
+      alt={title}
+      className="w-full rounded-2xl object-cover"
+    />
+  );
+
   return (
     <div className={layout.container} style={{ backgroundColor: bgColor }}>
       {/* Left Column */}
@@ -57,13 +79,9 @@ export default function ProjectCard({
           {title}
         </h2>
 
-        {/* SMALL-SCREEN IMAGE: shows only below the side-by-side breakpoint */}
+        {/* SMALL-SCREEN MEDIA: shows only below the side-by-side breakpoint */}
         <div className={layout.smallImg}>
-          <img
-            src={image}
-            alt={title}
-            className="w-full rounded-2xl object-cover"
-          />
+          {media}
         </div>
 
         {/* Project Description */}
@@ -107,13 +125,9 @@ export default function ProjectCard({
         )}
       </div>
 
-      {/* LARGE-SCREEN IMAGE: shows only at/above the side-by-side breakpoint */}
+      {/* LARGE-SCREEN MEDIA: shows only at/above the side-by-side breakpoint */}
       <div className={layout.largeImg}>
-        <img
-          src={image}
-          alt={title}
-          className="w-full rounded-2xl object-cover"
-        />
+        {media}
       </div>
     </div>
   );
