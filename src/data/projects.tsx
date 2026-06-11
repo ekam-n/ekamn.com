@@ -7,6 +7,9 @@ export type ProjectCardData = {
   description: string;
   image?: string;
   video?: string;
+  videoAspect?: string; // Full Tailwind aspect class for the video (e.g. "aspect-video")
+  videoControls?: boolean; // Overlaid play/pause + seek scrubber on the video
+  videoVolume?: boolean;   // Overlaid mute toggle + volume slider on the video
   tags: string[];
   link?: string;
   bgColor?: string;
@@ -40,6 +43,39 @@ export const PROJECTS: Record<string, ProjectEntry> = {
       link:"https://github.com/ekam-n/IAT360-Computer-Vision-Project",
       buttonText: "GitHub",
       // buttonColor: "bg-[#db0096] hover:bg-[#EC8DFF]",
+    },
+  },
+  exportToReality: {
+    key: "exportToReality",
+    category: "Video Games",
+    card: {
+      label: "Videogame",
+      title: "Export to: Reality",
+      description:
+        "Export to: Reality is a two-player asymmetric co-op puzzle-platformer where one player platforms through three levels while the other manipulates the environment through a mod-menu placement interface. I led design and development, including building the 'Anticheat' pursuit AI.",
+      video: "/images/projectImages/exportToReality/coverGameplay.mp4",
+      tags: ["Unity", "C#", "Game AI", "Level Design"],
+      buttonText: "Analysis",
+      buttonColor: "bg-[#db0096] hover:bg-[#EC8DFF]",
+      ctaTo: "/analyses/export-to-reality",
+    },
+  },
+  controlledChaos: {
+    key: "controlledChaos",
+    category: "Video Games",
+    card: {
+      label: "Videogame",
+      title: "Controlled Chaos",
+      description:
+        "Controlled Chaos is a game-show-style physical-digital experience where players race an RC car through a time trial while answering digital quizzes and triggering touch sensors. I programmed the majority of technical systems — car control, sensor input, and game logic in C++.",
+      video:"/images/projectImages/controlledChaos/controlledChaosGameplay.mp4",
+      videoAspect:"aspect-video",
+      videoControls: true,
+      // videoVolume: true,
+      tags: ["C++", "Arduino"],
+      ctaTo: "/analyses/yellowjacket-escape",
+      buttonText: "Analysis",
+      buttonColor: "bg-[#db0096] hover:bg-[#EC8DFF]",
     },
   },
   setSail: {
@@ -126,10 +162,15 @@ export const PROJECTS: Record<string, ProjectEntry> = {
       title: "Volt Legacy",
       description:
         "Volt Legacy is a challenging platformer where I implemented physics, game logic, graphics, sound, and UI in Processing.",
-      image: "./images/projectImages/voltLegacy/volt1.png",
+      // image: "./images/projectImages/voltLegacy/volt1.png",
+      video: "/images/projectImages/voltLegacy/voltLegacyCardGameplay.mp4",
+      videoAspect: "",
+      videoControls: true,
+      videoVolume: true,
       tags: ["Mechanic Design", "Combat Design", "Processing"],
-      link: "https://github.com/ekam-n/volt-legacy",
-      buttonText: "GitHub",
+      ctaTo: "/analyses/voltLegacy",
+      buttonText: "Analysis",
+      buttonColor: "bg-[#db0096] hover:bg-[#EC8DFF]",
     },
   },
   snuggleSculptors: {

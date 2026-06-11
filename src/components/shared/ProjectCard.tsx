@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import CardVideo from "./CardVideo";
 
 interface ProjectCardProps {
   label?: string;        // New optional label prop
@@ -6,6 +7,9 @@ interface ProjectCardProps {
   description: string;
   image?: string;       // Image source (used when no video is provided)
   video?: string;       // Optional video source; takes precedence over image
+  videoAspect?: string; // Full Tailwind aspect class for the video (e.g. "aspect-video"); defaults to aspect-110/100
+  videoControls?: boolean; // Overlaid play/pause + seek scrubber on the video
+  videoVolume?: boolean;   // Overlaid mute toggle + volume slider on the video
   tags: string[];       // Technologies or categories
   link?: string;        // Optional project link
   bgColor?: string;     // Optional background color
@@ -40,6 +44,9 @@ export default function ProjectCard({
   description,
   image,
   video,
+  videoAspect,
+  videoControls,
+  videoVolume,
   tags,
   link,
   bgColor = "#00085C",
@@ -53,14 +60,12 @@ export default function ProjectCard({
   // Media renders identically (placement, ratio, rounding) whether it's a video or
   // an image; video takes precedence when both are supplied.
   const media = video ? (
-    <video
+    <CardVideo
       src={video}
-      className="w-full aspect-110/100 rounded-2xl object-cover"
-      autoPlay
-      loop
-      muted
-      playsInline
-      aria-label={title}
+      title={title}
+      aspectClass={videoAspect ?? "aspect-110/100"}
+      controls={videoControls}
+      volume={videoVolume}
     />
   ) : (
     <img
