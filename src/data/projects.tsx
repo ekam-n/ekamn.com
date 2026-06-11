@@ -10,6 +10,7 @@ export type ProjectCardData = {
   videoAspect?: string; // Full Tailwind aspect class for the video (e.g. "aspect-video")
   videoControls?: boolean; // Overlaid play/pause + seek scrubber on the video
   videoVolume?: boolean;   // Overlaid mute toggle + volume slider on the video
+  videoFullscreen?: boolean; // Overlaid fullscreen toggle on the video
   tags: string[];
   link?: string;
   bgColor?: string;
@@ -53,7 +54,11 @@ export const PROJECTS: Record<string, ProjectEntry> = {
       title: "Export to: Reality",
       description:
         "Export to: Reality is a two-player asymmetric co-op puzzle-platformer where one player platforms through three levels while the other manipulates the environment through a mod-menu placement interface. I led design and development, including building the 'Anticheat' pursuit AI.",
-      video: "/images/projectImages/exportToReality/coverGameplay.mp4",
+      video: "/images/projectImages/exportToReality/exportToRealityTrailer.mp4",
+      videoAspect:"",
+      videoControls: true,
+      videoVolume: true,
+      videoFullscreen: true,
       tags: ["Unity", "C#", "Game AI", "Level Design"],
       buttonText: "Analysis",
       buttonColor: "bg-[#db0096] hover:bg-[#EC8DFF]",
@@ -71,6 +76,7 @@ export const PROJECTS: Record<string, ProjectEntry> = {
       video:"/images/projectImages/controlledChaos/controlledChaosGameplay.mp4",
       videoAspect:"aspect-video",
       videoControls: true,
+      videoFullscreen: true,
       // videoVolume: true,
       tags: ["C++", "Arduino"],
       ctaTo: "/analyses/yellowjacket-escape",
@@ -119,6 +125,7 @@ export const PROJECTS: Record<string, ProjectEntry> = {
       description:
         "YellowJacket Escape is a top-down 2D dungeon crawler focused on strategic movement and survival, where players navigate hazards while avoiding or confronting YellowJacket enemies.",
       video: "/images/projectImages/yellowJacketEscape/zone 2 final gameplay 3.mp4",
+      videoFullscreen: true,
       tags: ["Level Design", "Unity", "Playtesting"],
       ctaTo: "/analyses/yellowjacket-escape",
       buttonText: "Analysis",
@@ -167,6 +174,7 @@ export const PROJECTS: Record<string, ProjectEntry> = {
       videoAspect: "",
       videoControls: true,
       videoVolume: true,
+      videoFullscreen: true,
       tags: ["Mechanic Design", "Combat Design", "Processing"],
       ctaTo: "/analyses/voltLegacy",
       buttonText: "Analysis",

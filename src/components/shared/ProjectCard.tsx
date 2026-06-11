@@ -10,6 +10,7 @@ interface ProjectCardProps {
   videoAspect?: string; // Full Tailwind aspect class for the video (e.g. "aspect-video"); defaults to aspect-110/100
   videoControls?: boolean; // Overlaid play/pause + seek scrubber on the video
   videoVolume?: boolean;   // Overlaid mute toggle + volume slider on the video
+  videoFullscreen?: boolean; // Overlaid fullscreen toggle on the video
   tags: string[];       // Technologies or categories
   link?: string;        // Optional project link
   bgColor?: string;     // Optional background color
@@ -47,6 +48,7 @@ export default function ProjectCard({
   videoAspect,
   videoControls,
   videoVolume,
+  videoFullscreen,
   tags,
   link,
   bgColor = "#00085C",
@@ -66,6 +68,7 @@ export default function ProjectCard({
       aspectClass={videoAspect ?? "aspect-110/100"}
       controls={videoControls}
       volume={videoVolume}
+      fullscreen={videoFullscreen}
     />
   ) : (
     <img

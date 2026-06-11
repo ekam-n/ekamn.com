@@ -46,6 +46,16 @@ export default function WorkExperience() {
     }
   }
 
+  function toggleFullscreen() {
+    const el = videoRef.current;
+    if (!el) return;
+    if (document.fullscreenElement) {
+      document.exitFullscreen();
+    } else {
+      el.requestFullscreen?.();
+    }
+  }
+
   return (
     <div className="bg-[#5301B7] rounded-3xl shadow-lg p-6 md:p-8 text-white">
       <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold mb-4">
@@ -144,6 +154,16 @@ export default function WorkExperience() {
                 aria-label="Volume"
                 className="w-16 shrink-0 accent-white h-1 cursor-pointer"
               />
+
+              <button
+                onClick={toggleFullscreen}
+                aria-label="Fullscreen"
+                className="text-white/90 hover:text-white transition-colors shrink-0"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>
+                </svg>
+              </button>
             </div>
           </div>
         </div>
