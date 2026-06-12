@@ -168,7 +168,7 @@ export const PROJECTS: Record<string, ProjectEntry> = {
       label: "Videogame",
       title: "Volt Legacy",
       description:
-        "Volt Legacy is a challenging platformer where I implemented physics, game logic, graphics, sound, and UI in Processing.",
+        "Volt Legacy is a challenging platformer where I implemented physics, game logic, graphics, sound, and UI in Processing (Java), with no game engine.",
       // image: "./images/projectImages/voltLegacy/volt1.png",
       video: "/images/projectImages/voltLegacy/voltLegacyCardGameplay.mp4",
       videoAspect: "",
