@@ -101,7 +101,7 @@ export function ImageCard({
   const sizedStyle: React.CSSProperties = {
     ...(style || {}),
     ...(height !== undefined ? { height: toCss(height) } : {}),
-    ...(width  !== undefined ? { width:  toCss(width)  } : {}),
+    ...(width  !== undefined ? { width: toCss(width), maxWidth: "100%" } : {}),
   };
 
   return (
