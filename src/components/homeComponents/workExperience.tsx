@@ -75,7 +75,7 @@ export default function WorkExperience() {
             Augmented Reality Technician — Plan Your Space
           </h3>
           <p className="text-sm md:text-base lg:text-lg text-white/70 mt-1">
-            Jan 2026 – Present
+            January 2026 – Present
           </p>
         </div>
 

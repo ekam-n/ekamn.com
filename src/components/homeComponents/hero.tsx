@@ -7,7 +7,7 @@ export default function Hero() {
           I'm Ekam.
         </h1>
         <h2 className="text-base md:text-xl lg:text-2xl font-medium mb-6 text-left">
-          I love to <span className="text-[#DF62F8]">design & develop</span> experiences and applications
+          I love to <span className="text-[#DF62F8]">design & develop</span> experiences and applications.
         </h2>
         {/* <p className="text-base md:text-lg lg:text-xl text-left">
           Especially videogames!
