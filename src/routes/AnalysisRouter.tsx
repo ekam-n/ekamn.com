@@ -9,6 +9,9 @@ const YellowJacketEscapeAnalysis = lazy(() => import("../components/analyses/yel
 const SetSailAnalysis = lazy(() => import("../components/analyses/setSailAnalysis"));
 const DishedUpAnalysis = lazy(() => import("../components/analyses/dishedUpAnalysis"));
 const PostureCoachAnalysis = lazy(() => import("../components/analyses/postureCoachAnalysis"));
+const ExportToRealityAnalysis = lazy(() => import("../components/analyses/exportToRealityAnalysis"));
+const ControlledChaosAnalysis = lazy(() => import("../components/analyses/controlledChaosAnalysis"));
+const VoltLegacyAnalysis = lazy(() => import("../components/analyses/voltLegacyAnalysis"));
 
 const registry: Record<string, React.LazyExoticComponent<() => React.ReactElement>> = {
   "solar-conquest": SolarConquestAnalysis,
@@ -16,6 +19,9 @@ const registry: Record<string, React.LazyExoticComponent<() => React.ReactElemen
   "set-sail": SetSailAnalysis,
   "dished-up": DishedUpAnalysis,
   "posture-coach": PostureCoachAnalysis,
+  "export-to-reality": ExportToRealityAnalysis,
+  "controlled-chaos": ControlledChaosAnalysis,
+  "volt-legacy": VoltLegacyAnalysis,
 };
 
 export default function AnalysisRouter() {

@@ -7,6 +7,7 @@ interface CardVideoProps {
   controls?: boolean;   // overlaid play/pause + seek scrubber
   volume?: boolean;     // overlaid mute toggle + volume slider
   fullscreen?: boolean; // overlaid fullscreen toggle
+  fill?: boolean;       // fill the parent's height (ignores aspectClass) — for fixed-height card slots
 }
 
 // A self-contained card video. Mirrors the Plan Your Space (work experience) video:
@@ -20,6 +21,7 @@ export default function CardVideo({
   controls = false,
   volume = false,
   fullscreen = false,
+  fill = false,
 }: CardVideoProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -93,6 +95,8 @@ export default function CardVideo({
       className={
         isFullscreen
           ? "relative w-full h-full flex items-center justify-center bg-black overflow-hidden"
+          : fill
+          ? "relative w-full h-full overflow-hidden"
           : "relative w-full overflow-hidden rounded-2xl"
       }
     >
@@ -102,6 +106,8 @@ export default function CardVideo({
         className={
           isFullscreen
             ? `block max-h-screen max-w-full w-auto object-contain ${controls ? "cursor-pointer" : ""}`
+            : fill
+            ? `h-full w-full block object-cover ${controls ? "cursor-pointer" : ""}`
             : `w-full block ${aspectClass} object-cover ${controls ? "cursor-pointer" : ""}`
         }
         autoPlay
