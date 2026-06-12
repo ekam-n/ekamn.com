@@ -37,20 +37,41 @@ export default function CardVideo({
   // Fullscreen the container (not the <video>) so the browser's native control bar
   // — which always includes a volume slider that can't be selectively hidden — never
   // appears. Our own overlay scales up instead, so volume only shows when `volume` is set.
+  // iOS Safari/Chrome doesn't support requestFullscreen on div elements at all; it only
+  // supports webkitEnterFullscreen on <video> elements directly (opens native player).
   function toggleFullscreen() {
     const el = containerRef.current;
-    if (!el) return;
-    if (document.fullscreenElement) {
-      document.exitFullscreen();
-    } else {
-      el.requestFullscreen?.();
+    const vid = videoRef.current;
+    if (!el || !vid) return;
+
+    const isFs =
+      !!document.fullscreenElement ||
+      !!(document as any).webkitFullscreenElement;
+
+    if (isFs) {
+      document.exitFullscreen?.() ?? (document as any).webkitExitFullscreen?.();
+    } else if (el.requestFullscreen) {
+      el.requestFullscreen();
+    } else if ((el as any).webkitRequestFullscreen) {
+      (el as any).webkitRequestFullscreen();
+    } else if ((vid as any).webkitEnterFullscreen) {
+      // iOS: only <video>.webkitEnterFullscreen() works; opens native player
+      (vid as any).webkitEnterFullscreen();
     }
   }
 
   useEffect(() => {
-    const onChange = () => setIsFullscreen(document.fullscreenElement === containerRef.current);
+    const onChange = () =>
+      setIsFullscreen(
+        document.fullscreenElement === containerRef.current ||
+        (document as any).webkitFullscreenElement === containerRef.current
+      );
     document.addEventListener("fullscreenchange", onChange);
-    return () => document.removeEventListener("fullscreenchange", onChange);
+    document.addEventListener("webkitfullscreenchange", onChange);
+    return () => {
+      document.removeEventListener("fullscreenchange", onChange);
+      document.removeEventListener("webkitfullscreenchange", onChange);
+    };
   }, []);
 
   function togglePlay() {
