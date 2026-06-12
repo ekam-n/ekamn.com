@@ -36,7 +36,7 @@ export default function Skills() {
         <div className="flex flex-wrap gap-3">
           {[
             "Level Design", "Economy Design", "Systems Design",
-            "UI/UX Design", "Playtesting", 
+            "UI/UX Design", "Playtesting", "User Research" 
           ].map(skill => (
             <span key={skill} className="bg-white/20 px-3 md:px-4 py-1 md:py-2 rounded-full text-xs md:text-sm lg:text-base">
               {skill}
