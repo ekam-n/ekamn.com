@@ -67,9 +67,9 @@ export const PROJECTS: Record<string, ProjectEntry> = {
   },
   controlledChaos: {
     key: "controlledChaos",
-    category: "Video Games",
+    category: "Unlabeled",
     card: {
-      label: "Videogame",
+      label: "Physical-Digital Game",
       title: "Controlled Chaos",
       description:
         "Controlled Chaos is a game-show-style physical-digital experience where players race an RC car through a time trial while answering digital quizzes and triggering touch sensors. I programmed the majority of technical systems — car control, sensor input, and game logic in C++.",
