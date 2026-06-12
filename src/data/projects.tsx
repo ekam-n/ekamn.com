@@ -61,23 +61,23 @@ export const PROJECTS: Record<string, ProjectEntry> = {
       videoControls: true,
       videoVolume: true,
       videoFullscreen: true,
-      tags: ["Unity", "C#", "Game AI", "Level Design"],
+      tags: ["Unity", "Level Design", "Game AI"],
       buttons: [
-        {
-          text: "Analysis",
-          to: "/analyses/export-to-reality",
-          color: "bg-[#db0096] hover:bg-[#EC8DFF]",
-        },
+        // {
+        //   text: "Analysis",
+        //   to: "/analyses/export-to-reality",
+        //   color: "bg-[#db0096] hover:bg-[#EC8DFF]",
+        // },
         {
           text: "Play in Browser",
           href: "https://play.unity.com/en/games/a762ec20-3d05-4253-bfa2-93af02952f2c/export-to-reality",
           // color: "bg-[#db0096] hover:bg-[#EC8DFF]",
         },
-        // {
-        //   text: "Team Journal",
-        //   href: "https://orangegoose.netlify.app/",
-        //   color: "bg-white/20 hover:bg-white/30",
-        // },
+        {
+          text: "Team Journal",
+          href: "https://orangegoose.netlify.app/",
+          // color: "bg-white/20 hover:bg-white/30",
+        },
       ],
     },
   },
@@ -98,6 +98,13 @@ export const PROJECTS: Record<string, ProjectEntry> = {
       ctaTo: "/analyses/controlled-chaos",
       buttonText: "Analysis",
       buttonColor: "bg-[#db0096] hover:bg-[#EC8DFF]",
+      buttons: [
+        {
+          text: "SIAT Showcase",
+          href: "https://www.sfu.ca/siat/showcase/spring-2024-project-showcase/iat-267-controlled-chaos.html",
+        //   color: "bg-[#db0096] hover:bg-[#EC8DFF]",
+        },
+      ],
     },
   },
   setSail: {
@@ -139,7 +146,7 @@ export const PROJECTS: Record<string, ProjectEntry> = {
       label: "Videogame",
       title: "YellowJacket Escape",
       description:
-        "YellowJacket Escape is a top-down 2D dungeon crawler focused on strategic movement and survival, where players navigate hazards while avoiding or confronting YellowJacket enemies.",
+        "YellowJacket Escape is a top-down 2D dungeon crawler focused on strategic movement and survival, where players navigate hazards while avoiding or confronting YellowJacket enemies. I led design and development of the game — creating the multi-path level layouts, scripting enemy movement and patrol patterns, and tuning difficulty across zones through playtesting.",
       video: "/images/projectImages/yellowJacketEscape/zone 2 final gameplay 3.mp4",
       videoFullscreen: true,
       tags: ["Level Design", "Unity", "Playtesting"],
@@ -184,17 +191,23 @@ export const PROJECTS: Record<string, ProjectEntry> = {
       label: "Videogame",
       title: "Volt Legacy",
       description:
-        "Volt Legacy is a challenging platformer where I implemented physics, game logic, graphics, sound, and UI in Processing (Java), with no game engine.",
+        "Volt Legacy is a challenging platformer where I hand-coded every system in Processing (Java) without a game engine. I wrote custom physics and collision from the ground up, implementing rendering, sound, and UI, and debugging each layer individually to produce a complete, polished game.",
       // image: "./images/projectImages/voltLegacy/volt1.png",
       video: "/images/projectImages/voltLegacy/voltLegacyCardGameplay.mp4",
       videoAspect: "",
       videoControls: true,
       videoVolume: true,
       videoFullscreen: true,
-      tags: ["Mechanic Design", "Combat Design", "Processing"],
-      ctaTo: "/analyses/volt-legacy",
-      buttonText: "Analysis",
-      buttonColor: "bg-[#db0096] hover:bg-[#EC8DFF]",
+      tags: ["Processing", "Combat Design", "Debugging"],
+      // ctaTo: "/analyses/volt-legacy",
+      // buttonText: "Analysis",
+      // buttonColor: "bg-[#db0096] hover:bg-[#EC8DFF]",
+      buttons: [
+        {
+         text: "GitHub",
+         href: "https://github.com/ekam-n/volt-legacy" 
+        }
+      ]
     },
   },
   snuggleSculptors: {
