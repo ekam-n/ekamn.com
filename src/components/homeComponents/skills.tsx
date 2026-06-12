@@ -8,13 +8,13 @@ export default function Skills() {
         </h2>
         {/* Skills Description */}
         <p className="text-sm md:text-base lg:text-lg mb-4">
-          My expertise includes programming in multiple languages, working with game engines, and building interactive applications.
+          My expertise includes working with game engines and other technical platforms, programming in multiple languages, and use of modern frameworks.
         </p>
         {/* Skills List */}
         <div className="flex flex-wrap gap-3">
           {[
-            "Unity", "Unreal Engine", "Figma", "InDesign", "Photoshop",
-            "Illustrator", "After Effects", "React", "Tailwind", "Java", "C++", "C#", "TypeScript"
+            "Unity", "Unreal Engine", "3Ds Max", "visionOS", "Figma", "C#",
+            "C++", "Python", "React", "NodeJS"
           ].map(skill => (
             <span key={skill} className="bg-white/20 px-3 md:px-4 py-1 md:py-2 rounded-full text-xs md:text-sm lg:text-base">
               {skill}
@@ -30,13 +30,13 @@ export default function Skills() {
         </h2>
         {/* Skills Description */}
         <p className="text-sm md:text-base lg:text-lg mb-4">
-          I'm experienced in game design, level design, and UX/UI development. My skills include crafting engaging mechanics, user-centered design, and research.
+          I'm experienced in game design, UX/UI design, user research, and playtesting. My skills include crafting engaging mechanics, user-centered design, and research.
         </p>
         {/* Skills List */}
         <div className="flex flex-wrap gap-3">
           {[
-            "Economy Design", "Systems Design", "Level Design", "Combat Design",
-            "UI Design", "UX Design", "Project Management", "User Research", "Playtesting", "Software Design"
+            "Level Design", "Economy Design", "Systems Design",
+            "UI/UX Design", "Playtesting", 
           ].map(skill => (
             <span key={skill} className="bg-white/20 px-3 md:px-4 py-1 md:py-2 rounded-full text-xs md:text-sm lg:text-base">
               {skill}
