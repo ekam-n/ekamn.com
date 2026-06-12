@@ -1,6 +1,15 @@
 import { Link } from "react-router-dom";
 import CardVideo from "./CardVideo";
 
+// A single call-to-action button. `to` => internal route (react-router Link),
+// `href` => external link. `color` holds Tailwind bg/hover/text classes.
+export type ProjectButton = {
+  text: string;
+  to?: string;
+  href?: string;
+  color?: string;
+};
+
 interface ProjectCardProps {
   label?: string;        // New optional label prop
   title: string;
@@ -14,9 +23,10 @@ interface ProjectCardProps {
   tags: string[];       // Technologies or categories
   link?: string;        // Optional project link
   bgColor?: string;     // Optional background color
-  buttonText?: string;         // text for the button
+  buttonText?: string;         // text for the (single) button
   buttonColor?: string;    // classes controlling color/hover (e.g., bg/hover)
   ctaTo?: string; // internal route target
+  buttons?: ProjectButton[]; // multiple buttons; takes precedence over the single-button props
   variant?: "home" | "projects"; // controls the breakpoint the card goes side-by-side
 }
 
@@ -55,9 +65,31 @@ export default function ProjectCard({
   buttonText = "View Project",
   buttonColor = "bg-[#9000FF] hover:bg-[#EC8DFF]",
   ctaTo,
+  buttons,
   variant = "home",
 }: ProjectCardProps) {
   const layout = LAYOUT[variant];
+
+  // Shared button styling — used by both the multi-button and single-button paths.
+  const btnClass = (color = "bg-[#9000FF] hover:bg-[#EC8DFF]") =>
+    `inline-block transition-colors px-4 py-2 rounded-lg text-sm md:text-base ${color}`;
+
+  const renderButton = (btn: ProjectButton, key: number) =>
+    btn.to ? (
+      <Link key={key} to={btn.to} className={btnClass(btn.color)}>
+        {btn.text}
+      </Link>
+    ) : (
+      <a
+        key={key}
+        href={btn.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={btnClass(btn.color)}
+      >
+        {btn.text}
+      </a>
+    );
 
   // Media renders identically (placement, ratio, rounding) whether it's a video or
   // an image; video takes precedence when both are supplied.
@@ -109,27 +141,23 @@ export default function ProjectCard({
           ))}
         </div>
 
-        {/* View Project Button */}
-        {(link || ctaTo) && (
-          <div className="mt-4">
-            {ctaTo ? (
-              <Link
-                to={ctaTo}
-                className={`inline-block transition-colors px-4 py-2 rounded-lg text-sm md:text-base ${buttonColor}`}
-              >
-                {buttonText}
-              </Link>
-            ) : (
-              <a
-                href={link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`inline-block transition-colors px-4 py-2 rounded-lg text-sm md:text-base ${buttonColor}`}
-              >
-                {buttonText}
-              </a>
-            )}
+        {/* Buttons: a `buttons` array renders multiple; otherwise fall back to
+            the single link/ctaTo + buttonText/buttonColor props. */}
+        {buttons && buttons.length > 0 ? (
+          <div className="mt-4 flex flex-wrap gap-3">
+            {buttons.map((b, i) => renderButton(b, i))}
           </div>
+        ) : (
+          (link || ctaTo) && (
+            <div className="mt-4">
+              {renderButton(
+                ctaTo
+                  ? { text: buttonText, to: ctaTo, color: buttonColor }
+                  : { text: buttonText, href: link, color: buttonColor },
+                0
+              )}
+            </div>
+          )
         )}
       </div>
 

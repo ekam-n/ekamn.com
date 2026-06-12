@@ -1,4 +1,5 @@
 import type { CoreLabel } from "../components/projectsComponents";
+import type { ProjectButton } from "../components/shared/ProjectCard";
 
 // The props consumed by the shared <ProjectCard /> component.
 export type ProjectCardData = {
@@ -17,6 +18,7 @@ export type ProjectCardData = {
   buttonText?: string;
   buttonColor?: string;
   ctaTo?: string;
+  buttons?: ProjectButton[]; // Multiple CTA buttons; takes precedence over the single-button props
 };
 
 // A single project: its content (card) plus metadata used for placement/filtering.
@@ -60,9 +62,23 @@ export const PROJECTS: Record<string, ProjectEntry> = {
       videoVolume: true,
       videoFullscreen: true,
       tags: ["Unity", "C#", "Game AI", "Level Design"],
-      buttonText: "Analysis",
-      buttonColor: "bg-[#db0096] hover:bg-[#EC8DFF]",
-      ctaTo: "/analyses/export-to-reality",
+      buttons: [
+        {
+          text: "Analysis",
+          to: "/analyses/export-to-reality",
+          color: "bg-[#db0096] hover:bg-[#EC8DFF]",
+        },
+        {
+          text: "Play in Browser",
+          href: "https://play.unity.com/en/games/a762ec20-3d05-4253-bfa2-93af02952f2c/export-to-reality",
+          // color: "bg-[#db0096] hover:bg-[#EC8DFF]",
+        },
+        // {
+        //   text: "Team Journal",
+        //   href: "https://orangegoose.netlify.app/",
+        //   color: "bg-white/20 hover:bg-white/30",
+        // },
+      ],
     },
   },
   controlledChaos: {

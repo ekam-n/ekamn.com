@@ -71,7 +71,7 @@ export default function ExportToRealityAnalysis() {
                 href="https://play.unity.com/en/games/a762ec20-3d05-4253-bfa2-93af02952f2c/export-to-reality"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block px-4 py-2 rounded-full bg-[#00cf29] hover:bg-[#00e82e] text-black font-medium text-sm transition-colors"
+                className="inline-block transition-colors px-4 py-2 rounded-lg text-sm md:text-base bg-[#00cf29] hover:bg-[#00e82e] text-black"
               >
                 Play in Browser
               </a>
@@ -79,7 +79,7 @@ export default function ExportToRealityAnalysis() {
                 href="https://orangegoose.netlify.app/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block px-4 py-2 rounded-full bg-white/20 hover:bg-white/30 text-white font-medium text-sm transition-colors"
+                className="inline-block transition-colors px-4 py-2 rounded-lg text-sm md:text-base bg-white/20 hover:bg-white/30"
               >
                 Team Journal
               </a>
