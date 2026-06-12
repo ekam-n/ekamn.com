@@ -55,7 +55,7 @@ export const PROJECTS: Record<string, ProjectEntry> = {
       label: "Videogame",
       title: "Export to: Reality",
       description:
-        "Export to: Reality is a two-player asymmetric co-op puzzle-platformer where one player platforms through three levels while the other manipulates the environment through a mod-menu placement interface. I led design and development, including building the 'Anticheat' pursuit AI.",
+        "Export to: Reality is a two-player asymmetric co-op puzzle-platformer where one player platforms through three levels while the other manipulates the environment through a mod-menu placement interface. I led design and development of all systems, including refining the mod-menu mechanic's design and building the 'Anticheat' pursuit AI.",
       video: "/images/projectImages/exportToReality/exportToRealityTrailer.mp4",
       videoAspect:"",
       videoControls: true,
@@ -191,7 +191,7 @@ export const PROJECTS: Record<string, ProjectEntry> = {
       label: "Videogame",
       title: "Volt Legacy",
       description:
-        "Volt Legacy is a challenging platformer where I hand-coded every system in Processing (Java) without a game engine. I wrote custom physics and collision from the ground up, implementing rendering, sound, and UI, and debugging each layer individually to produce a complete, polished game.",
+        "Volt Legacy is a challenging platformer where I hand-coded every system in Processing (Java) without a game engine. I wrote custom physics and collision from the ground up, implementing rendering, sound, and UI. I debugged each layer individually to produce a complete, polished game.",
       // image: "./images/projectImages/voltLegacy/volt1.png",
       video: "/images/projectImages/voltLegacy/voltLegacyCardGameplay.mp4",
       videoAspect: "",
