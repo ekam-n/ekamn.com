@@ -35,25 +35,20 @@ export default function ExportToRealityAnalysis() {
         <Row colsClass="grid-cols-1 md:[grid-template-columns:auto_1fr]">
           <motion.figure
             {...fadeIn}
-            style={{ width: "40rem", height: "25rem", maxWidth: "100%" }}
-            className="h-full rounded-2xl border border-white/10 bg-black/60 backdrop-blur-md shadow-lg overflow-hidden"
+            style={{ width: "40rem", maxWidth: "100%" }}
+            className="rounded-2xl border border-white/10 bg-black/60 backdrop-blur-md shadow-lg overflow-hidden"
           >
-            <div className="flex h-full flex-col min-h-0">
-              {/* Video fills remaining height above caption (same as VideoCard) */}
-              <div className="relative flex-1 min-h-40 min-w-0">
-                <CardVideo
-                  src="/images/projectImages/exportToReality/exportToRealityTrailer.mp4"
-                  title="Export to: Reality gameplay trailer"
-                  fill
-                  controls
-                  volume
-                  fullscreen
-                />
-              </div>
-              <figcaption className="px-4 md:px-6 py-3 text-sm text-white/80">
-                Gameplay Trailer
-              </figcaption>
-            </div>
+            <CardVideo
+              src="/images/projectImages/exportToReality/exportToRealityTrailer.mp4"
+              title="Export to: Reality gameplay trailer"
+              aspectClass="aspect-video"
+              controls
+              volume
+              fullscreen
+            />
+            <figcaption className="px-4 md:px-6 py-3 text-sm text-white/80">
+              Gameplay Trailer
+            </figcaption>
           </motion.figure>
           <Card>
             <p>
@@ -91,25 +86,26 @@ export default function ExportToRealityAnalysis() {
         <Row colsClass="grid-cols-1 md:grid-cols-2">
           {/* Column B: stack two cards vertically (equal heights) */}
           <div className="h-full">
-            <div className="grid grid-cols-1 auto-rows-fr gap-4 h-full min-h-0">
+            <div className="grid grid-cols-1 gap-4">
               <Card title="Context">
                 <ul className="list-disc pl-5 space-y-1">
                   <li>
-                    Class Project, <em>Game Design Workshop</em>
+                    Class Project, <em>Advanced Game Design</em>
                   </li>
-                  <li>2025</li>
+                  <li>January 2026 - April 2026</li>
                 </ul>
                 {/* Skills tags */}
                 <div className="not-prose mt-3 flex flex-wrap gap-2 md:gap-3">
                   <span className="bg-white/20 px-3 md:px-4 py-1 md:py-2 rounded-full text-xs md:text-sm lg:text-base">
-                    Game AI
+                    Unity
                   </span>
                   <span className="bg-white/20 px-3 md:px-4 py-1 md:py-2 rounded-full text-xs md:text-sm lg:text-base">
                     Level Design
                   </span>
                   <span className="bg-white/20 px-3 md:px-4 py-1 md:py-2 rounded-full text-xs md:text-sm lg:text-base">
-                    Unity
+                    Game AI
                   </span>
+                  
                   <span className="bg-white/20 px-3 md:px-4 py-1 md:py-2 rounded-full text-xs md:text-sm lg:text-base">
                     C#
                   </span>
@@ -119,8 +115,10 @@ export default function ExportToRealityAnalysis() {
               <Card title="Team">
                 <ul className="list-disc pl-5 space-y-1">
                   <li>Ekam: Lead Designer, Lead Developer</li>
-                  <li>Teammate: Role</li>
-                  <li>Teammate: Role</li>
+                  <li>Ally: Artist</li>
+                  <li>Eva: Project Manager, Sound Designer</li>
+                  <li>Ryan: Developer</li>
+                  <li>Victor: Designer, Developer</li>
                   {/* update with real team members + roles */}
                 </ul>
               </Card>
