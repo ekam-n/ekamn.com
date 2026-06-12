@@ -174,7 +174,7 @@ export default function WorkExperience() {
             Plan Your Space is a Burnaby studio where clients walk through their architectural plans at lifesize scale using Apple Vision Pro, visualizing and refining design decisions before construction begins.
           </p>
           <p>
-            I lead Plan Your Space's end-to-end AR pipeline — converting client Revit and SketchUp models into optimized Apple Vision Pro experiences, handling all 3ds Max optimization to hit real-time rendering targets on standalone hardware, and leading live walkthroughs that help clients make design decisions earlier in the build process.
+            I lead Plan Your Space's AR pipeline end-to-end — converting client Revit and SketchUp models into optimized Apple Vision Pro experiences, handling all 3ds Max optimization to hit real-time rendering targets on standalone hardware, and leading live walkthroughs that help clients make design decisions earlier in the build process.
           </p>
         </div>
 
