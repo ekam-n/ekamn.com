@@ -66,16 +66,24 @@ export default function ExportToRealityAnalysis() {
               the computer (Desktop, Kernel, Hardware) while the game's
               Anticheat hunts them down.
             </p>
-            <p className="mt-3">
+            <div className="mt-4 flex flex-wrap gap-3">
               <a
                 href="https://play.unity.com/en/games/a762ec20-3d05-4253-bfa2-93af02952f2c/export-to-reality"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="underline hover:text-[#EC8DFF] transition-colors"
+                className="inline-block px-4 py-2 rounded-full bg-[#00cf29] hover:bg-[#00e82e] text-black font-medium text-sm transition-colors"
               >
-                Play the WebGL build in your browser →
+                Play in Browser
               </a>
-            </p>
+              <a
+                href="https://orangegoose.netlify.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block px-4 py-2 rounded-full bg-white/20 hover:bg-white/30 text-white font-medium text-sm transition-colors"
+              >
+                Team Journal
+              </a>
+            </div>
           </Card>
         </Row>
 
