@@ -8,7 +8,7 @@ export default function Hero() {
         </h1>
         <h2 className="text-base md:text-xl lg:text-2xl font-medium mb-6 text-left">
           {/* I love to <span className="text-[#DF62F8]">design & develop</span> experiences and applications. */}
-           I build <span className="text-[#DF62F8]">game, XR, AI</span> applications, and whatever else needs building.
+           I build <span className="text-[#DF62F8]">game, XR, & AI</span> applications, and whatever else needs building.
         </h2>
         {/* <p className="text-base md:text-lg lg:text-xl text-left">
           Especially videogames!
