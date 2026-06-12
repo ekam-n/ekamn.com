@@ -94,7 +94,7 @@ export const PROJECTS: Record<string, ProjectEntry> = {
       videoControls: true,
       videoFullscreen: true,
       // videoVolume: true,
-      tags: ["Arduino","C++"],
+      tags: ["Embedded","Arduino","C++"],
       ctaTo: "/analyses/controlled-chaos",
       buttonText: "Analysis",
       buttonColor: "bg-[#db0096] hover:bg-[#EC8DFF]",
