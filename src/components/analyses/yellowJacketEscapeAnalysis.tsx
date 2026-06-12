@@ -9,6 +9,7 @@ import {
   fadeIn,
   VideoCard,
 } from "../analyses/analysisCommon";
+import CardVideo from "../shared/CardVideo";
 
 // local wrapper that sets the border color for this page
 const Card: React.FC<
@@ -33,13 +34,21 @@ export default function YellowJacketEscapeAnalysis() {
       {/* --- First 4 rows --- */}
       <div className="space-y-4 md:space-y-6">
         <Row colsClass="grid-cols-1 md:[grid-template-columns:auto_1fr]">
-          <ImageCard
-            src="/images/projectImages/yellowJacketEscape/Zone 1 final.png"
-            height="25rem"
-            width="40rem"
-            caption="Zone 2"
-            alt="Zone 2 of the first level of YellowJacket Escape"
-          />
+          <motion.figure
+            {...fadeIn}
+            style={{ width: "30rem", maxWidth: "100%" }}
+            className="rounded-2xl border border-white/10 bg-black/60 backdrop-blur-md shadow-lg overflow-hidden"
+          >
+            <CardVideo
+              src="/images/projectImages/yellowJacketEscape/zone 2 final gameplay 3.mp4"
+              title="YellowJacket Escape zone 2 gameplay"
+              aspectClass="aspect-110/100"
+              fullscreen
+            />
+            <figcaption className="px-4 md:px-6 py-3 text-sm text-white/80">
+              Zone 2 Gameplay
+            </figcaption>
+          </motion.figure>
           <Card>
             <p>
               YellowJacket Escape is a top-down 2D dungeon crawler where the player, controlling a small spider, must navigate the multi-path environment while evading YellowJacket enemies. The game emphasizes strategic planning, timing, and precise movement.
