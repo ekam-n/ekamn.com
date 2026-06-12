@@ -12,14 +12,16 @@ const isCoreLabel = (v: string): v is CoreLabel =>
 
 // Display order of the projects-page grid. Each key references a card in the registry.
 const PROJECTS_ORDER = [
-  "solarConquest",
-  "demonsGate",
+  "exportToReality",
   "yellowJacket",
-  "voltLegacy",
-  "snuggleSculptors",
   "postureCoach",
-  "setSail",
+  "voltLegacy",
+  "solarConquest",
+  "controlledChaos",
+  "demonsGate",
+  "snuggleSculptors",
   "dishedUp",
+  "setSail",
 ];
 
 export default function ProjectsCards({ selected }: Props) {
