@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Ekam Nijjar</title>
+    <script>
+      // SPA redirect for GitHub Pages: encode the original path as a query string
+      // so index.html can restore it before React Router initialises.
+      // pathSegmentsToKeep = 0 because this site uses a custom domain (not a sub-path).
+      var l = window.location;
+      l.replace(
+        l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+        '/?/' +
+        l.pathname.slice(1).replace(/&/g, '~and~') +
+        (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
+        l.hash
+      );
+    </script>
+  </head>
+  <body></body>
+</html>

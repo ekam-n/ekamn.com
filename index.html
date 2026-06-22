@@ -6,6 +6,20 @@
     <link rel="apple-touch-icon" href="/vite.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ekam Nijjar</title>
+    <script>
+      // Decode the path encoded by 404.html back to the real URL before React loads.
+      (function (l) {
+        if (l.search[1] === '/') {
+          var decoded = l.search.slice(1).split('&').map(function (s) {
+            return s.replace(/~and~/g, '&');
+          });
+          window.history.replaceState(
+            null, null,
+            decoded[0] + (decoded[1] ? '?' + decoded[1] : '') + l.hash
+          );
+        }
+      }(window.location));
+    </script>
     <script type="module" crossorigin src="/assets/index-BqexQUOu.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-CeZsfd9b.css">
   </head>
