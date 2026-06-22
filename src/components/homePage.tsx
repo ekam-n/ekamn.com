@@ -25,12 +25,19 @@ const fadeInVariant: Variants = {
   }),
 };
 
-export default function HomeCards() {
+export default function HomeCards({ keys, variant }: { keys?: string[]; variant?: "ea" }) {
   const sections = [
     { component: <Hero />, key: "hero" },
-    { component: <ProjectCards />, key: "projects" },
-    { component: <WorkExperience />, key: "workExperience" },
-    { component: <Education />, key: "education" },
+    { component: <ProjectCards keys={keys} />, key: "projects" },
+    ...(variant === "ea"
+      ? [
+          { component: <Education />, key: "education" },
+          { component: <WorkExperience />, key: "workExperience" },
+        ]
+      : [
+          { component: <WorkExperience />, key: "workExperience" },
+          { component: <Education />, key: "education" },
+        ]),
     { component: <Skills />, key: "skills" },
   ];
 

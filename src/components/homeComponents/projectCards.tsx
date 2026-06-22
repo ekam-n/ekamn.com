@@ -6,10 +6,10 @@ import { PROJECTS } from "../../data/projects";
 // content is authored as entries in src/data/projects.tsx.
 const HOME_KEYS = ["exportToReality", "controlledChaos", "voltLegacy","yellowJacket" ];
 
-export default function ProjectCards() {
+export default function ProjectCards({ keys = HOME_KEYS }: { keys?: string[] }) {
   return (
     <section className="grid grid-cols-1 md:grid-cols-2 gap-4">
-      {HOME_KEYS.map((key) => (
+      {keys.map((key) => (
         <div key={key} className="h-full">
           <ProjectCard variant="home" {...PROJECTS[key].card} />
         </div>

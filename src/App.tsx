@@ -1,5 +1,5 @@
-// src/App.tsx
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import Header from "./components/header";
 import HomeCards from "./components/homePage";
@@ -7,6 +7,16 @@ import ProjectsPage from "./components/projectsComponents";
 import { pageVariants } from "./lib/variants";
 import './App.css'
 import AnalysisRouter from "./routes/AnalysisRouter";
+
+const EA_KEYS = ["yellowJacket", "solarConquest", "exportToReality", "voltLegacy"];
+
+function HomeVariant({ variant, keys }: { variant?: "ea"; keys?: string[] }) {
+  useEffect(() => {
+    if (variant === "ea") sessionStorage.setItem("homeVariant", "ea");
+    else sessionStorage.removeItem("homeVariant");
+  }, [variant]);
+  return <HomeCards keys={keys} variant={variant} />;
+}
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -16,13 +26,16 @@ function AnimatedRoutes() {
         <Route
           path="/"
           element={
-            <motion.div
-              variants={pageVariants}
-              initial="initial"
-              animate="animate"
-              exit="exit"
-            >
-              <HomeCards />
+            <motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit">
+              <HomeVariant />
+            </motion.div>
+          }
+        />
+        <Route
+          path="/ea"
+          element={
+            <motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit">
+              <HomeVariant variant="ea" keys={EA_KEYS} />
             </motion.div>
           }
         />
@@ -30,19 +43,17 @@ function AnimatedRoutes() {
           path="/projects"
           element={
             <motion.div
-              initial={{ opacity: 0 }}     // no y/x transforms
+              initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              style={{ willChange: "opacity" }} // optional hint
+              style={{ willChange: "opacity" }}
             >
               <ProjectsPage />
             </motion.div>
           }
         />
-<Route path="/analyses/:slug" element={<AnalysisRouter />} />
-
+        <Route path="/analyses/:slug" element={<AnalysisRouter />} />
       </Routes>
-      {/* // src/App.tsx — add a Route (keep the rest as-is) */}
     </AnimatePresence>
   );
 }

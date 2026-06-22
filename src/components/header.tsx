@@ -10,6 +10,7 @@ const socialLinks = [
 export default function Header() {
   const location = useLocation();
   const onProjects = location.pathname.startsWith("/projects");
+  const homePath = sessionStorage.getItem("homeVariant") === "ea" ? "/ea" : "/";
 
   const [contactOpen, setContactOpen] = useState(false); // desktop contact dropdown
   const [mobileOpen, setMobileOpen]   = useState(false); // mobile combined dropdown
@@ -41,7 +42,7 @@ export default function Header() {
     {onProjects && <span id="filters-host" className="md:hidden inline-flex" />}
     {/* ✅ Real title on desktop+ (lives on the LEFT) */}
     <Link
-      to="/"
+      to={homePath}
       className="hidden md:inline-block px-2 py-2 text-lg md:text-xl lg:text-2xl hover:underline"
     >
       Ekam Nijjar
@@ -99,7 +100,7 @@ export default function Header() {
   <div
     className="absolute right-0 top-full w-48
                bg-black/90 text-white backdrop-blur-md
-               border border-white/10 rounded-xl shadow-lg p-2 z-[60]"
+               border border-white/10 rounded-xl shadow-lg p-2 z-60"
   >
     {socialLinks.map(({ href, text }) => (
       <a
@@ -134,7 +135,7 @@ export default function Header() {
           <div
             className="absolute right-0 top-full mt-2 w-48
                       bg-black/90 text-white backdrop-blur-md
-                      border border-white/10 rounded-xl shadow-lg p-2 z-[60]"
+                      border border-white/10 rounded-xl shadow-lg p-2 z-60"
           >
             <Link
               to="/projects"
