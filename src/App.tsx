@@ -9,10 +9,11 @@ import './App.css'
 import AnalysisRouter from "./routes/AnalysisRouter";
 
 const EA_KEYS = ["yellowJacket", "solarConquest", "exportToReality", "voltLegacy"];
+const THREE_D_KEYS = ["exportToReality", "greatMapleSyrupHeist", "voltLegacy", "controlledChaos"];
 
-function HomeVariant({ variant, keys }: { variant?: "ea"; keys?: string[] }) {
+function HomeVariant({ variant, keys }: { variant?: "ea" | "3d"; keys?: string[] }) {
   useEffect(() => {
-    if (variant === "ea") sessionStorage.setItem("homeVariant", "ea");
+    if (variant) sessionStorage.setItem("homeVariant", variant);
     else sessionStorage.removeItem("homeVariant");
   }, [variant]);
   return <HomeCards keys={keys} variant={variant} />;
@@ -36,6 +37,14 @@ function AnimatedRoutes() {
           element={
             <motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit">
               <HomeVariant variant="ea" keys={EA_KEYS} />
+            </motion.div>
+          }
+        />
+        <Route
+          path="/3d"
+          element={
+            <motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit">
+              <HomeVariant variant="3d" keys={THREE_D_KEYS} />
             </motion.div>
           }
         />

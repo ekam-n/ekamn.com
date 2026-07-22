@@ -25,7 +25,7 @@ const fadeInVariant: Variants = {
   }),
 };
 
-export default function HomeCards({ keys, variant }: { keys?: string[]; variant?: "ea" }) {
+export default function HomeCards({ keys, variant }: { keys?: string[]; variant?: "ea" | "3d" }) {
   const sections = [
     { component: <Hero />, key: "hero" },
     { component: <ProjectCards keys={keys} />, key: "projects" },

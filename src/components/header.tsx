@@ -10,7 +10,8 @@ const socialLinks = [
 export default function Header() {
   const location = useLocation();
   const onProjects = location.pathname.startsWith("/projects");
-  const homePath = sessionStorage.getItem("homeVariant") === "ea" ? "/ea" : "/";
+  const stored = sessionStorage.getItem("homeVariant");
+  const homePath = stored === "ea" ? "/ea" : stored === "3d" ? "/3d" : "/";
 
   const [contactOpen, setContactOpen] = useState(false); // desktop contact dropdown
   const [mobileOpen, setMobileOpen]   = useState(false); // mobile combined dropdown
