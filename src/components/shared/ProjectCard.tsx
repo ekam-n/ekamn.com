@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import CardVideo from "./CardVideo";
+import CardYouTube from "./CardYouTube";
 
 // A single call-to-action button. `to` => internal route (react-router Link),
 // `href` => external link. `color` holds Tailwind bg/hover/text classes.
@@ -16,6 +17,7 @@ interface ProjectCardProps {
   description: string;
   image?: string;       // Image source (used when no video is provided)
   video?: string;       // Optional video source; takes precedence over image
+  youtubeId?: string;   // Optional YouTube video id; takes precedence over image (video wins over both)
   videoAspect?: string; // Full Tailwind aspect class for the video (e.g. "aspect-video"); defaults to aspect-110/100
   videoControls?: boolean; // Overlaid play/pause + seek scrubber on the video
   videoVolume?: boolean;   // Overlaid mute toggle + volume slider on the video
@@ -55,6 +57,7 @@ export default function ProjectCard({
   description,
   image,
   video,
+  youtubeId,
   videoAspect,
   videoControls,
   videoVolume,
@@ -91,8 +94,10 @@ export default function ProjectCard({
       </a>
     );
 
-  // Media renders identically (placement, ratio, rounding) whether it's a video or
-  // an image; video takes precedence when both are supplied.
+  // Media renders identically (placement, ratio, rounding) whether it's a native
+  // video, a YouTube embed, or an image. Precedence: video > youtubeId > image.
+  // Cards with none (e.g. stubs awaiting assets) render no media rather than a
+  // broken image. The video-control props apply to both video and YouTube media.
   const media = video ? (
     <CardVideo
       src={video}
@@ -102,13 +107,22 @@ export default function ProjectCard({
       volume={videoVolume}
       fullscreen={videoFullscreen}
     />
-  ) : (
+  ) : youtubeId ? (
+    <CardYouTube
+      videoId={youtubeId}
+      title={title}
+      aspectClass={videoAspect || "aspect-video"}
+      controls={videoControls}
+      volume={videoVolume}
+      fullscreen={videoFullscreen}
+    />
+  ) : image ? (
     <img
       src={image}
       alt={title}
       className="w-full rounded-2xl object-cover"
     />
-  );
+  ) : null;
 
   return (
     <div className={layout.container} style={{ backgroundColor: bgColor }}>

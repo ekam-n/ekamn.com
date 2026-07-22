@@ -18,6 +18,7 @@ const PROJECTS_ORDER = [
   "solarConquest",
   "controlledChaos",
   "yellowJacket",
+  "greatMapleSyrupHeist",
   "dishedUp",
   "snuggleSculptors",
   "demonsGate",

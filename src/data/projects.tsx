@@ -8,6 +8,7 @@ export type ProjectCardData = {
   description: string;
   image?: string;
   video?: string;
+  youtubeId?: string; // YouTube video id; takes precedence over image (video wins over both)
   videoAspect?: string; // Full Tailwind aspect class for the video (e.g. "aspect-video")
   videoControls?: boolean; // Overlaid play/pause + seek scrubber on the video
   videoVolume?: boolean;   // Overlaid mute toggle + volume slider on the video
@@ -206,6 +207,28 @@ export const PROJECTS: Record<string, ProjectEntry> = {
         {
          text: "GitHub",
          href: "https://github.com/ekam-n/volt-legacy" 
+        }
+      ]
+    },
+  },
+  greatMapleSyrupHeist: {
+    key: "greatMapleSyrupHeist",
+    category: "Unlabeled",
+    card: {
+      label: "3D Animation",
+      title: "The Great Maple Syrup Heist",
+      description:
+        "The Great Maple Syrup Heist is a 2.5-minute animated short about two Canadian geese pulling off a heist on a top-secret maple syrup reserve, inspired by the real Great Canadian Maple Syrup Heist. I owned two full sequences end to end, the break-in montage and part of the vault sequence, handling modeling, rigging, lighting, and animation across the complete Maya pipeline.",
+      tags: ["Maya", "3D Animation", "Rigging"],
+      youtubeId: "rUDn-PJZg38",
+      videoAspect: "aspect-video",
+      videoControls: true,
+      videoVolume: true,
+      videoFullscreen: true,
+      buttons: [
+        {
+         text: "Website",
+         href: "https://syrupheist.netlify.app/" 
         }
       ]
     },
