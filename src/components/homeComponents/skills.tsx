@@ -1,4 +1,46 @@
-export default function Skills() {
+// Technical/SWE skill groupings shown on the default home (no variant).
+const TECH_GROUPS = [
+  {
+    title: "Languages",
+    skills: ["TypeScript/JavaScript", "Python", "C#", "C++", "Java", "SQL"],
+  },
+  {
+    title: "Web & Backend",
+    skills: ["React", "Node.js", "Express", "REST APIs", "PostgreSQL", "Docker"],
+  },
+  {
+    title: "Cloud & Tooling",
+    skills: ["Google Cloud", "Docker", "CI/CD", "Git"],
+  },
+  {
+    title: "AI/ML",
+    skills: ["PyTorch", "Hugging Face", "NLP", "Model Evaluation"],
+  },
+];
+
+// No variant (default home) => technical groupings; "ea"/"3d" keep the original two cards.
+export default function Skills({ variant }: { variant?: "ea" | "3d" }) {
+  if (!variant) {
+    return (
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full">
+        {TECH_GROUPS.map(({ title, skills }) => (
+          <div key={title} className="bg-[#5301B7] rounded-3xl shadow-lg p-6 md:p-8 text-white">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold mb-4">
+              {title}
+            </h2>
+            <div className="flex flex-wrap gap-3">
+              {skills.map(skill => (
+                <span key={skill} className="bg-white/20 px-3 md:px-4 py-1 md:py-2 rounded-full text-xs md:text-sm lg:text-base">
+                  {skill}
+                </span>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    );
+  }
+
   return (
     <div className="flex flex-col md:flex-row gap-4 w-full">
       {/* Development Skills Card */}

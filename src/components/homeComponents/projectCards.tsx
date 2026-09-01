@@ -1,10 +1,9 @@
 import ProjectCard from "../shared/ProjectCard";
 import { PROJECTS } from "../../data/projects";
 
-// Target home set: Export To: Reality, Controlled Chaos, Volt Legacy, Solar Conquest.
-// Only volt + solar exist today; the two new projects get prepended here once their
-// content is authored as entries in src/data/projects.tsx.
-const HOME_KEYS = ["exportToReality", "controlledChaos", "voltLegacy","yellowJacket" ];
+// Default (technical/SWE) home lineup. fullStackApp and nlpSummarizer are stubs
+// in src/data/projects.tsx awaiting real content.
+const HOME_KEYS = ["fullStackApp", "nlpSummarizer", "exportToReality", "voltLegacy"];
 
 export default function ProjectCards({ keys = HOME_KEYS }: { keys?: string[] }) {
   return (

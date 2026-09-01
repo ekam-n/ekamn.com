@@ -33,6 +33,34 @@ export type ProjectEntry = {
 // Single source of truth for every project's card content.
 // Author a card here once, then reference it by key on the home and/or projects page.
 export const PROJECTS: Record<string, ProjectEntry> = {
+  fullStackApp: {
+    key: "fullStackApp",
+    category: "Web Apps",
+    card: {
+      label: "Web App",
+      title: "WC26 Winners",
+      description:
+        "WC26 Winners is a full-stack TypeScript web app with an Express REST API, PostgreSQL, and session-based auth with role-based authorization. On a team of five, I worked across the frontend, API endpoints, and data models. The app is containerized with Docker and deployed to Google Cloud, with 30+ server-side tests in CI.",
+      image: "/images/projectImages/wc26-winners/wc26-winners.png",
+      tags: ["TypeScript", "Node.js", "PostgreSQL", "Docker"],
+      link: "https://github.com/ekam-n/wc26-winners",
+      buttonText: "GitHub",
+    },
+  },
+  nlpSummarizer: {
+    key: "nlpSummarizer",
+    category: "Unlabeled",
+    card: {
+      label: "AI Project",
+      title: "AI Summary Chrome Extension",
+      description:
+        "A text-summarization pipeline built around a self-hosted BART seq2seq model served through a FastAPI backend and consumed by a Chrome extension. The core of the project is its evaluation harness, which measures summary quality and factual faithfulness across 200 documents using ROUGE, BERTScore, and an NLI-based entailment check, alongside sentence-aware chunking with a map-reduce pass for long inputs.",
+      image: "/images/projectImages/chrome-extension/ai-summary-chrome-extension.png",
+      tags: ["Python", "PyTorch", "NLP", "FastAPI"],
+      link: "https://github.com/ekam-n/IAT360-Natural-Language-Project",
+      buttonText: "GitHub",
+    },
+  },
   postureCoach: {
     key: "postureCoach",
     category: "Unlabeled",

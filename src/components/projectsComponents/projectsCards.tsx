@@ -12,7 +12,9 @@ const isCoreLabel = (v: string): v is CoreLabel =>
 
 // Display order of the projects-page grid. Each key references a card in the registry.
 const PROJECTS_ORDER = [
+  "fullStackApp",
   "exportToReality",
+  "nlpSummarizer",
   "postureCoach",
   "voltLegacy",
   "solarConquest",

@@ -1,4 +1,5 @@
-export default function Hero() {
+// No variant (default home) => technical/SWE copy; "ea"/"3d" keep the games/XR copy.
+export default function Hero({ variant }: { variant?: "ea" | "3d" }) {
   return (
     <div className="bg-black flex flex-col items-center pt-16">
       {/* Container with full-width rounded box */}
@@ -8,7 +9,11 @@ export default function Hero() {
         </h1>
         <h2 className="text-base md:text-xl lg:text-2xl font-medium mb-6 text-left">
           {/* I love to <span className="text-[#DF62F8]">design & develop</span> experiences and applications. */}
-           I build <span className="text-[#DF62F8]">game, XR, & AI</span> applications, and whatever else needs building.
+          {variant ? (
+            <>I build <span className="text-[#DF62F8]">game, XR, & AI</span> applications, and whatever else needs building.</>
+          ) : (
+            <>I build <span className="text-[#DF62F8]">full-stack applications, visionOS software, and applied-AI tools</span>.</>
+          )}
         </h2>
         {/* <p className="text-base md:text-lg lg:text-xl text-left">
           Especially videogames!
