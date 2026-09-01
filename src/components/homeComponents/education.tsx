@@ -9,7 +9,7 @@ export default function Education() {
             August 2026
           </p>
       <p className="text-sm md:text-base lg:text-lg mb-4">
-          I'm completing my BSc at SFU with a major in Interactive Arts & Technology, a minor in Computer Science, and concentrations in Game Design, Extended Reality, and Artifical Intelligence.
+          I completed my BSc at SFU with a major in Interactive Arts & Technology, a minor in Computer Science, and concentrations in Game Design, Extended Reality, and Artifical Intelligence.
         </p>
       <div className="flex flex-wrap gap-3">
           {[
