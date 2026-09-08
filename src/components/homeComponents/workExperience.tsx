@@ -2,8 +2,7 @@
 
 import { useRef, useState } from "react";
 
-// No variant (default home) => technical/SWE copy; "ea"/"3d" keep the AR-pipeline copy.
-export default function WorkExperience({ variant }: { variant?: "ea" | "3d" }) {
+export default function WorkExperience() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [muted, setMuted] = useState(true);
   const [volume, setVolume] = useState(0.5);
@@ -73,7 +72,7 @@ export default function WorkExperience({ variant }: { variant?: "ea" | "3d" }) {
         {/* Title + date */}
         <div className="order-1 xl:[grid-area:head]">
           <h3 className="text-lg md:text-xl lg:text-2xl">
-            Augmented Reality Technician — Plan Your Space
+            Augmented Reality Developer — Plan Your Space
           </h3>
           <p className="text-sm md:text-base lg:text-lg text-white/70 mt-1">
             January 2026 – Present
@@ -174,23 +173,14 @@ export default function WorkExperience({ variant }: { variant?: "ea" | "3d" }) {
           <p>
             Plan Your Space is a Burnaby studio where clients walk through their architectural plans at lifesize scale using Apple Vision Pro, visualizing and refining design decisions before construction begins.
           </p>
-          {variant ? (
-            <p>
-              I lead Plan Your Space's AR pipeline end-to-end — converting client Revit and SketchUp models into optimized Apple Vision Pro experiences, handling all 3ds Max optimization to hit real-time rendering targets on standalone hardware, and leading live walkthroughs that help clients make design decisions earlier in the build process.
-            </p>
-          ) : (
-            <p>
-              I develop the studio's visionOS software, building client-server features that deliver lifesize architectural walkthroughs on Apple Vision Pro. I also write MAXScript and Python tooling that automates our 3ds Max optimization pipeline, alongside MCP-based dev tooling that speeds up the team's workflow. Beyond that, I run the AR pipeline end-to-end, converting client Revit and SketchUp models into optimized Vision Pro experiences and leading live walkthroughs that help clients make design decisions earlier in the build process.
-            </p>
-          )}
+          <p>
+            I build visionOS features on the core product, including the networked client-server system that streams optimized scenes to the headset, and I set up the developer tooling and MCP integrations the team uses day to day. I also own the AR pipeline end-to-end, converting client Revit and SketchUp models into deployable Apple Vision Pro experiences and handling all 3ds Max optimization to hit real-time rendering targets on standalone hardware. Alongside the engineering, I run live client walkthroughs that help people make design decisions earlier in the build process.
+          </p>
         </div>
 
         {/* Tags */}
         <div className="order-4 xl:[grid-area:pills] flex flex-wrap gap-3">
-          {(variant
-            ? ["AR", "Apple Vision Pro", "3ds Max"]
-            : ["visionOS", "Python", "MAXScript", "MCP", "3ds Max"]
-          ).map((skill) => (
+          {["visionOS", "Apple Vision Pro", "MCP", "3ds Max", "AR"].map((skill) => (
             <span
               key={skill}
               className="bg-white/20 px-3 md:px-4 py-1 md:py-2 rounded-full text-xs md:text-sm lg:text-base"

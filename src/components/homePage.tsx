@@ -32,10 +32,10 @@ export default function HomeCards({ keys, variant }: { keys?: string[]; variant?
     ...(variant === "ea"
       ? [
           { component: <Education />, key: "education" },
-          { component: <WorkExperience variant={variant} />, key: "workExperience" },
+          { component: <WorkExperience />, key: "workExperience" },
         ]
       : [
-          { component: <WorkExperience variant={variant} />, key: "workExperience" },
+          { component: <WorkExperience />, key: "workExperience" },
           { component: <Education />, key: "education" },
         ]),
     { component: <Skills variant={variant} />, key: "skills" },
