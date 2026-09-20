@@ -8,7 +8,7 @@ import { pageVariants } from "./lib/variants";
 import './App.css'
 import AnalysisRouter from "./routes/AnalysisRouter";
 
-const EA_KEYS = ["yellowJacket", "solarConquest", "exportToReality", "voltLegacy"];
+const EA_KEYS = ["solarConquest", "yellowJacket", "exportToReality", "voltLegacy"];
 const THREE_D_KEYS = ["exportToReality", "greatMapleSyrupHeist", "voltLegacy", "controlledChaos"];
 
 function HomeVariant({ variant, keys }: { variant?: "ea" | "3d"; keys?: string[] }) {
