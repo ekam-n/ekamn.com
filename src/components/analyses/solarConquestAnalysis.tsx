@@ -53,10 +53,10 @@ export default function SolarConquestAnalysis() {
                 {/* Skills tags */}
                 <div className="not-prose mt-3 flex flex-wrap gap-2 md:gap-3">
                   <span className="bg-white/20 px-3 md:px-4 py-1 md:py-2 rounded-full text-xs md:text-sm lg:text-base">
-                    Economy Design
+                    Systems Design
                   </span>
                   <span className="bg-white/20 px-3 md:px-4 py-1 md:py-2 rounded-full text-xs md:text-sm lg:text-base">
-                    Systems Design
+                    Economy Design
                   </span>
                   <span className="bg-white/20 px-3 md:px-4 py-1 md:py-2 rounded-full text-xs md:text-sm lg:text-base">
                     Tabletop Simulator
@@ -121,7 +121,7 @@ export default function SolarConquestAnalysis() {
       <ArrowRow src="/images/projectImages/solarConquest/Arrow.png" size={100} gap={180} />   
       <div className="space-y-4 md:space-y-6">
         <Row cols={1}>
-          <Card title="Initial Economy Design">
+          <Card title="Initial System Design">
             <ul className="list-disc pl-5 space-y-4">
                   <li>I allocated resources to shape currency flow: players spawn on a corner planet, which each yield one resource with moons amplifying it, edge dwarf planets supply the two adjacent resources, and the center provides all, encouraging trading/bartering and balancing chance and strategy.</li>
                   <li>I prototyped transitive mechanics with tiered troop cards and planetary defense lasers, requiring multiple currencies to craft higher tiers.</li>
@@ -152,7 +152,7 @@ export default function SolarConquestAnalysis() {
       <ArrowRow src="/images/projectImages/solarConquest/Arrow.png" size={100} gap={180} />
       <div className="space-y-4 md:space-y-6">
         <Row cols={1}>
-          <Card title="Key Changes to Economy">
+          <Card title="Key Changes to the System">
             <ul className="list-disc pl-5 space-y-4">
                   <li>I planned planet placement more carefully to prevent any player from having an easier route to the best resources, keeping the map fair and trading meaningful.</li>
                   <li>Through playtesting, we found that converters were too powerful, letting players build troops and lasers without visiting other planets, so I made them harder to get to avoid a single dominant strategy.</li>
@@ -196,7 +196,7 @@ export default function SolarConquestAnalysis() {
       <ArrowRow src="/images/projectImages/solarConquest/Arrow.png" size={100} gap={180} />
       <div className="space-y-4 md:space-y-6">
         <Row cols={1}>
-          <Card title="Final Economy Design">
+          <Card title="Final System Design">
             <ul className="list-disc pl-5 space-y-4">
                   <li>I finalized the board so each planet, moon, and dwarf planet gave all players fair starting access to resources, clear currency flow, and meaningful trading/bartering routes, preserving player agency from turn one.</li>
                   <li>I balanced the cost/benefit of accelerators and converters to keep strategy ahead of chance, curb runaway positive feedback, and prevent any single dominant strategy so multiple paths to victory stay viable.</li>
@@ -241,7 +241,7 @@ export default function SolarConquestAnalysis() {
         <Row cols={1}>
           <Card title="Takeaways">
             <ul className="list-disc pl-5 space-y-4">
-                  <li>I learned how hard it is to balance a game economy: it took lots of playtesting and analysis to keep player agency high, chance vs strategy in equilibrium, and multiple viable paths to win.</li>
+                  <li>I learned how hard it is to balance a game system: it took lots of playtesting and analysis to keep player agency high, chance vs strategy in equilibrium, and multiple viable paths to win.</li>
                   <li>I found the early game a bit slow to teach; too many options and rules created onboarding friction. Next time I would tighten the core loop, simplify first-turn choices, and provide a clearer first-play rulebook and quick reference to speed pacing.</li>
                 </ul>
           </Card>
